@@ -3,6 +3,7 @@ from __future__ import annotations
 import random
 from collections import Counter, defaultdict
 from dataclasses import asdict
+from math import sqrt
 from typing import Dict, List
 
 from .config import GameConfig
@@ -101,12 +102,19 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             sum(path[index] for path in padded) / len(padded)
             for index in range(max_len)
         ]
+        final_belief_mean = sum(final_beliefs) / len(final_beliefs)
+        final_belief_std = sqrt(
+            sum((belief - final_belief_mean) ** 2 for belief in final_beliefs) / len(final_beliefs)
+        )
 
         results[strategy_name] = {
             "defender_expected_utility": defender_total / config.monte_carlo_runs,
             "attacker_expected_utility": attacker_total / config.monte_carlo_runs,
             "avg_belief_path": avg_belief_path,
             "final_beliefs": final_beliefs,
+            "final_belief_mean": final_belief_mean,
+            "final_belief_std": final_belief_std,
+            "belief_span_mean": max(avg_belief_path) - min(avg_belief_path),
             "attack_probability_mean": attack_probability_sum / stage_count if stage_count else 0.0,
             "action_counts": dict(action_counter),
             "signal_counts": dict(signal_counter),
@@ -121,19 +129,19 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
 def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, float]]]:
     sweeps = {
         "prior_theta1": [0.3, 0.4, 0.5, 0.6, 0.7],
-        "beta": [0.1, 0.3, 0.5, 0.7, 0.9],
+        "beta": [0.2, 0.5, 0.8, 1.1, 1.4],
         "c_theta1": [0.5, 1.0, 1.5, 2.0, 2.5],
         "c_theta2": [0.5, 1.0, 1.5, 2.0, 2.5],
     }
     strategy_focus = {
         "prior_theta1": "pbne_production_camouflage",
-        "beta": "pbne_production_camouflage",
+        "beta": "pbne_honeypot_camouflage",
         "c_theta1": "pbne_production_camouflage",
         "c_theta2": "pbne_honeypot_camouflage",
     }
     metric_key = {
         "prior_theta1": "lambda_d_star",
-        "beta": "lambda_d_star",
+        "beta": "lambda_d_prime",
         "c_theta1": "lambda_d_star",
         "c_theta2": "lambda_d_prime",
     }
@@ -144,6 +152,8 @@ def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, flo
         for value in values:
             variant_kwargs = asdict(config)
             variant_kwargs[parameter] = value
+            if parameter == "beta":
+                variant_kwargs["prior_theta1"] = 0.35
             variant = GameConfig(**variant_kwargs)
             strategy_name = strategy_focus[parameter]
             summary = run_strategy_comparison(variant)[strategy_name]
@@ -155,7 +165,9 @@ def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, flo
                     "strategy": strategy_name,
                     "defender_expected_utility": summary["defender_expected_utility"],
                     "attacker_expected_utility": summary["attacker_expected_utility"],
-                    "final_belief_mean": sum(summary["final_beliefs"]) / len(summary["final_beliefs"]),
+                    "final_belief_mean": summary["final_belief_mean"],
+                    "final_belief_std": summary["final_belief_std"],
+                    "belief_span_mean": summary["belief_span_mean"],
                     "attack_ratio": attack_ratio,
                     "mixing_probability_mean": summary["equilibrium_metrics_mean"].get(metric_key[parameter], 0.0),
                 }
@@ -166,7 +178,7 @@ def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, flo
 def run_feasible_comparison_scenarios(config: GameConfig) -> Dict[str, object]:
     high_prior_config = GameConfig(
         horizon=config.horizon,
-        prior_theta1=0.6,
+        prior_theta1=0.65,
         beta=config.beta,
         epsilon=config.epsilon,
         attack_cost=config.attack_cost,
@@ -180,7 +192,7 @@ def run_feasible_comparison_scenarios(config: GameConfig) -> Dict[str, object]:
     )
     low_prior_config = GameConfig(
         horizon=config.horizon,
-        prior_theta1=0.4,
+        prior_theta1=0.35,
         beta=config.beta,
         epsilon=config.epsilon,
         attack_cost=config.attack_cost,

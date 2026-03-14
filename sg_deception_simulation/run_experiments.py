@@ -12,7 +12,7 @@ from chapter3_sim.experiments import (
 
 
 def main() -> None:
-    output_dir = Path("chapter3/results")
+    output_dir = Path("sg_deception_simulation/results")
     output_dir.mkdir(parents=True, exist_ok=True)
 
     comparison = run_strategy_comparison(DEFAULT_CONFIG)

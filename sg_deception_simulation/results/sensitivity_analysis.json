@@ -3,188 +3,228 @@
     {
       "value": 0.3,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": 1.0726666666666667,
-      "attacker_expected_utility": -3.953333333333333,
-      "final_belief_mean": 0.3007600377582962,
-      "attack_ratio": 0.80042689434365,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": 1.8125,
+      "attacker_expected_utility": -4.05,
+      "final_belief_mean": 0.2996257355392733,
+      "final_belief_std": 0.053264517558425956,
+      "belief_span_mean": 0.0005141033461484312,
+      "attack_ratio": 0.8768084173608066,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 0.4,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -1.204,
-      "attacker_expected_utility": -1.96,
-      "final_belief_mean": 0.40093613365358577,
-      "attack_ratio": 0.80042689434365,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -0.252625,
+      "attacker_expected_utility": -2.07,
+      "final_belief_mean": 0.39962161887371034,
+      "final_belief_std": 0.05306328858631188,
+      "belief_span_mean": 0.0005381718350317422,
+      "attack_ratio": 0.8768084173608066,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 0.5,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5016968757279692,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -2.2385,
+      "attacker_expected_utility": -0.16,
+      "final_belief_mean": 0.500395390615719,
+      "final_belief_std": 0.05329550157232723,
+      "belief_span_mean": 0.000910179744544215,
+      "attack_ratio": 0.8768084173608066,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 0.6,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -4.894666666666667,
-      "attacker_expected_utility": 2.0533333333333332,
-      "final_belief_mean": 0.6118620134796987,
-      "attack_ratio": 0.8298755186721992,
-      "mixing_probability_mean": 0.6666666666666958
+      "defender_expected_utility": -4.0195,
+      "attacker_expected_utility": 2.055,
+      "final_belief_mean": 0.6041151055626405,
+      "final_belief_std": 0.1951206237579641,
+      "belief_span_mean": 0.00984328054451522,
+      "attack_ratio": 0.8986744551786116,
+      "mixing_probability_mean": 0.6666666666666546
     },
     {
       "value": 0.7,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -6.126666666666667,
-      "attacker_expected_utility": 4.013333333333334,
-      "final_belief_mean": 0.71878612346998,
-      "attack_ratio": 0.8673026886383348,
-      "mixing_probability_mean": 0.4285714285714174
+      "defender_expected_utility": -5.463375,
+      "attacker_expected_utility": 3.985,
+      "final_belief_mean": 0.7089590524857479,
+      "final_belief_std": 0.23906999979618926,
+      "belief_span_mean": 0.014709241824303443,
+      "attack_ratio": 0.9252833680314596,
+      "mixing_probability_mean": 0.4285714285713958
     }
   ],
   "beta": [
     {
-      "value": 0.1,
-      "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5010954743325452,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
-    },
-    {
-      "value": 0.3,
-      "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5013261798863736,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
+      "value": 0.2,
+      "strategy": "pbne_honeypot_camouflage",
+      "defender_expected_utility": -3.1475,
+      "attacker_expected_utility": 1.135,
+      "final_belief_mean": 0.26615281728433426,
+      "final_belief_std": 0.27794354242318187,
+      "belief_span_mean": 0.09893331816106149,
+      "attack_ratio": 0.07324171978042221,
+      "mixing_probability_mean": 0.5384615384614869
     },
     {
       "value": 0.5,
-      "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5015027553400686,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
+      "strategy": "pbne_honeypot_camouflage",
+      "defender_expected_utility": -3.12875,
+      "attacker_expected_utility": 1.1275,
+      "final_belief_mean": 0.2488933806791029,
+      "final_belief_std": 0.25234049851794216,
+      "belief_span_mean": 0.10017142022175912,
+      "attack_ratio": 0.07281089036055924,
+      "mixing_probability_mean": 0.5384615384614869
     },
     {
-      "value": 0.7,
-      "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5016398659530643,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
+      "value": 0.8,
+      "strategy": "pbne_honeypot_camouflage",
+      "defender_expected_utility": -3.13875,
+      "attacker_expected_utility": 1.145,
+      "final_belief_mean": 0.2394368331778386,
+      "final_belief_std": 0.2386324441043307,
+      "belief_span_mean": 0.1061881891484413,
+      "attack_ratio": 0.07255219053219641,
+      "mixing_probability_mean": 0.5384615384614869
     },
     {
-      "value": 0.9,
-      "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -3.3626666666666667,
-      "attacker_expected_utility": -0.08,
-      "final_belief_mean": 0.5017475100809775,
-      "attack_ratio": 0.8010680907877169,
-      "mixing_probability_mean": 0.9800000000000162
+      "value": 1.1,
+      "strategy": "pbne_honeypot_camouflage",
+      "defender_expected_utility": -3.147,
+      "attacker_expected_utility": 1.1475,
+      "final_belief_mean": 0.23424223421161477,
+      "final_belief_std": 0.23104087194527456,
+      "belief_span_mean": 0.11108131507235991,
+      "attack_ratio": 0.07234620466891793,
+      "mixing_probability_mean": 0.5384615384614869
+    },
+    {
+      "value": 1.4,
+      "strategy": "pbne_honeypot_camouflage",
+      "defender_expected_utility": -3.158375,
+      "attacker_expected_utility": 1.155,
+      "final_belief_mean": 0.2323856787732952,
+      "final_belief_std": 0.2260610003859472,
+      "belief_span_mean": 0.1126507729911859,
+      "attack_ratio": 0.07258568122543438,
+      "mixing_probability_mean": 0.5384615384614869
     }
   ],
   "c_theta1": [
     {
       "value": 0.5,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -1.3873333333333333,
-      "attacker_expected_utility": 0.14666666666666667,
-      "final_belief_mean": 0.4996066493032209,
-      "attack_ratio": 0.9752925877763329,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -1.303375,
+      "attacker_expected_utility": 0.055,
+      "final_belief_mean": 0.49919517337114655,
+      "final_belief_std": 0.04637034118767597,
+      "belief_span_mean": 4.7250446253366274e-05,
+      "attack_ratio": 0.9748964172556666,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 1.0,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -1.4696666666666667,
-      "attacker_expected_utility": -0.04666666666666667,
-      "final_belief_mean": 0.5002195415299461,
-      "attack_ratio": 0.9493670886075949,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -1.4455,
+      "attacker_expected_utility": -0.075,
+      "final_belief_mean": 0.5001546018852492,
+      "final_belief_std": 0.0514916357572827,
+      "belief_span_mean": 0.0005342444652619016,
+      "attack_ratio": 0.9480919649205973,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 1.5,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -1.7805,
-      "attacker_expected_utility": -0.006666666666666667,
-      "final_belief_mean": 0.5000071364065387,
-      "attack_ratio": 0.9313877677739832,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -1.6345,
+      "attacker_expected_utility": -0.16,
+      "final_belief_mean": 0.49999353258783735,
+      "final_belief_std": 0.05088554333855414,
+      "belief_span_mean": 0.0007533297910594094,
+      "attack_ratio": 0.9300162752848175,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 2.0,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -2.074,
-      "attacker_expected_utility": -0.006666666666666667,
-      "final_belief_mean": 0.5001169848745127,
-      "attack_ratio": 0.9082652134423251,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -2.0635,
+      "attacker_expected_utility": -0.025,
+      "final_belief_mean": 0.4999421885990839,
+      "final_belief_std": 0.050891597148354596,
+      "belief_span_mean": 0.0008303614385710145,
+      "attack_ratio": 0.9047726758651888,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 2.5,
       "strategy": "pbne_production_camouflage",
-      "defender_expected_utility": -2.2386666666666666,
-      "attacker_expected_utility": -0.15333333333333332,
-      "final_belief_mean": 0.5003830279120937,
-      "attack_ratio": 0.8777062609713283,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -2.2385,
+      "attacker_expected_utility": -0.16,
+      "final_belief_mean": 0.500395390615719,
+      "final_belief_std": 0.05329550157232723,
+      "belief_span_mean": 0.000910179744544215,
+      "attack_ratio": 0.8768084173608066,
+      "mixing_probability_mean": 0.9800000000000167
     }
   ],
   "c_theta2": [
     {
       "value": 0.5,
       "strategy": "pbne_honeypot_camouflage",
-      "defender_expected_utility": -2.051833333333333,
-      "attacker_expected_utility": 0.15,
-      "final_belief_mean": 0.48023041359853474,
-      "attack_ratio": 0.057530901877002896,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -2.23375,
+      "attacker_expected_utility": 0.0075,
+      "final_belief_mean": 0.4705159427566768,
+      "final_belief_std": 0.13224350170414337,
+      "belief_span_mean": 0.029231532515822334,
+      "attack_ratio": 0.058764358491790514,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 1.0,
       "strategy": "pbne_honeypot_camouflage",
-      "defender_expected_utility": -3.251,
-      "attacker_expected_utility": 0.14666666666666667,
-      "final_belief_mean": 0.48322051978072555,
-      "attack_ratio": 0.11759554638143492,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -3.7215,
+      "attacker_expected_utility": 0.2625,
+      "final_belief_mean": 0.4782495109777793,
+      "final_belief_std": 0.11810390175241857,
+      "belief_span_mean": 0.022255539977295735,
+      "attack_ratio": 0.11700539195354624,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 1.5,
       "strategy": "pbne_honeypot_camouflage",
-      "defender_expected_utility": -3.9736666666666665,
-      "attacker_expected_utility": 0.11333333333333333,
-      "final_belief_mean": 0.4860751575455553,
-      "attack_ratio": 0.1809837068767689,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -4.44525,
+      "attacker_expected_utility": 0.3625,
+      "final_belief_mean": 0.4844813167028137,
+      "final_belief_std": 0.10482696022310586,
+      "belief_span_mean": 0.015013633342160049,
+      "attack_ratio": 0.17810026385224276,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 2.0,
       "strategy": "pbne_honeypot_camouflage",
-      "defender_expected_utility": -4.515333333333333,
-      "attacker_expected_utility": 0.16333333333333333,
-      "final_belief_mean": 0.49020972701583504,
-      "attack_ratio": 0.23810815699041418,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -4.627,
+      "attacker_expected_utility": 0.155,
+      "final_belief_mean": 0.48785107134564215,
+      "final_belief_std": 0.09659843737955279,
+      "belief_span_mean": 0.010507840227042597,
+      "attack_ratio": 0.23354863464858988,
+      "mixing_probability_mean": 0.9800000000000167
     },
     {
       "value": 2.5,
       "strategy": "pbne_honeypot_camouflage",
-      "defender_expected_utility": -4.638833333333333,
-      "attacker_expected_utility": 0.0033333333333333335,
-      "final_belief_mean": 0.4929607627067246,
-      "attack_ratio": 0.293557600761663,
-      "mixing_probability_mean": 0.9800000000000162
+      "defender_expected_utility": -4.730625,
+      "attacker_expected_utility": -0.0975,
+      "final_belief_mean": 0.4899547598565734,
+      "final_belief_std": 0.09076185218277608,
+      "belief_span_mean": 0.008782863625057313,
+      "attack_ratio": 0.28273386674642936,
+      "mixing_probability_mean": 0.9800000000000167
     }
   ]
 }

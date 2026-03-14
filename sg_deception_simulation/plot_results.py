@@ -6,7 +6,7 @@ from pathlib import Path
 
 import matplotlib
 
-os.environ.setdefault("MPLCONFIGDIR", str(Path("chapter3/.mplconfig").resolve()))
+os.environ.setdefault("MPLCONFIGDIR", str(Path("sg_deception_simulation/.mplconfig").resolve()))
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
@@ -15,7 +15,7 @@ from matplotlib import font_manager
 from matplotlib.font_manager import FontProperties
 
 
-RESULTS_DIR = Path("chapter3/results")
+RESULTS_DIR = Path("sg_deception_simulation/results")
 FIGURES_DIR = RESULTS_DIR / "figures"
 FONT_CN = None
 FONT_EN = None
@@ -76,7 +76,7 @@ def save_figure(filename: str) -> None:
 
 
 def plot_scenario_utility(feasible: dict) -> None:
-    scenario_labels = ["场景A\n高生产系统先验", "场景B\n高蜜罐先验"]
+    scenario_labels = ["场景A\n生产系统占优", "场景B\n蜜罐系统占优"]
     baseline_values = [
         feasible["scenario_a_high_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
         feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
@@ -145,13 +145,13 @@ def plot_belief_trajectories(feasible: dict) -> None:
         (
             axes[0],
             feasible["scenario_a_high_prior_theta1"],
-            "场景A：高生产系统先验",
+            "场景A：生产系统占优",
             "pbne_production_camouflage",
         ),
         (
             axes[1],
             feasible["scenario_b_low_prior_theta1"],
-            "场景B：高蜜罐先验",
+            "场景B：蜜罐系统占优",
             "pbne_honeypot_camouflage",
         ),
     ]
@@ -250,7 +250,12 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
         rows = sensitivity[key]
         x = [row["value"] for row in rows]
         y1 = [row["defender_expected_utility"] for row in rows]
-        y2 = [row["attack_ratio"] for row in rows]
+        if key == "beta":
+            y2 = [row["belief_span_mean"] for row in rows]
+            secondary_label = "信念波动幅度"
+        else:
+            y2 = [row["attack_ratio"] for row in rows]
+            secondary_label = "攻击概率"
 
         ax.plot(
             x,
@@ -279,9 +284,9 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             markersize=4.5,
             markerfacecolor=COLOR_PBNE,
             markeredgecolor=COLOR_PBNE,
-            label="攻击概率",
+            label=secondary_label,
         )
-        ax2.set_ylabel("攻击概率", fontproperties=FONT_CN, fontsize=10.5)
+        ax2.set_ylabel(secondary_label, fontproperties=FONT_CN, fontsize=10.5)
         for label in ax2.get_yticklabels():
             label.set_fontproperties(FONT_EN)
             label.set_fontsize(10.5)
@@ -305,9 +310,9 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "## 1. 策略对比实验分析",
         "",
-        f"在场景A（生产系统占优场景，p=0.6）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于真实披露基线的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，生产系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
+        f"在场景A（生产系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于真实披露基线的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，生产系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
         "",
-        f"在场景B（蜜罐占优场景，p=0.4）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于真实披露基线的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
+        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于真实披露基线的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
         "",
         "从信念演化结果看，真实披露基线下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为生产系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
         "",
@@ -315,7 +320,7 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "先验概率 p 对 PBNE-1 的影响最为明显。随着 p 增大，攻击者更倾向于相信目标为生产系统，防御者期望效用逐渐下降，说明在真实资产占比过高时，欺骗防御的边际收益会减弱。",
         "",
-        "时间折扣因子 β 对终局信念有一定影响，但在当前参数设置下，对期望效用的影响相对有限。这表明在该组参数下，均衡混合概率对系统整体收益的主导作用强于信念记忆衰减效应。",
+        "时间折扣因子 β 对防御者期望效用的影响相对有限，但会明显影响攻击者信念波动的幅度。这表明在当前参数区间内，β 的主要作用体现在调节攻击者对近期观测的敏感性，而不是直接改变均衡收益水平。",
         "",
         "生产系统伪装成本 c_theta1 上升时，PBNE-1 的防御者期望效用下降，攻击概率也随之降低，说明更高的伪装成本会削弱防御方通过混合欺骗获得的净收益。",
         "",
