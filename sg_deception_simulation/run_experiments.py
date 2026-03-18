@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from chapter3_sim.config import DEFAULT_CONFIG
-from chapter3_sim.experiments import (
+from cyber_simulation_core.config import DEFAULT_CONFIG
+from cyber_simulation_core.experiments import (
     run_feasible_comparison_scenarios,
     run_sensitivity_analysis,
     run_strategy_comparison,

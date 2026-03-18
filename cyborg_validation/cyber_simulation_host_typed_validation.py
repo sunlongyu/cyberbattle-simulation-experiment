@@ -19,9 +19,9 @@ from CybORG.env import CybORG
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "sg_deception_simulation"))
 
-from chapter3_sim.config import GameConfig
-from chapter3_sim.model import DefenderType, Signal, discounted_belief
-from chapter3_sim.strategies import (
+from cyber_simulation_core.config import GameConfig
+from cyber_simulation_core.model import DefenderType, Signal, discounted_belief
+from cyber_simulation_core.strategies import (
     StrategyState,
     pbne_honeypot_camouflage,
     pbne_production_camouflage,
@@ -53,7 +53,7 @@ def default_cyborg_scenario_path() -> Path:
 
 
 def load_mapping() -> HostTypeMapping:
-    mapping_path = Path(__file__).resolve().parent / "chapter3_host_type_mapping.json"
+    mapping_path = Path(__file__).resolve().parent / "cyber_simulation_host_type_mapping.json"
     data = json.loads(mapping_path.read_text(encoding="utf-8"))
     return HostTypeMapping(
         theta1_hosts=data["theta1_production_hosts"],
@@ -337,7 +337,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path(__file__).resolve().parent / "results" / "chapter3_host_typed_results.json",
+        default=Path(__file__).resolve().parent / "results" / "cyber_simulation_host_typed_results.json",
     )
     args = parser.parse_args()
 

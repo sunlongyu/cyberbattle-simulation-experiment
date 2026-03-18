@@ -19,9 +19,9 @@ from CybORG.env import CybORG
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "sg_deception_simulation"))
 
-from chapter3_sim.config import GameConfig
-from chapter3_sim.model import AttackerAction, DefenderType, Signal, discounted_belief
-from chapter3_sim.strategies import StrategyState, pbne_production_camouflage, truthful_baseline
+from cyber_simulation_core.config import GameConfig
+from cyber_simulation_core.model import AttackerAction, DefenderType, Signal, discounted_belief
+from cyber_simulation_core.strategies import StrategyState, pbne_production_camouflage, truthful_baseline
 
 
 DEFAULT_PROTECTED_HOSTS = [
@@ -39,7 +39,7 @@ CRITICAL_HOST_PREFIXES = ("Op_",)
 @dataclass(frozen=True)
 class CybORGMappingConfig:
     scenario_path: Path
-    chapter3_config: GameConfig
+    simulation_config: GameConfig
     protected_hosts: List[str]
     max_steps: int = 25
 
@@ -50,7 +50,7 @@ def default_scenario_path() -> Path:
 
 
 def build_mapping_config(max_steps: int) -> CybORGMappingConfig:
-    chapter3_config = GameConfig(
+    simulation_config = GameConfig(
         horizon=max_steps,
         prior_theta1=0.65,
         beta=1.0,
@@ -66,7 +66,7 @@ def build_mapping_config(max_steps: int) -> CybORGMappingConfig:
     )
     return CybORGMappingConfig(
         scenario_path=default_scenario_path(),
-        chapter3_config=chapter3_config,
+        simulation_config=simulation_config,
         protected_hosts=DEFAULT_PROTECTED_HOSTS,
         max_steps=max_steps,
     )
@@ -98,7 +98,7 @@ def choose_pbne1_action(
     regime = pbne_production_camouflage(
         StrategyState(
             belief_theta1=belief_theta1,
-            config=config.chapter3_config,
+            config=config.simulation_config,
         )
     )
     host = config.protected_hosts[(step - 1) % len(config.protected_hosts)]
@@ -138,7 +138,7 @@ def run_mapped_episode(
     )
     cyborg.reset(agent="Blue")
 
-    belief_theta1 = mapping.chapter3_config.prior_theta1
+    belief_theta1 = mapping.simulation_config.prior_theta1
     signal_history: List[Signal] = []
     belief_path: List[float] = []
     lambda_d_star_path: List[float] = []
@@ -157,7 +157,7 @@ def run_mapped_episode(
     for step in range(1, mapping.max_steps + 1):
         if policy_name == "truthful_baseline":
             action, signal, metrics = choose_truthful_action(step, mapping)
-            regime = truthful_baseline(mapping.chapter3_config)
+            regime = truthful_baseline(mapping.simulation_config)
         elif policy_name == "pbne_production_camouflage":
             action, signal, metrics = choose_pbne1_action(
                 step=step,
@@ -167,7 +167,7 @@ def run_mapped_episode(
                 rng=local_rng,
             )
             regime = pbne_production_camouflage(
-                StrategyState(belief_theta1=belief_theta1, config=mapping.chapter3_config)
+                StrategyState(belief_theta1=belief_theta1, config=mapping.simulation_config)
             )
         else:
             raise ValueError(f"Unknown policy: {policy_name}")
@@ -183,10 +183,10 @@ def run_mapped_episode(
 
         signal_history.append(signal)
         belief_theta1 = discounted_belief(
-            prior_theta1=mapping.chapter3_config.prior_theta1,
+            prior_theta1=mapping.simulation_config.prior_theta1,
             signal_history=signal_history,
             type_signal_probs=regime.defender_signal_probs,
-            beta=mapping.chapter3_config.beta,
+            beta=mapping.simulation_config.beta,
         )
         belief_path.append(belief_theta1)
 
@@ -268,14 +268,14 @@ def run_validation(episodes: int, max_steps: int) -> Dict[str, object]:
         "max_steps": max_steps,
         "mapping": {
             "protected_hosts": mapping.protected_hosts,
-            "prior_theta1": mapping.chapter3_config.prior_theta1,
-            "beta": mapping.chapter3_config.beta,
-            "c_theta1": mapping.chapter3_config.c_theta1,
-            "attack_cost": mapping.chapter3_config.attack_cost,
-            "attack_gain": mapping.chapter3_config.attack_gain,
-            "defender_loss": mapping.chapter3_config.defender_loss,
-            "intel_gain": mapping.chapter3_config.intel_gain,
-            "intel_loss": mapping.chapter3_config.intel_loss,
+            "prior_theta1": mapping.simulation_config.prior_theta1,
+            "beta": mapping.simulation_config.beta,
+            "c_theta1": mapping.simulation_config.c_theta1,
+            "attack_cost": mapping.simulation_config.attack_cost,
+            "attack_gain": mapping.simulation_config.attack_gain,
+            "defender_loss": mapping.simulation_config.defender_loss,
+            "intel_gain": mapping.simulation_config.intel_gain,
+            "intel_loss": mapping.simulation_config.intel_loss,
         },
         "policies": {},
     }
@@ -313,7 +313,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path(__file__).resolve().parent / "results" / "chapter3_mapped_results.json",
+        default=Path(__file__).resolve().parent / "results" / "cyber_simulation_mapped_results.json",
     )
     args = parser.parse_args()
 

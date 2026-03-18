@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
-INPUT_PATH = RESULTS_DIR / "chapter3_formal_experiments.json"
+INPUT_PATH = RESULTS_DIR / "cyber_simulation_formal_experiments.json"
 FIGURES_DIR = RESULTS_DIR / "figures"
 
 
@@ -69,7 +69,7 @@ def plot_primary_blue_rewards(data: dict) -> None:
     for i, value in enumerate(alternative):
         ax.text(i + width / 2, value + 6, f"{value:.1f}", ha="center", va="bottom", fontsize=9)
 
-    save(fig, "chapter3_primary_blue_rewards.png")
+    save(fig, "cyber_simulation_blue_rewards.png")
 
 
 def plot_primary_security_metrics(data: dict) -> None:
@@ -103,7 +103,7 @@ def plot_primary_security_metrics(data: dict) -> None:
 
     axes[0].legend(frameon=False, loc="upper right")
     fig.suptitle("Effectiveness Comparison: Security Metrics", y=1.03, fontsize=13)
-    save(fig, "chapter3_primary_security_metrics.png")
+    save(fig, "cyber_simulation_security_metrics.png")
 
 
 def plot_compromise_breakdown(data: dict) -> None:
@@ -133,7 +133,7 @@ def plot_compromise_breakdown(data: dict) -> None:
         shift = (-width, 0, width)[idx]
         for i, value in enumerate(values):
             ax.text(i + shift, value + 0.025, f"{value:.2f}", ha="center", va="bottom", fontsize=8)
-    save(fig, "chapter3_compromise_breakdown.png")
+    save(fig, "cyber_simulation_compromise_breakdown.png")
 
 
 def plot_theory_environment_alignment(data: dict) -> None:
@@ -166,7 +166,7 @@ def plot_theory_environment_alignment(data: dict) -> None:
         ax.text(i - width / 2, value + 1.5, f"{value:.2f}", ha="center", va="bottom", fontsize=9)
     for i, value in enumerate(env_gain):
         ax.text(i + width / 2, value + 1.5, f"{value:.2f}", ha="center", va="bottom", fontsize=9)
-    save(fig, "chapter3_theory_environment_alignment.png")
+    save(fig, "cyber_simulation_theory_environment_alignment.png")
 
 
 def plot_sensitivity(data: dict, sweep_key: str, title: str, filename: str) -> None:
@@ -198,7 +198,7 @@ def plot_prior_effect(data: dict) -> None:
         data,
         sweep_key="prior_theta1",
         title="Sensitivity: Effect of Prior Probability",
-        filename="chapter3_sensitivity_prior_theta1.png",
+        filename="cyber_simulation_sensitivity_prior_theta1.png",
     )
 
 
@@ -207,7 +207,7 @@ def plot_beta_effect(data: dict) -> None:
         data,
         sweep_key="beta",
         title="Sensitivity: Effect of Belief Discount Beta",
-        filename="chapter3_sensitivity_beta.png",
+        filename="cyber_simulation_sensitivity_beta.png",
     )
 
 

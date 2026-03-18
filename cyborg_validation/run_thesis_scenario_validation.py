@@ -19,9 +19,9 @@ from CybORG.env import CybORG
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "sg_deception_simulation"))
 
-from chapter3_sim.config import GameConfig
-from chapter3_sim.model import DefenderType, Signal, camouflage_cost, discounted_belief
-from chapter3_sim.strategies import (
+from cyber_simulation_core.config import GameConfig
+from cyber_simulation_core.model import DefenderType, Signal, camouflage_cost, discounted_belief
+from cyber_simulation_core.strategies import (
     StrategyState,
     pbne_honeypot_camouflage,
     pbne_production_camouflage,

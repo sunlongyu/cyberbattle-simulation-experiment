@@ -17,11 +17,11 @@ import sys
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "sg_deception_simulation"))
 
-from chapter3_sim.config import GameConfig
+from cyber_simulation_core.config import GameConfig
 
 
 def default_output_path() -> Path:
-    return Path(__file__).resolve().parent / "results" / "chapter3_formal_experiments.json"
+    return Path(__file__).resolve().parent / "results" / "cyber_simulation_formal_experiments.json"
 
 
 def extract_comparison(results: Dict[str, object], scenario_name: str) -> Dict[str, object]:
