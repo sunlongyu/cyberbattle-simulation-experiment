@@ -8,3 +8,4 @@ __pycache__/
 .vscode/
 .mplconfig/
 .venv/
+cyborg_validation/*.md
