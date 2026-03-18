@@ -1,0 +1,16 @@
+{
+  "notes": "This mapping overlays Chapter 3 theta1/theta2 semantics onto CybORG Scenario2. Theta1 is approximated by production-like hosts, theta2 by deception-surrogate hosts that can accept Misinform. This is an experimental approximation, not a native CybORG host-type feature.",
+  "theta1_production_hosts": [
+    "Enterprise0",
+    "Op_Server0",
+    "Op_Host0",
+    "Op_Host1"
+  ],
+  "theta2_honeypot_surrogate_hosts": [
+    "User1",
+    "User2",
+    "User3",
+    "User4",
+    "Op_Host2"
+  ]
+}

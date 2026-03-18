@@ -50,6 +50,7 @@ def run_episode(strategy_name: str, config: GameConfig, rng: random.Random) -> L
                 action=action,
                 defender_utility=defender_value,
                 attacker_utility=attacker_value,
+                regime_metrics=regime.mixing_metrics,
             )
         )
 
@@ -87,10 +88,9 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             attack_probability_sum += sum(item.attack_probability for item in episode)
             stage_count += len(episode)
 
-            final_belief = config.prior_theta1
-            regime = STRATEGY_BUILDERS[strategy_name](StrategyState(belief_theta1=final_belief, config=config))
-            for key, value in regime.mixing_metrics.items():
-                metric_accumulator[key] += value
+            for item in episode:
+                for key, value in item.regime_metrics.items():
+                    metric_accumulator[key] += value
 
         max_len = max(len(path) for path in belief_paths)
         padded = []
@@ -119,7 +119,7 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             "action_counts": dict(action_counter),
             "signal_counts": dict(signal_counter),
             "equilibrium_metrics_mean": {
-                key: value / config.monte_carlo_runs
+                key: value / stage_count if stage_count else 0.0
                 for key, value in metric_accumulator.items()
             },
         }
@@ -132,18 +132,36 @@ def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, flo
         "beta": [0.2, 0.5, 0.8, 1.1, 1.4],
         "c_theta1": [0.5, 1.0, 1.5, 2.0, 2.5],
         "c_theta2": [0.5, 1.0, 1.5, 2.0, 2.5],
+        "defender_pressure_cost": [0.5, 1.0, 1.5, 2.0, 2.5],
+        "defender_protection_gain": [2.0, 4.0, 6.0, 8.0, 10.0],
+        "attacker_deception_penalty": [0.5, 1.0, 1.5, 2.0, 2.5],
     }
     strategy_focus = {
         "prior_theta1": "pbne_production_camouflage",
         "beta": "pbne_honeypot_camouflage",
         "c_theta1": "pbne_production_camouflage",
         "c_theta2": "pbne_honeypot_camouflage",
+        "defender_pressure_cost": "pbne_production_camouflage",
+        "defender_protection_gain": "pbne_production_camouflage",
+        "attacker_deception_penalty": "pbne_honeypot_camouflage",
     }
     metric_key = {
         "prior_theta1": "lambda_d_star",
         "beta": "lambda_d_prime",
-        "c_theta1": "lambda_d_star",
-        "c_theta2": "lambda_d_prime",
+        "c_theta1": "lambda_a_star",
+        "c_theta2": "lambda_a_prime",
+        "defender_pressure_cost": "lambda_a_star",
+        "defender_protection_gain": "lambda_a_star",
+        "attacker_deception_penalty": "lambda_d_prime",
+    }
+    metric_label = {
+        "prior_theta1": "lambda_d_star",
+        "beta": "lambda_d_prime",
+        "c_theta1": "lambda_a_star",
+        "c_theta2": "lambda_a_prime",
+        "defender_pressure_cost": "lambda_a_star",
+        "defender_protection_gain": "lambda_a_star",
+        "attacker_deception_penalty": "lambda_d_prime",
     }
 
     results: Dict[str, List[Dict[str, float]]] = defaultdict(list)
@@ -170,6 +188,7 @@ def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, flo
                     "belief_span_mean": summary["belief_span_mean"],
                     "attack_ratio": attack_ratio,
                     "mixing_probability_mean": summary["equilibrium_metrics_mean"].get(metric_key[parameter], 0.0),
+                    "mixing_metric_label": metric_label[parameter],
                 }
             )
     return dict(results)
@@ -184,8 +203,12 @@ def run_feasible_comparison_scenarios(config: GameConfig) -> Dict[str, object]:
         attack_cost=config.attack_cost,
         attack_gain=config.attack_gain,
         defender_loss=config.defender_loss,
+        defender_pressure_cost=config.defender_pressure_cost,
+        defender_protection_gain=config.defender_protection_gain,
         intel_gain=config.intel_gain,
         intel_loss=config.intel_loss,
+        defender_deception_bonus=config.defender_deception_bonus,
+        attacker_deception_penalty=config.attacker_deception_penalty,
         c_theta1=config.c_theta1,
         c_theta2=config.c_theta2,
         monte_carlo_runs=config.monte_carlo_runs,
@@ -198,8 +221,12 @@ def run_feasible_comparison_scenarios(config: GameConfig) -> Dict[str, object]:
         attack_cost=config.attack_cost,
         attack_gain=config.attack_gain,
         defender_loss=config.defender_loss,
+        defender_pressure_cost=config.defender_pressure_cost,
+        defender_protection_gain=config.defender_protection_gain,
         intel_gain=config.intel_gain,
         intel_loss=config.intel_loss,
+        defender_deception_bonus=config.defender_deception_bonus,
+        attacker_deception_penalty=config.attacker_deception_penalty,
         c_theta1=config.c_theta1,
         c_theta2=config.c_theta2,
         monte_carlo_runs=config.monte_carlo_runs,

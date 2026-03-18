@@ -1,0 +1,11 @@
+{
+  "notes": "Custom thesis scenario with explicit production and honeypot-surrogate hosts. Theta1 maps to production hosts and theta2 maps to native decoy-image hosts.",
+  "theta1_production_hosts": [
+    "Prod_Enterprise",
+    "Prod_Operational"
+  ],
+  "theta2_honeypot_surrogate_hosts": [
+    "Honey_Enterprise",
+    "Honey_Operational"
+  ]
+}

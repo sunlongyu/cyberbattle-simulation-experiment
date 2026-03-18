@@ -36,9 +36,13 @@ def truthful_baseline(config: GameConfig) -> Regime:
 def pbne_production_camouflage(state: StrategyState) -> Regime:
     p = clip_mixed_probability(state.belief_theta1, state.config.epsilon)
     c = state.config
-    lambda_d_star = ((1.0 - p) * (c.attack_cost + c.intel_loss)) / (p * (c.attack_gain - c.attack_cost))
+    lambda_d_star = (
+        (1.0 - p) * (c.attack_cost + c.intel_loss + c.attacker_deception_penalty)
+    ) / (p * (c.attack_gain - c.attack_cost))
     lambda_d_star = clip_mixed_probability(lambda_d_star, c.epsilon)
-    lambda_a_star = 1.0 - c.c_theta1 / (2.0 * c.defender_loss)
+    lambda_a_star = 1.0 - c.c_theta1 / (
+        c.defender_loss + c.defender_pressure_cost + c.defender_protection_gain
+    )
     lambda_a_star = clip_mixed_probability(lambda_a_star, c.epsilon)
 
     return Regime(
@@ -58,9 +62,13 @@ def pbne_production_camouflage(state: StrategyState) -> Regime:
 def pbne_honeypot_camouflage(state: StrategyState) -> Regime:
     p = clip_mixed_probability(state.belief_theta1, state.config.epsilon)
     c = state.config
-    lambda_d_prime = (p * (c.attack_gain - c.attack_cost)) / ((1.0 - p) * (c.attack_cost + c.intel_loss))
+    lambda_d_prime = (
+        p * (c.attack_gain - c.attack_cost)
+    ) / ((1.0 - p) * (c.attack_cost + c.intel_loss + c.attacker_deception_penalty))
     lambda_d_prime = clip_mixed_probability(lambda_d_prime, c.epsilon)
-    lambda_a_prime = (c.intel_gain - c.c_theta2) / c.intel_gain
+    lambda_a_prime = (
+        c.intel_gain + c.defender_deception_bonus - c.c_theta2
+    ) / (c.intel_gain + c.defender_deception_bonus)
     lambda_a_prime = clip_mixed_probability(lambda_a_prime, c.epsilon)
     attack_after_sigma1 = 1.0 - lambda_a_prime
 

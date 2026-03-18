@@ -24,6 +24,12 @@ COLOR_PBNE = "#C97C5D"
 COLOR_PBNE_ALT = "#6E9F6D"
 COLOR_GRID = "#D8D8D8"
 COLOR_TEXT = "#222222"
+MIXING_LABELS = {
+    "lambda_d_star": "生产系统伪装概率 λ_D^*",
+    "lambda_d_prime": "蜜罐拟态概率 λ_D'",
+    "lambda_a_star": "攻击方攻击概率 λ_A^*",
+    "lambda_a_prime": "攻击方撤退概率 λ_A'",
+}
 
 
 def configure_matplotlib() -> None:
@@ -254,8 +260,9 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             y2 = [row["belief_span_mean"] for row in rows]
             secondary_label = "信念波动幅度"
         else:
-            y2 = [row["attack_ratio"] for row in rows]
-            secondary_label = "攻击概率"
+            y2 = [row["mixing_probability_mean"] for row in rows]
+            metric_label = rows[0].get("mixing_metric_label", "mixing_probability")
+            secondary_label = MIXING_LABELS.get(metric_label, f"均衡概率({metric_label})")
 
         ax.plot(
             x,
@@ -318,13 +325,13 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "## 2. 参数敏感性分析",
         "",
-        "先验概率 p 对 PBNE-1 的影响最为明显。随着 p 增大，攻击者更倾向于相信目标为生产系统，防御者期望效用逐渐下降，说明在真实资产占比过高时，欺骗防御的边际收益会减弱。",
+        "先验概率 p 对 PBNE-1 的影响最为明显。随着 p 增大，防御方的期望效用总体下降，生产系统选择伪装信号的均衡概率也随之减小，说明在真实资产占比过高时，攻击者更容易形成针对高价值目标的稳定预期，欺骗防御的边际收益会减弱。",
         "",
         "时间折扣因子 β 对防御者期望效用的影响相对有限，但会明显影响攻击者信念波动的幅度。这表明在当前参数区间内，β 的主要作用体现在调节攻击者对近期观测的敏感性，而不是直接改变均衡收益水平。",
         "",
-        "生产系统伪装成本 c_theta1 上升时，PBNE-1 的防御者期望效用下降，攻击概率也随之降低，说明更高的伪装成本会削弱防御方通过混合欺骗获得的净收益。",
+        "生产系统伪装成本 c_theta1 上升时，PBNE-1 的防御者期望效用下降，而攻击方在信号 sigma2 下的均衡攻击概率同步下降，说明更高的伪装成本会削弱防御方实施生产系统伪装的激励，从而改变均衡中的攻防混合概率。",
         "",
-        "蜜罐伪装成本 c_theta2 上升时，PBNE-2 的防御者期望效用同样下降，同时攻击概率上升，说明蜜罐伪装成本过高会削弱蜜罐的伪装吸引能力，从而降低诱捕收益。",
+        "蜜罐伪装成本 c_theta2 上升时，PBNE-2 的防御者期望效用同样下降，而攻击方在正常信号下的撤退概率上升，说明蜜罐伪装成本过高会削弱蜜罐的拟态吸引能力，并降低其诱导攻击者进入欺骗环境的效果。",
         "",
         "## 3. 可直接写入论文的结论",
         "",

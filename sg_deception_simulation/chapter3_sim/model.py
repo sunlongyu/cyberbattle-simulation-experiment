@@ -32,6 +32,7 @@ class StageOutcome:
     action: AttackerAction
     defender_utility: float
     attacker_utility: float
+    regime_metrics: Dict[str, float]
 
 
 def clip_mixed_probability(value: float, epsilon: float) -> float:
@@ -54,12 +55,20 @@ def utility(
 ) -> Tuple[float, float]:
     disguise_cost = camouflage_cost(defender_type, signal, config)
     if action == AttackerAction.RETREAT:
+        if defender_type == DefenderType.THETA1:
+            return config.defender_protection_gain - disguise_cost, 0.0
         return -disguise_cost, 0.0
 
     if defender_type == DefenderType.THETA1:
-        return -(config.defender_loss + disguise_cost), config.attack_gain - config.attack_cost
+        return (
+            -(config.defender_loss + config.defender_pressure_cost + disguise_cost),
+            config.attack_gain - config.attack_cost,
+        )
 
-    return config.intel_gain - disguise_cost, -(config.attack_cost + config.intel_loss)
+    return (
+        config.intel_gain + config.defender_deception_bonus - disguise_cost,
+        -(config.attack_cost + config.intel_loss + config.attacker_deception_penalty),
+    )
 
 
 def discounted_belief(
