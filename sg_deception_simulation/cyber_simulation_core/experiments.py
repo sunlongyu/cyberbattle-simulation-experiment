@@ -63,6 +63,27 @@ def run_episode(strategy_name: str, config: GameConfig, rng: random.Random) -> L
     return outcomes
 
 
+def run_belief_rollout(strategy_name: str, config: GameConfig, rng: random.Random) -> List[float]:
+    defender_type = DefenderType.THETA1 if rng.random() < config.prior_theta1 else DefenderType.THETA2
+    belief_theta1 = config.prior_theta1
+    signal_history: List[Signal] = []
+    path: List[float] = []
+
+    for _stage in range(1, config.horizon + 1):
+        regime = STRATEGY_BUILDERS[strategy_name](StrategyState(belief_theta1=belief_theta1, config=config))
+        signal = _sample_signal(regime.defender_signal_probs[defender_type], rng)
+        signal_history.append(signal)
+        belief_theta1 = discounted_belief(
+            prior_theta1=config.prior_theta1,
+            signal_history=signal_history,
+            type_signal_probs=regime.defender_signal_probs,
+            beta=config.beta,
+        )
+        path.append(belief_theta1)
+
+    return path
+
+
 def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
     results: Dict[str, Dict[str, object]] = {}
     strategy_names = list(STRATEGY_BUILDERS.keys())
@@ -72,6 +93,7 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
         defender_total = 0.0
         attacker_total = 0.0
         belief_paths = []
+        belief_rollout_paths = []
         final_beliefs = []
         attack_probability_sum = 0.0
         stage_count = 0
@@ -81,6 +103,7 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
 
         for _ in range(config.monte_carlo_runs):
             episode = run_episode(strategy_name, config, rng)
+            belief_rollout_paths.append(run_belief_rollout(strategy_name, config, rng))
             defender_total += sum(item.defender_utility for item in episode)
             attacker_total += sum(item.attacker_utility for item in episode)
             belief_paths.append([item.belief_theta1 for item in episode])
@@ -115,6 +138,11 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             label: np.quantile(np.array(padded, dtype=float), quantile, axis=0).tolist()
             for label, quantile in quantile_levels.items()
         }
+        belief_rollout_avg_path = np.mean(np.array(belief_rollout_paths, dtype=float), axis=0).tolist()
+        belief_rollout_quantiles = {
+            label: np.quantile(np.array(belief_rollout_paths, dtype=float), quantile, axis=0).tolist()
+            for label, quantile in quantile_levels.items()
+        }
         final_belief_mean = sum(final_beliefs) / len(final_beliefs)
         final_belief_std = sqrt(
             sum((belief - final_belief_mean) ** 2 for belief in final_beliefs) / len(final_beliefs)
@@ -125,6 +153,8 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             "attacker_expected_utility": attacker_total / config.monte_carlo_runs,
             "avg_belief_path": avg_belief_path,
             "belief_quantiles": belief_quantiles,
+            "belief_rollout_avg_path": belief_rollout_avg_path,
+            "belief_rollout_quantiles": belief_rollout_quantiles,
             "final_beliefs": final_beliefs,
             "final_belief_mean": final_belief_mean,
             "final_belief_std": final_belief_std,

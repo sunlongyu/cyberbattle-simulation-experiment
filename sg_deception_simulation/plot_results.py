@@ -74,7 +74,7 @@ def save_figure(filename: str) -> None:
 
 
 def plot_scenario_utility(feasible: dict) -> None:
-    scenario_labels = ["场景A\n生产系统占优", "场景B\n蜜罐系统占优"]
+    scenario_labels = ["场景A\n真实系统占优", "场景B\n蜜罐系统占优"]
     baseline_values = [
         feasible["scenario_a_high_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
         feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
@@ -98,7 +98,7 @@ def plot_scenario_utility(feasible: dict) -> None:
         edgecolor=COLOR_BASELINE,
         hatch="//",
         linewidth=0.9,
-        label="真实披露基线",
+        label="如实披露基线",
     )
     bars2 = plt.bar(
         x + width / 2,
@@ -143,7 +143,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
         (
             axes[0],
             feasible["scenario_a_high_prior_theta1"],
-            "场景A：生产系统占优",
+            "场景A：真实系统占优",
             "pbne_production_camouflage",
         ),
         (
@@ -155,8 +155,8 @@ def plot_belief_trajectories(feasible: dict) -> None:
     ]
 
     for ax, scenario, subtitle, pbne_key in scenario_map:
-        baseline_quantiles = scenario["results"]["truthful_baseline"]["belief_quantiles"]
-        pbne_quantiles = scenario["results"][pbne_key]["belief_quantiles"]
+        baseline_quantiles = scenario["results"]["truthful_baseline"]["belief_rollout_quantiles"]
+        pbne_quantiles = scenario["results"][pbne_key]["belief_rollout_quantiles"]
         stages = np.arange(1, max(len(baseline_quantiles["q50"]), len(pbne_quantiles["q50"])) + 1)
         baseline_q25 = baseline_quantiles["q25"] + [baseline_quantiles["q25"][-1]] * (len(stages) - len(baseline_quantiles["q25"]))
         baseline_q50 = baseline_quantiles["q50"] + [baseline_quantiles["q50"][-1]] * (len(stages) - len(baseline_quantiles["q50"]))
@@ -182,7 +182,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
             markersize=4.0,
             elinewidth=0.9,
             capsize=2.5,
-            label="真实披露基线中位数",
+            label="如实披露基线中位数",
         )
         ax.errorbar(
             stages + 0.06,
@@ -204,7 +204,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
         ax.grid(True, axis="y")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
-    axes[0].set_ylabel("攻击者对生产系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
+    axes[0].set_ylabel("攻击者对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
     axes[0].set_ylim(-0.03, 1.03)
     for label in axes[0].get_yticklabels():
         label.set_fontproperties(FONT_EN)
@@ -249,9 +249,9 @@ def plot_final_belief_distribution(feasible: dict) -> None:
             edgecolors="none",
         )
 
-    ax.set_xticks([1, 2], ["真实披露基线", "PBNE-2"])
+    ax.set_xticks([1, 2], ["如实披露基线", "PBNE-2"])
     plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
-    plt.ylabel("终局时刻对生产系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
+    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
     ax.set_ylim(-0.03, 1.03)
     plt.grid(axis="y")
@@ -264,7 +264,7 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
     plot_map = [
         ("prior_theta1", "先验概率 p", axes[0, 0]),
         ("beta", "时间折扣因子 β", axes[0, 1]),
-        ("c_theta1", "生产系统伪装成本", axes[1, 0]),
+        ("c_theta1", "真实系统伪装成本", axes[1, 0]),
         ("c_theta2", "蜜罐伪装成本", axes[1, 1]),
     ]
 
@@ -288,7 +288,7 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             markersize=4.5,
             markerfacecolor="white",
             markeredgecolor=COLOR_BASELINE,
-            label="防御者期望效用",
+            label="防御方期望效用",
         )
         ax.set_xlabel(xlabel, fontproperties=FONT_CN, fontsize=10.5)
         ax.set_ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
@@ -332,11 +332,11 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "## 1. 策略对比实验分析",
         "",
-        f"在场景A（生产系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于真实披露基线的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，生产系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
+        f"在场景A（真实系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于如实披露基线的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，真实系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
         "",
-        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于真实披露基线的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
+        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于如实披露基线的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
         "",
-        "从信念演化结果看，真实披露基线下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为生产系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
+        "从信念演化结果看，如实披露基线下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为真实系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
         "",
         "## 2. 参数敏感性分析",
         "",
