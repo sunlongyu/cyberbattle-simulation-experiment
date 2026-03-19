@@ -98,7 +98,7 @@ def plot_scenario_utility(feasible: dict) -> None:
         edgecolor=COLOR_BASELINE,
         hatch="//",
         linewidth=0.9,
-        label="如实披露基线",
+        label="静态披露策略",
     )
     bars2 = plt.bar(
         x + width / 2,
@@ -182,7 +182,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
             markersize=4.0,
             elinewidth=0.9,
             capsize=2.5,
-            label="如实披露基线中位数",
+            label="静态披露策略中位数",
         )
         ax.errorbar(
             stages + 0.06,
@@ -249,7 +249,7 @@ def plot_final_belief_distribution(feasible: dict) -> None:
             edgecolors="none",
         )
 
-    ax.set_xticks([1, 2], ["如实披露基线", "PBNE-2"])
+    ax.set_xticks([1, 2], ["静态披露策略", "PBNE-2"])
     plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
     plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
@@ -332,11 +332,11 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "## 1. 策略对比实验分析",
         "",
-        f"在场景A（真实系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于如实披露基线的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，真实系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
+        f"在场景A（真实系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于静态披露策略的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，真实系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
         "",
-        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于如实披露基线的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
+        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于静态披露策略的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
         "",
-        "从信念演化结果看，如实披露基线下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为真实系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
+        "从信念演化结果看，静态披露策略下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为真实系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
         "",
         "## 2. 参数敏感性分析",
         "",
