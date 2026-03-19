@@ -6,6 +6,8 @@ from dataclasses import asdict
 from math import sqrt
 from typing import Dict, List
 
+import numpy as np
+
 from .config import GameConfig
 from .model import AttackerAction, DefenderType, Signal, StageOutcome, discounted_belief, utility
 from .strategies import STRATEGY_BUILDERS, StrategyState
@@ -102,6 +104,17 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             sum(path[index] for path in padded) / len(padded)
             for index in range(max_len)
         ]
+        quantile_levels = {
+            "q10": 0.10,
+            "q25": 0.25,
+            "q50": 0.50,
+            "q75": 0.75,
+            "q90": 0.90,
+        }
+        belief_quantiles = {
+            label: np.quantile(np.array(padded, dtype=float), quantile, axis=0).tolist()
+            for label, quantile in quantile_levels.items()
+        }
         final_belief_mean = sum(final_beliefs) / len(final_beliefs)
         final_belief_std = sqrt(
             sum((belief - final_belief_mean) ** 2 for belief in final_beliefs) / len(final_beliefs)
@@ -111,6 +124,7 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
             "defender_expected_utility": defender_total / config.monte_carlo_runs,
             "attacker_expected_utility": attacker_total / config.monte_carlo_runs,
             "avg_belief_path": avg_belief_path,
+            "belief_quantiles": belief_quantiles,
             "final_beliefs": final_beliefs,
             "final_belief_mean": final_belief_mean,
             "final_belief_std": final_belief_std,

@@ -24,14 +24,6 @@ COLOR_PBNE = "#C97C5D"
 COLOR_PBNE_ALT = "#6E9F6D"
 COLOR_GRID = "#D8D8D8"
 COLOR_TEXT = "#222222"
-MIXING_LABELS = {
-    "lambda_d_star": "生产系统伪装概率 λ_D^*",
-    "lambda_d_prime": "蜜罐拟态概率 λ_D'",
-    "lambda_a_star": "攻击方攻击概率 λ_A^*",
-    "lambda_a_prime": "攻击方撤退概率 λ_A'",
-}
-
-
 def configure_matplotlib() -> None:
     global FONT_CN, FONT_EN
     available = {font.name for font in font_manager.fontManager.ttflist}
@@ -163,34 +155,48 @@ def plot_belief_trajectories(feasible: dict) -> None:
     ]
 
     for ax, scenario, subtitle, pbne_key in scenario_map:
-        baseline = scenario["results"]["truthful_baseline"]["avg_belief_path"]
-        pbne = scenario["results"][pbne_key]["avg_belief_path"]
-        stages = np.arange(1, max(len(baseline), len(pbne)) + 1)
-        baseline_pad = baseline + [baseline[-1]] * (len(stages) - len(baseline))
-        pbne_pad = pbne + [pbne[-1]] * (len(stages) - len(pbne))
+        baseline_quantiles = scenario["results"]["truthful_baseline"]["belief_quantiles"]
+        pbne_quantiles = scenario["results"][pbne_key]["belief_quantiles"]
+        stages = np.arange(1, max(len(baseline_quantiles["q50"]), len(pbne_quantiles["q50"])) + 1)
+        baseline_q25 = baseline_quantiles["q25"] + [baseline_quantiles["q25"][-1]] * (len(stages) - len(baseline_quantiles["q25"]))
+        baseline_q50 = baseline_quantiles["q50"] + [baseline_quantiles["q50"][-1]] * (len(stages) - len(baseline_quantiles["q50"]))
+        baseline_q75 = baseline_quantiles["q75"] + [baseline_quantiles["q75"][-1]] * (len(stages) - len(baseline_quantiles["q75"]))
+        pbne_q25 = pbne_quantiles["q25"] + [pbne_quantiles["q25"][-1]] * (len(stages) - len(pbne_quantiles["q25"]))
+        pbne_q50 = pbne_quantiles["q50"] + [pbne_quantiles["q50"][-1]] * (len(stages) - len(pbne_quantiles["q50"]))
+        pbne_q75 = pbne_quantiles["q75"] + [pbne_quantiles["q75"][-1]] * (len(stages) - len(pbne_quantiles["q75"]))
 
-        ax.plot(
-            stages,
-            baseline_pad,
-            marker="o",
-            linewidth=1.4,
-            markersize=4.5,
+        baseline_lower = np.array(baseline_q50) - np.array(baseline_q25)
+        baseline_upper = np.array(baseline_q75) - np.array(baseline_q50)
+        pbne_lower = np.array(pbne_q50) - np.array(pbne_q25)
+        pbne_upper = np.array(pbne_q75) - np.array(pbne_q50)
+
+        ax.errorbar(
+            stages - 0.06,
+            baseline_q50,
+            yerr=np.vstack([baseline_lower, baseline_upper]),
+            fmt="o-",
+            color=COLOR_BASELINE,
             markerfacecolor="white",
             markeredgecolor=COLOR_BASELINE,
-            color=COLOR_BASELINE,
-            label="真实披露基线",
+            linewidth=1.6,
+            markersize=4.0,
+            elinewidth=0.9,
+            capsize=2.5,
+            label="真实披露基线中位数",
         )
-        ax.plot(
-            stages,
-            pbne_pad,
-            marker="s",
-            linewidth=1.4,
-            markersize=4.5,
+        ax.errorbar(
+            stages + 0.06,
+            pbne_q50,
+            yerr=np.vstack([pbne_lower, pbne_upper]),
+            fmt="s--",
             color=COLOR_PBNE,
-            linestyle="--",
             markerfacecolor=COLOR_PBNE,
             markeredgecolor=COLOR_PBNE,
-            label="PBNE伪装策略",
+            linewidth=1.6,
+            markersize=4.0,
+            elinewidth=0.9,
+            capsize=2.5,
+            label="PBNE伪装策略中位数",
         )
         ax.set_title(subtitle, fontproperties=FONT_CN, fontsize=10.5, pad=8)
         ax.set_xlabel("博弈阶段", fontproperties=FONT_CN, fontsize=10.5)
@@ -199,47 +205,57 @@ def plot_belief_trajectories(feasible: dict) -> None:
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
     axes[0].set_ylabel("攻击者对生产系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
-    axes[0].set_ylim(0.30 if min(feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["avg_belief_path"]) > 0.3 else 0.18, 0.66)
+    axes[0].set_ylim(-0.03, 1.03)
     for label in axes[0].get_yticklabels():
         label.set_fontproperties(FONT_EN)
-    axes[1].legend(loc="upper right", prop=FONT_CN, fontsize=10.5)
-    fig.suptitle("图3-2  攻击者后验信念随阶段变化曲线", fontproperties=FONT_CN, fontsize=10.5, y=0.98)
+    axes[1].legend(loc="upper right", prop=FONT_CN, fontsize=9.8)
+    fig.suptitle("图3-2  攻击者后验信念中位数及四分位区间", fontproperties=FONT_CN, fontsize=10.5, y=0.98)
     save_figure("fig3_2_belief_trajectories.png")
 
 
 def plot_final_belief_distribution(feasible: dict) -> None:
-    plt.figure(figsize=(7.2, 4.6))
-    ax = plt.gca()
-    bins = np.linspace(0, 1, 21)
-
+    fig, ax = plt.subplots(figsize=(7.2, 4.8))
     baseline = feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["final_beliefs"]
     pbne = feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["final_beliefs"]
 
-    plt.hist(
-        baseline,
-        bins=bins,
-        histtype="step",
-        linewidth=1.4,
-        color=COLOR_BASELINE,
-        label="真实披露基线",
-        density=True,
+    box = ax.boxplot(
+        [baseline, pbne],
+        positions=[1, 2],
+        widths=0.5,
+        patch_artist=True,
+        showfliers=False,
+        medianprops={"color": COLOR_TEXT, "linewidth": 1.1},
+        whiskerprops={"color": COLOR_TEXT, "linewidth": 0.9},
+        capprops={"color": COLOR_TEXT, "linewidth": 0.9},
     )
-    plt.hist(
-        pbne,
-        bins=bins,
-        histtype="stepfilled",
-        alpha=0.35,
-        edgecolor=COLOR_PBNE_ALT,
-        facecolor="#D8E7D3",
-        label="PBNE-2",
-        density=True,
-    )
-    plt.xlabel("终局时刻对生产系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
-    plt.ylabel("概率密度", fontproperties=FONT_CN, fontsize=10.5)
+    for patch, color, face in zip(box["boxes"], [COLOR_BASELINE, COLOR_PBNE_ALT], ["#ECF2F9", "#E7F0E4"]):
+        patch.set_edgecolor(color)
+        patch.set_facecolor(face)
+        patch.set_linewidth(1.0)
+
+    rng = np.random.default_rng(20260319)
+    for xpos, values, color in [
+        (1, baseline, COLOR_BASELINE),
+        (2, pbne, COLOR_PBNE_ALT),
+    ]:
+        sample = np.array(values, dtype=float)
+        jitter = rng.uniform(-0.09, 0.09, size=sample.shape[0])
+        ax.scatter(
+            np.full(sample.shape[0], xpos) + jitter,
+            sample,
+            s=10,
+            alpha=0.18,
+            color=color,
+            edgecolors="none",
+        )
+
+    ax.set_xticks([1, 2], ["真实披露基线", "PBNE-2"])
+    plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
+    plt.ylabel("终局时刻对生产系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
+    ax.set_ylim(-0.03, 1.03)
     plt.grid(axis="y")
-    plt.legend(prop=FONT_CN, fontsize=10.5)
-    apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
+    apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
     save_figure("fig3_3_final_belief_distribution.png")
 
 
@@ -261,8 +277,7 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             secondary_label = "信念波动幅度"
         else:
             y2 = [row["mixing_probability_mean"] for row in rows]
-            metric_label = rows[0].get("mixing_metric_label", "mixing_probability")
-            secondary_label = MIXING_LABELS.get(metric_label, f"均衡概率({metric_label})")
+            secondary_label = "均衡概率"
 
         ax.plot(
             x,
