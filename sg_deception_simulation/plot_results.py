@@ -338,8 +338,18 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             marker="o",
             hollow=True,
         )
+        ax.scatter(
+            x,
+            y1,
+            s=26,
+            facecolors="white",
+            edgecolors=COLOR_BASELINE,
+            linewidths=1.0,
+            zorder=4,
+        )
         ax.set_xlabel(xlabel, fontproperties=FONT_CN, fontsize=10.5)
         ax.set_ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
+        ax.set_xticks(x)
         ax.grid(True, axis="both")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
@@ -352,6 +362,15 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             label=secondary_label,
             marker="s",
             linestyle="--",
+        )
+        ax2.scatter(
+            x,
+            y2,
+            s=24,
+            c=COLOR_PBNE,
+            edgecolors="white",
+            linewidths=0.7,
+            zorder=5,
         )
         ax2.set_ylabel(secondary_label, fontproperties=FONT_CN, fontsize=10.5)
         for label in ax2.get_yticklabels():
