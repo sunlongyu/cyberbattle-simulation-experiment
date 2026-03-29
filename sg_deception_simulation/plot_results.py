@@ -19,6 +19,7 @@ RESULTS_DIR = Path("sg_deception_simulation/results")
 FIGURES_DIR = RESULTS_DIR / "figures"
 FONT_CN = None
 FONT_EN = None
+FONT_MIXED = None
 COLOR_BASELINE = "#3F51FF"
 COLOR_PBNE = "#FF4D4F"
 COLOR_PBNE_ALT = "#2CA02C"
@@ -28,13 +29,14 @@ COLOR_TEXT = "#1F1F1F"
 
 
 def configure_matplotlib() -> None:
-    global FONT_CN, FONT_EN
+    global FONT_CN, FONT_EN, FONT_MIXED
     available = {font.name for font in font_manager.fontManager.ttflist}
     cn_font = "Songti SC" if "Songti SC" in available else "STSong"
     en_font = "Times New Roman" if "Times New Roman" in available else "Times"
 
-    FONT_CN = FontProperties(family=[en_font, cn_font], size=10.5)
+    FONT_CN = FontProperties(family=[cn_font], size=10.5)
     FONT_EN = FontProperties(family=[en_font], size=10.5)
+    FONT_MIXED = FontProperties(family=[en_font, cn_font], size=10.5)
 
     matplotlib.rcParams["font.family"] = [en_font, cn_font]
     matplotlib.rcParams["axes.unicode_minus"] = False
@@ -80,6 +82,7 @@ def save_figure(filename: str) -> None:
     plt.tight_layout()
     plt.savefig(FIGURES_DIR / filename, bbox_inches="tight", facecolor="white")
     plt.close()
+
 
 
 def plot_academic_line(
@@ -283,13 +286,13 @@ def plot_scenario_utility(feasible: dict) -> None:
 
     plt.xticks(x, scenario_labels)
     for label in ax.get_xticklabels():
-        label.set_fontproperties(FONT_CN)
+        label.set_fontproperties(FONT_MIXED)
         label.set_fontsize(10.5)
-    plt.ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
-    plt.xlabel("实验场景", fontproperties=FONT_CN, fontsize=10.5)
-    plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
-    plt.legend(loc="best", prop=FONT_CN, fontsize=10.0)
-    apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
+    plt.ylabel("防御者期望效用", fontproperties=FONT_MIXED, fontsize=10.5)
+    plt.xlabel("实验场景", fontproperties=FONT_MIXED, fontsize=10.5)
+    plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_MIXED, fontsize=10.5, pad=10)
+    plt.legend(loc="best", prop=FONT_MIXED, fontsize=10.0)
+    apply_academic_axes_style(ax, x_font=FONT_MIXED, y_font=FONT_EN)
     save_figure("fig3_1_defender_utility_comparison.png")
 
 
@@ -363,18 +366,18 @@ def plot_belief_trajectories(feasible: dict) -> None:
             marker="s",
             linestyle="--",
         )
-        ax.set_title(subtitle, fontproperties=FONT_CN, fontsize=10.5, pad=8)
-        ax.set_xlabel("博弈阶段", fontproperties=FONT_CN, fontsize=10.5)
+        ax.set_title(subtitle, fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
+        ax.set_xlabel("博弈阶段", fontproperties=FONT_MIXED, fontsize=10.5)
         ax.set_xticks(stages)
         ax.grid(True, axis="both")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
-    axes[0].set_ylabel("攻击者对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
+    axes[0].set_ylabel("攻击者对真实系统的后验信念", fontproperties=FONT_MIXED, fontsize=10.5)
     axes[0].set_ylim(-0.03, 1.03)
     for label in axes[0].get_yticklabels():
         label.set_fontproperties(FONT_EN)
-    axes[1].legend(loc="upper right", prop=FONT_CN, fontsize=9.8)
-    fig.suptitle("图3-2  攻击者后验信念中位数及四分位区间", fontproperties=FONT_CN, fontsize=10.5, y=0.98)
+    axes[1].legend(loc="upper right", prop=FONT_MIXED, fontsize=9.8)
+    fig.suptitle("图3-2  攻击者后验信念中位数及四分位区间", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
     save_figure("fig3_2_belief_trajectories.png")
 
 
@@ -422,14 +425,14 @@ def plot_final_belief_distribution(feasible: dict) -> None:
 
     ax.set_xticks(positions)
     ax.set_xticklabels(["静态披露策略", "PBNE-2"])
-    plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
-    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
-    plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
+    plt.xlabel("策略类型", fontproperties=FONT_MIXED, fontsize=10.5)
+    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_MIXED, fontsize=10.5)
+    plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_MIXED, fontsize=10.5, pad=10)
     ax.set_xlim(0.5, 2.5)
     ax.set_ylim(-0.03, 1.03)
-    ax.legend(loc="upper right", prop=FONT_CN, fontsize=10.0)
+    ax.legend(loc="upper right", prop=FONT_MIXED, fontsize=10.0)
     plt.grid(axis="y")
-    apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
+    apply_academic_axes_style(ax, x_font=FONT_MIXED, y_font=FONT_EN)
     save_figure("fig3_3_final_belief_distribution.png")
 
 
@@ -471,8 +474,8 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             linewidths=1.0,
             zorder=4,
         )
-        ax.set_xlabel(xlabel, fontproperties=FONT_CN, fontsize=10.5)
-        ax.set_ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
+        ax.set_xlabel(xlabel, fontproperties=FONT_MIXED, fontsize=10.5)
+        ax.set_ylabel("防御者期望效用", fontproperties=FONT_MIXED, fontsize=10.5)
         ax.set_xticks(x)
         ax.grid(True, axis="both")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
@@ -497,16 +500,16 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             linewidths=0.7,
             zorder=5,
         )
-        ax2.set_ylabel(secondary_label, fontproperties=FONT_CN, fontsize=10.5)
+        ax2.set_ylabel(secondary_label, fontproperties=FONT_MIXED, fontsize=10.5)
         for label in ax2.get_yticklabels():
             label.set_fontproperties(FONT_EN)
             label.set_fontsize(10.5)
 
         lines = ax.get_lines() + ax2.get_lines()
         labels = [line.get_label() for line in lines]
-        ax.legend(lines, labels, loc="best", prop=FONT_CN, fontsize=9.5)
+        ax.legend(lines, labels, loc="best", prop=FONT_MIXED, fontsize=9.5)
 
-    fig.suptitle("图3-4  参数敏感性分析结果", fontproperties=FONT_CN, fontsize=10.5, y=0.98)
+    fig.suptitle("图3-4  参数敏感性分析结果", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
     save_figure("fig3_4_sensitivity_analysis.png")
 
 
