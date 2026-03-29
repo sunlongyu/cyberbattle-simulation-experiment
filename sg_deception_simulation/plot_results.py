@@ -19,11 +19,12 @@ RESULTS_DIR = Path("sg_deception_simulation/results")
 FIGURES_DIR = RESULTS_DIR / "figures"
 FONT_CN = None
 FONT_EN = None
-COLOR_BASELINE = "#8FA7BF"
-COLOR_PBNE = "#C97C5D"
-COLOR_PBNE_ALT = "#6E9F6D"
-COLOR_GRID = "#D8D8D8"
-COLOR_TEXT = "#222222"
+COLOR_BASELINE = "#3F51FF"
+COLOR_PBNE = "#FF4D4F"
+COLOR_PBNE_ALT = "#2CA02C"
+COLOR_ACCENT = "#F5A623"
+COLOR_GRID = "#D9D9D9"
+COLOR_TEXT = "#1F1F1F"
 
 
 def configure_matplotlib() -> None:
@@ -40,10 +41,10 @@ def configure_matplotlib() -> None:
     matplotlib.rcParams["figure.dpi"] = 160
     matplotlib.rcParams["savefig.dpi"] = 320
     matplotlib.rcParams["axes.edgecolor"] = COLOR_TEXT
-    matplotlib.rcParams["axes.linewidth"] = 0.8
+    matplotlib.rcParams["axes.linewidth"] = 0.9
     matplotlib.rcParams["grid.color"] = COLOR_GRID
     matplotlib.rcParams["grid.linestyle"] = "-"
-    matplotlib.rcParams["grid.linewidth"] = 0.4
+    matplotlib.rcParams["grid.linewidth"] = 0.45
     matplotlib.rcParams["legend.frameon"] = False
     matplotlib.rcParams["axes.facecolor"] = "white"
     matplotlib.rcParams["figure.facecolor"] = "white"
@@ -52,14 +53,14 @@ def configure_matplotlib() -> None:
     matplotlib.rcParams["axes.labelcolor"] = COLOR_TEXT
     matplotlib.rcParams["xtick.color"] = COLOR_TEXT
     matplotlib.rcParams["ytick.color"] = COLOR_TEXT
-    matplotlib.rcParams["lines.markersize"] = 4
-    matplotlib.rcParams["lines.linewidth"] = 1.4
+    matplotlib.rcParams["lines.markersize"] = 4.2
+    matplotlib.rcParams["lines.linewidth"] = 1.5
 
 
 def apply_academic_axes_style(ax, x_font=None, y_font=None) -> None:
     ax.spines["top"].set_visible(True)
     ax.spines["right"].set_visible(True)
-    ax.tick_params(direction="out", length=4, width=0.8, colors=COLOR_TEXT)
+    ax.tick_params(direction="out", length=4.2, width=0.85, colors=COLOR_TEXT)
     x_font = x_font or FONT_EN
     y_font = y_font or FONT_EN
     for label in ax.get_xticklabels():
@@ -99,11 +100,11 @@ def plot_academic_line(
         label=label,
         linestyle=linestyle,
         marker=marker,
-        markersize=4.2,
+        markersize=4.6,
         markerfacecolor="white" if hollow else color,
         markeredgecolor=color,
-        markeredgewidth=0.9,
-        linewidth=1.5,
+        markeredgewidth=1.0,
+        linewidth=1.6,
     )[0]
 
 
@@ -125,31 +126,34 @@ def plot_scenario_utility(feasible: dict) -> None:
     ]
 
     x = np.arange(len(scenario_labels))
+    width = 0.32
     plt.figure(figsize=(7.2, 4.6))
     ax = plt.gca()
     ax.grid(axis="y")
-    line1 = plot_academic_line(
-        ax,
-        x,
+    bars1 = ax.bar(
+        x - width / 2,
         baseline_values,
-        color=COLOR_BASELINE,
+        width=width,
+        color="white",
+        edgecolor=COLOR_BASELINE,
+        linewidth=1.4,
         label="静态披露策略",
-        marker="o",
-        hollow=True,
     )
-    line2 = plot_academic_line(
-        ax,
-        x,
+    bars2 = ax.bar(
+        x + width / 2,
         pbne_values,
+        width=width,
         color=COLOR_PBNE,
+        alpha=0.88,
+        edgecolor=COLOR_PBNE,
+        linewidth=1.0,
         label="适用PBNE伪装策略",
-        marker="s",
-        linestyle="--",
     )
 
-    for xpos, y in zip(x, baseline_values):
-        plt.text(
-            xpos,
+    for bar in bars1:
+        y = bar.get_height()
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
             y + 0.08,
             f"{y:.2f}",
             ha="center",
@@ -157,13 +161,14 @@ def plot_scenario_utility(feasible: dict) -> None:
             fontproperties=FONT_EN,
             fontsize=10.0,
         )
-    for xpos, y in zip(x, pbne_values):
-        plt.text(
-            xpos,
-            y - 0.18,
+    for bar in bars2:
+        y = bar.get_height()
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            y + 0.08,
             f"{y:.2f}",
             ha="center",
-            va="top",
+            va="bottom",
             fontproperties=FONT_EN,
             fontsize=10.0,
         )
@@ -175,7 +180,7 @@ def plot_scenario_utility(feasible: dict) -> None:
     plt.ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
     plt.xlabel("实验场景", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
-    plt.legend(handles=[line1, line2], loc="best", prop=FONT_CN, fontsize=10.0)
+    plt.legend(loc="best", prop=FONT_CN, fontsize=10.0)
     apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
     save_figure("fig3_1_defender_utility_comparison.png")
 
@@ -214,8 +219,8 @@ def plot_belief_trajectories(feasible: dict) -> None:
         pbne_lower = np.array(pbne_q50) - np.array(pbne_q25)
         pbne_upper = np.array(pbne_q75) - np.array(pbne_q50)
 
-        ax.fill_between(stages, baseline_q25, baseline_q75, color=COLOR_BASELINE, alpha=0.12, linewidth=0)
-        ax.fill_between(stages, pbne_q25, pbne_q75, color=COLOR_PBNE, alpha=0.12, linewidth=0)
+        ax.fill_between(stages, baseline_q25, baseline_q75, color=COLOR_BASELINE, alpha=0.10, linewidth=0)
+        ax.fill_between(stages, pbne_q25, pbne_q75, color=COLOR_PBNE, alpha=0.10, linewidth=0)
         plot_academic_line(
             ax,
             stages,
@@ -253,35 +258,54 @@ def plot_final_belief_distribution(feasible: dict) -> None:
     fig, ax = plt.subplots(figsize=(7.2, 4.8))
     baseline = feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["final_beliefs"]
     pbne = feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["final_beliefs"]
-    baseline_x, baseline_y = empirical_cdf(baseline)
-    pbne_x, pbne_y = empirical_cdf(pbne)
+    positions = [1, 2]
+    box = ax.boxplot(
+        [baseline, pbne],
+        positions=positions,
+        widths=0.48,
+        patch_artist=True,
+        showfliers=False,
+        medianprops={"color": COLOR_TEXT, "linewidth": 1.2},
+        whiskerprops={"color": COLOR_TEXT, "linewidth": 1.0},
+        capprops={"color": COLOR_TEXT, "linewidth": 1.0},
+        boxprops={"linewidth": 1.2},
+    )
+    box["boxes"][0].set(facecolor="white", edgecolor=COLOR_BASELINE)
+    box["boxes"][1].set(facecolor=COLOR_PBNE_ALT, edgecolor=COLOR_PBNE_ALT, alpha=0.85)
 
-    plot_academic_line(
-        ax,
-        baseline_x,
-        baseline_y,
-        color=COLOR_BASELINE,
+    baseline_offsets = np.linspace(-0.08, 0.08, len(baseline))
+    pbne_offsets = np.linspace(-0.08, 0.08, len(pbne))
+    ax.scatter(
+        np.full(len(baseline), positions[0]) + baseline_offsets,
+        baseline,
+        s=18,
+        facecolors="white",
+        edgecolors=COLOR_BASELINE,
+        linewidths=0.8,
+        alpha=0.9,
         label="静态披露策略",
-        marker="o",
-        hollow=True,
     )
-    plot_academic_line(
-        ax,
-        pbne_x,
-        pbne_y,
-        color=COLOR_PBNE_ALT,
+    ax.scatter(
+        np.full(len(pbne), positions[1]) + pbne_offsets,
+        pbne,
+        s=18,
+        c=COLOR_PBNE_ALT,
+        edgecolors=COLOR_PBNE_ALT,
+        linewidths=0.6,
+        alpha=0.75,
         label="PBNE-2",
-        marker="^",
     )
 
-    plt.xlabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
-    plt.ylabel("经验累计分布", fontproperties=FONT_CN, fontsize=10.5)
+    ax.set_xticks(positions)
+    ax.set_xticklabels(["静态披露策略", "PBNE-2"])
+    plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
+    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
-    ax.set_xlim(-0.03, 1.03)
+    ax.set_xlim(0.5, 2.5)
     ax.set_ylim(-0.03, 1.03)
-    ax.legend(loc="lower right", prop=FONT_CN, fontsize=10.0)
-    plt.grid(axis="both")
-    apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
+    ax.legend(loc="upper right", prop=FONT_CN, fontsize=10.0)
+    plt.grid(axis="y")
+    apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
     save_figure("fig3_3_final_belief_distribution.png")
 
 
