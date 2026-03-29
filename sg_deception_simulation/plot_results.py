@@ -108,6 +108,81 @@ def plot_academic_line(
     )[0]
 
 
+def catmull_rom_spline(x: list[float] | np.ndarray, y: list[float] | np.ndarray, samples_per_segment: int = 24) -> tuple[np.ndarray, np.ndarray]:
+    x_arr = np.asarray(x, dtype=float)
+    y_arr = np.asarray(y, dtype=float)
+    if x_arr.size < 3:
+        return x_arr, y_arr
+
+    xs: list[float] = []
+    ys: list[float] = []
+    x_pad = np.concatenate(([x_arr[0]], x_arr, [x_arr[-1]]))
+    y_pad = np.concatenate(([y_arr[0]], y_arr, [y_arr[-1]]))
+
+    for idx in range(1, len(x_pad) - 2):
+        p0x, p1x, p2x, p3x = x_pad[idx - 1 : idx + 3]
+        p0y, p1y, p2y, p3y = y_pad[idx - 1 : idx + 3]
+        t_values = np.linspace(0.0, 1.0, samples_per_segment, endpoint=False)
+        for t in t_values:
+            t2 = t * t
+            t3 = t2 * t
+            xs.append(
+                0.5
+                * (
+                    (2 * p1x)
+                    + (-p0x + p2x) * t
+                    + (2 * p0x - 5 * p1x + 4 * p2x - p3x) * t2
+                    + (-p0x + 3 * p1x - 3 * p2x + p3x) * t3
+                )
+            )
+            ys.append(
+                0.5
+                * (
+                    (2 * p1y)
+                    + (-p0y + p2y) * t
+                    + (2 * p0y - 5 * p1y + 4 * p2y - p3y) * t2
+                    + (-p0y + 3 * p1y - 3 * p2y + p3y) * t3
+                )
+            )
+
+    xs.append(float(x_arr[-1]))
+    ys.append(float(y_arr[-1]))
+    return np.asarray(xs), np.clip(np.asarray(ys), -0.03, 1.03)
+
+
+def plot_smoothed_series(
+    ax,
+    x,
+    y,
+    *,
+    color: str,
+    label: str,
+    marker: str,
+    linestyle: str = "-",
+    hollow: bool = False,
+):
+    smooth_x, smooth_y = catmull_rom_spline(x, y)
+    ax.plot(
+        smooth_x,
+        smooth_y,
+        color=color,
+        linestyle=linestyle,
+        linewidth=1.6,
+        label=label,
+    )
+    ax.plot(
+        x,
+        y,
+        linestyle="None",
+        marker=marker,
+        markersize=4.8,
+        markerfacecolor="white" if hollow else color,
+        markeredgecolor=color,
+        markeredgewidth=1.0,
+        color=color,
+    )
+
+
 def empirical_cdf(values: list[float]) -> tuple[np.ndarray, np.ndarray]:
     sample = np.sort(np.asarray(values, dtype=float))
     y = np.arange(1, sample.size + 1, dtype=float) / sample.size
@@ -221,7 +296,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
 
         ax.fill_between(stages, baseline_q25, baseline_q75, color=COLOR_BASELINE, alpha=0.10, linewidth=0)
         ax.fill_between(stages, pbne_q25, pbne_q75, color=COLOR_PBNE, alpha=0.10, linewidth=0)
-        plot_academic_line(
+        plot_smoothed_series(
             ax,
             stages,
             baseline_q50,
@@ -230,7 +305,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
             marker="o",
             hollow=True,
         )
-        plot_academic_line(
+        plot_smoothed_series(
             ax,
             stages,
             pbne_q50,

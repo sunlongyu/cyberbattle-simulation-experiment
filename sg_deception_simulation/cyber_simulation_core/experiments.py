@@ -172,13 +172,13 @@ def run_strategy_comparison(config: GameConfig) -> Dict[str, Dict[str, object]]:
 
 def run_sensitivity_analysis(config: GameConfig) -> Dict[str, List[Dict[str, float]]]:
     sweeps = {
-        "prior_theta1": [0.3, 0.4, 0.5, 0.6, 0.7],
-        "beta": [0.2, 0.5, 0.8, 1.1, 1.4],
-        "c_theta1": [0.5, 1.0, 1.5, 2.0, 2.5],
-        "c_theta2": [0.5, 1.0, 1.5, 2.0, 2.5],
-        "defender_pressure_cost": [0.5, 1.0, 1.5, 2.0, 2.5],
-        "defender_protection_gain": [2.0, 4.0, 6.0, 8.0, 10.0],
-        "attacker_deception_penalty": [0.5, 1.0, 1.5, 2.0, 2.5],
+        "prior_theta1": np.round(np.linspace(0.25, 0.70, 10), 2).tolist(),
+        "beta": np.round(np.linspace(0.20, 1.55, 10), 2).tolist(),
+        "c_theta1": np.round(np.linspace(0.50, 2.75, 10), 2).tolist(),
+        "c_theta2": np.round(np.linspace(0.50, 2.75, 10), 2).tolist(),
+        "defender_pressure_cost": np.round(np.linspace(0.50, 2.75, 10), 2).tolist(),
+        "defender_protection_gain": np.round(np.linspace(2.0, 11.0, 10), 2).tolist(),
+        "attacker_deception_penalty": np.round(np.linspace(0.50, 2.75, 10), 2).tolist(),
     }
     strategy_focus = {
         "prior_theta1": "pbne_production_camouflage",
