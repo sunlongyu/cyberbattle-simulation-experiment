@@ -183,6 +183,39 @@ def plot_smoothed_series(
     )
 
 
+def plot_step_series(
+    ax,
+    x,
+    y,
+    *,
+    color: str,
+    label: str,
+    marker: str,
+    linestyle: str = "-",
+    hollow: bool = False,
+):
+    ax.step(
+        x,
+        y,
+        where="mid",
+        color=color,
+        linestyle=linestyle,
+        linewidth=1.6,
+        label=label,
+    )
+    ax.plot(
+        x,
+        y,
+        linestyle="None",
+        marker=marker,
+        markersize=4.8,
+        markerfacecolor="white" if hollow else color,
+        markeredgecolor=color,
+        markeredgewidth=1.0,
+        color=color,
+    )
+
+
 def empirical_cdf(values: list[float]) -> tuple[np.ndarray, np.ndarray]:
     sample = np.sort(np.asarray(values, dtype=float))
     y = np.arange(1, sample.size + 1, dtype=float) / sample.size
@@ -294,9 +327,25 @@ def plot_belief_trajectories(feasible: dict) -> None:
         pbne_lower = np.array(pbne_q50) - np.array(pbne_q25)
         pbne_upper = np.array(pbne_q75) - np.array(pbne_q50)
 
-        ax.fill_between(stages, baseline_q25, baseline_q75, color=COLOR_BASELINE, alpha=0.10, linewidth=0)
-        ax.fill_between(stages, pbne_q25, pbne_q75, color=COLOR_PBNE, alpha=0.10, linewidth=0)
-        plot_smoothed_series(
+        ax.fill_between(
+            stages,
+            baseline_q25,
+            baseline_q75,
+            step="mid",
+            color=COLOR_BASELINE,
+            alpha=0.10,
+            linewidth=0,
+        )
+        ax.fill_between(
+            stages,
+            pbne_q25,
+            pbne_q75,
+            step="mid",
+            color=COLOR_PBNE,
+            alpha=0.10,
+            linewidth=0,
+        )
+        plot_step_series(
             ax,
             stages,
             baseline_q50,
@@ -305,7 +354,7 @@ def plot_belief_trajectories(feasible: dict) -> None:
             marker="o",
             hollow=True,
         )
-        plot_smoothed_series(
+        plot_step_series(
             ax,
             stages,
             pbne_q50,
@@ -443,6 +492,7 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             y2,
             s=24,
             c=COLOR_PBNE,
+            marker="s",
             edgecolors="white",
             linewidths=0.7,
             zorder=5,
