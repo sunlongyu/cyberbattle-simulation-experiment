@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+gymnasium
+pettingzoo
+ray[rllib]
+torch
+seaborn
