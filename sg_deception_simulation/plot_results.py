@@ -24,6 +24,8 @@ COLOR_PBNE = "#C97C5D"
 COLOR_PBNE_ALT = "#6E9F6D"
 COLOR_GRID = "#D8D8D8"
 COLOR_TEXT = "#222222"
+
+
 def configure_matplotlib() -> None:
     global FONT_CN, FONT_EN
     available = {font.name for font in font_manager.fontManager.ttflist}
@@ -46,6 +48,12 @@ def configure_matplotlib() -> None:
     matplotlib.rcParams["axes.facecolor"] = "white"
     matplotlib.rcParams["figure.facecolor"] = "white"
     matplotlib.rcParams["savefig.facecolor"] = "white"
+    matplotlib.rcParams["axes.titleweight"] = "regular"
+    matplotlib.rcParams["axes.labelcolor"] = COLOR_TEXT
+    matplotlib.rcParams["xtick.color"] = COLOR_TEXT
+    matplotlib.rcParams["ytick.color"] = COLOR_TEXT
+    matplotlib.rcParams["lines.markersize"] = 4
+    matplotlib.rcParams["lines.linewidth"] = 1.4
 
 
 def apply_academic_axes_style(ax, x_font=None, y_font=None) -> None:
@@ -73,6 +81,38 @@ def save_figure(filename: str) -> None:
     plt.close()
 
 
+def plot_academic_line(
+    ax,
+    x,
+    y,
+    *,
+    color: str,
+    label: str,
+    marker: str,
+    linestyle: str = "-",
+    hollow: bool = False,
+):
+    return ax.plot(
+        x,
+        y,
+        color=color,
+        label=label,
+        linestyle=linestyle,
+        marker=marker,
+        markersize=4.2,
+        markerfacecolor="white" if hollow else color,
+        markeredgecolor=color,
+        markeredgewidth=0.9,
+        linewidth=1.5,
+    )[0]
+
+
+def empirical_cdf(values: list[float]) -> tuple[np.ndarray, np.ndarray]:
+    sample = np.sort(np.asarray(values, dtype=float))
+    y = np.arange(1, sample.size + 1, dtype=float) / sample.size
+    return sample, y
+
+
 def plot_scenario_utility(feasible: dict) -> None:
     scenario_labels = ["场景A\n真实系统占优", "场景B\n蜜罐系统占优"]
     baseline_values = [
@@ -85,44 +125,48 @@ def plot_scenario_utility(feasible: dict) -> None:
     ]
 
     x = np.arange(len(scenario_labels))
-    width = 0.32
-
     plt.figure(figsize=(7.2, 4.6))
     ax = plt.gca()
     ax.grid(axis="y")
-    bars1 = plt.bar(
-        x - width / 2,
+    line1 = plot_academic_line(
+        ax,
+        x,
         baseline_values,
-        width=width,
-        color="white",
-        edgecolor=COLOR_BASELINE,
-        hatch="//",
-        linewidth=0.9,
+        color=COLOR_BASELINE,
         label="静态披露策略",
+        marker="o",
+        hollow=True,
     )
-    bars2 = plt.bar(
-        x + width / 2,
+    line2 = plot_academic_line(
+        ax,
+        x,
         pbne_values,
-        width=width,
-        color="#F3DDD4",
-        edgecolor=COLOR_PBNE,
-        hatch="\\\\",
-        linewidth=0.9,
+        color=COLOR_PBNE,
         label="适用PBNE伪装策略",
+        marker="s",
+        linestyle="--",
     )
 
-    for bars in (bars1, bars2):
-        for bar in bars:
-            y = bar.get_height()
-            plt.text(
-                bar.get_x() + bar.get_width() / 2,
-                y + 0.06,
-                f"{y:.2f}",
-                ha="center",
-                va="bottom",
-                fontproperties=FONT_EN,
-                fontsize=10.5,
-            )
+    for xpos, y in zip(x, baseline_values):
+        plt.text(
+            xpos,
+            y + 0.08,
+            f"{y:.2f}",
+            ha="center",
+            va="bottom",
+            fontproperties=FONT_EN,
+            fontsize=10.0,
+        )
+    for xpos, y in zip(x, pbne_values):
+        plt.text(
+            xpos,
+            y - 0.18,
+            f"{y:.2f}",
+            ha="center",
+            va="top",
+            fontproperties=FONT_EN,
+            fontsize=10.0,
+        )
 
     plt.xticks(x, scenario_labels)
     for label in ax.get_xticklabels():
@@ -131,7 +175,7 @@ def plot_scenario_utility(feasible: dict) -> None:
     plt.ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
     plt.xlabel("实验场景", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
-    plt.legend(loc="upper right", prop=FONT_CN, fontsize=10.5)
+    plt.legend(handles=[line1, line2], loc="best", prop=FONT_CN, fontsize=10.0)
     apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
     save_figure("fig3_1_defender_utility_comparison.png")
 
@@ -170,38 +214,30 @@ def plot_belief_trajectories(feasible: dict) -> None:
         pbne_lower = np.array(pbne_q50) - np.array(pbne_q25)
         pbne_upper = np.array(pbne_q75) - np.array(pbne_q50)
 
-        ax.errorbar(
-            stages - 0.06,
+        ax.fill_between(stages, baseline_q25, baseline_q75, color=COLOR_BASELINE, alpha=0.12, linewidth=0)
+        ax.fill_between(stages, pbne_q25, pbne_q75, color=COLOR_PBNE, alpha=0.12, linewidth=0)
+        plot_academic_line(
+            ax,
+            stages,
             baseline_q50,
-            yerr=np.vstack([baseline_lower, baseline_upper]),
-            fmt="o-",
             color=COLOR_BASELINE,
-            markerfacecolor="white",
-            markeredgecolor=COLOR_BASELINE,
-            linewidth=1.6,
-            markersize=4.0,
-            elinewidth=0.9,
-            capsize=2.5,
             label="静态披露策略中位数",
+            marker="o",
+            hollow=True,
         )
-        ax.errorbar(
-            stages + 0.06,
+        plot_academic_line(
+            ax,
+            stages,
             pbne_q50,
-            yerr=np.vstack([pbne_lower, pbne_upper]),
-            fmt="s--",
             color=COLOR_PBNE,
-            markerfacecolor=COLOR_PBNE,
-            markeredgecolor=COLOR_PBNE,
-            linewidth=1.6,
-            markersize=4.0,
-            elinewidth=0.9,
-            capsize=2.5,
             label="PBNE伪装策略中位数",
+            marker="s",
+            linestyle="--",
         )
         ax.set_title(subtitle, fontproperties=FONT_CN, fontsize=10.5, pad=8)
         ax.set_xlabel("博弈阶段", fontproperties=FONT_CN, fontsize=10.5)
         ax.set_xticks(stages)
-        ax.grid(True, axis="y")
+        ax.grid(True, axis="both")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
     axes[0].set_ylabel("攻击者对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
@@ -217,45 +253,35 @@ def plot_final_belief_distribution(feasible: dict) -> None:
     fig, ax = plt.subplots(figsize=(7.2, 4.8))
     baseline = feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["final_beliefs"]
     pbne = feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["final_beliefs"]
+    baseline_x, baseline_y = empirical_cdf(baseline)
+    pbne_x, pbne_y = empirical_cdf(pbne)
 
-    box = ax.boxplot(
-        [baseline, pbne],
-        positions=[1, 2],
-        widths=0.5,
-        patch_artist=True,
-        showfliers=False,
-        medianprops={"color": COLOR_TEXT, "linewidth": 1.1},
-        whiskerprops={"color": COLOR_TEXT, "linewidth": 0.9},
-        capprops={"color": COLOR_TEXT, "linewidth": 0.9},
+    plot_academic_line(
+        ax,
+        baseline_x,
+        baseline_y,
+        color=COLOR_BASELINE,
+        label="静态披露策略",
+        marker="o",
+        hollow=True,
     )
-    for patch, color, face in zip(box["boxes"], [COLOR_BASELINE, COLOR_PBNE_ALT], ["#ECF2F9", "#E7F0E4"]):
-        patch.set_edgecolor(color)
-        patch.set_facecolor(face)
-        patch.set_linewidth(1.0)
+    plot_academic_line(
+        ax,
+        pbne_x,
+        pbne_y,
+        color=COLOR_PBNE_ALT,
+        label="PBNE-2",
+        marker="^",
+    )
 
-    rng = np.random.default_rng(20260319)
-    for xpos, values, color in [
-        (1, baseline, COLOR_BASELINE),
-        (2, pbne, COLOR_PBNE_ALT),
-    ]:
-        sample = np.array(values, dtype=float)
-        jitter = rng.uniform(-0.09, 0.09, size=sample.shape[0])
-        ax.scatter(
-            np.full(sample.shape[0], xpos) + jitter,
-            sample,
-            s=10,
-            alpha=0.18,
-            color=color,
-            edgecolors="none",
-        )
-
-    ax.set_xticks([1, 2], ["静态披露策略", "PBNE-2"])
-    plt.xlabel("策略类型", fontproperties=FONT_CN, fontsize=10.5)
-    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
+    plt.xlabel("终局时刻对真实系统的后验信念", fontproperties=FONT_CN, fontsize=10.5)
+    plt.ylabel("经验累计分布", fontproperties=FONT_CN, fontsize=10.5)
     plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_CN, fontsize=10.5, pad=10)
+    ax.set_xlim(-0.03, 1.03)
     ax.set_ylim(-0.03, 1.03)
-    plt.grid(axis="y")
-    apply_academic_axes_style(ax, x_font=FONT_CN, y_font=FONT_EN)
+    ax.legend(loc="lower right", prop=FONT_CN, fontsize=10.0)
+    plt.grid(axis="both")
+    apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
     save_figure("fig3_3_final_belief_distribution.png")
 
 
@@ -279,34 +305,29 @@ def plot_sensitivity_curves(sensitivity: dict) -> None:
             y2 = [row["mixing_probability_mean"] for row in rows]
             secondary_label = "均衡概率"
 
-        ax.plot(
+        plot_academic_line(
+            ax,
             x,
             y1,
-            marker="o",
             color=COLOR_BASELINE,
-            linewidth=1.2,
-            markersize=4.5,
-            markerfacecolor="white",
-            markeredgecolor=COLOR_BASELINE,
             label="防御方期望效用",
+            marker="o",
+            hollow=True,
         )
         ax.set_xlabel(xlabel, fontproperties=FONT_CN, fontsize=10.5)
         ax.set_ylabel("防御者期望效用", fontproperties=FONT_CN, fontsize=10.5)
-        ax.grid(True, axis="y")
+        ax.grid(True, axis="both")
         apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
 
         ax2 = ax.twinx()
-        ax2.plot(
+        plot_academic_line(
+            ax2,
             x,
             y2,
-            marker="s",
             color=COLOR_PBNE,
-            linewidth=1.2,
-            linestyle="--",
-            markersize=4.5,
-            markerfacecolor=COLOR_PBNE,
-            markeredgecolor=COLOR_PBNE,
             label=secondary_label,
+            marker="s",
+            linestyle="--",
         )
         ax2.set_ylabel(secondary_label, fontproperties=FONT_CN, fontsize=10.5)
         for label in ax2.get_yticklabels():
@@ -350,7 +371,7 @@ def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
         "",
         "## 3. 可直接写入论文的结论",
         "",
-        "实验结果表明，在与目标类型先验分布相匹配的适用场景中，基于 PBNE 的伪装策略均优于真实披露基线，能够通过影响攻击者的后验信念与攻击决策提升防御者的总体收益。此外，模型对先验概率和伪装成本较为敏感，这说明部署伪装防御策略时需要结合实际网络环境中的资产构成和欺骗开销进行参数配置。",
+        "实验结果表明，在与目标类型先验分布相匹配的适用场景中，基于 PBNE 的伪装策略均优于静态披露策略，能够通过影响攻击者的后验信念与攻击决策提升防御者的总体收益。此外，模型对先验概率和伪装成本较为敏感，这说明部署伪装防御策略时需要结合实际网络环境中的资产构成和欺骗开销进行参数配置。",
         "",
     ]
     return "\n".join(lines)
