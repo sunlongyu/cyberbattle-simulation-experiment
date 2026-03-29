@@ -1,0 +1,65 @@
+{
+  "module_id": "module3_effectiveness",
+  "run_name": "module3_baseline_refined_v1",
+  "description": "Regenerated baseline plots from existing logs.",
+  "seeds": [
+    1
+  ],
+  "environment": {
+    "n_systems": 5,
+    "max_steps": 100,
+    "discount_gamma": 0.99,
+    "belief_beta": 0.5,
+    "prior_belief_real": 0.5,
+    "payoffs": {
+      "g_a": 5.0,
+      "c_a": 0.5,
+      "l_a": 3.0,
+      "l_i": 5.0,
+      "g_i": 4.0,
+      "g_c": 2.0,
+      "eta_c": 0.5,
+      "kappa_d": 1.5,
+      "kappa_a": 2.5,
+      "c_theta1": 1.0,
+      "c_theta2": 1.0
+    }
+  },
+  "training": {
+    "episodes": 400,
+    "batch_size": 1024,
+    "learning_rate": 7e-05,
+    "gae_lambda": 0.97,
+    "clip_param": 0.2,
+    "num_sgd_iter": 10,
+    "lstm_cell_size": 256,
+    "actor_critic_hidden_dims": [
+      256,
+      256
+    ],
+    "num_env_runners": 1,
+    "rollout_fragment_length": 100,
+    "num_gpus": 0,
+    "entropy_coeff": 0.005,
+    "vf_loss_coeff": 1.0
+  },
+  "analysis": {
+    "baselines": [
+      "SG-MAPPO",
+      "SG-MATRPO",
+      "SG-MAA2C"
+    ]
+  },
+  "output": {
+    "root_dir": "results/ch4",
+    "save_yaml": false,
+    "write_readme": true,
+    "image_dpi": 300
+  },
+  "tags": [
+    "chapter4",
+    "module3",
+    "baseline",
+    "replot"
+  ]
+}

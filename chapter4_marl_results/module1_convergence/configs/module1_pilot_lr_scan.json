@@ -1,0 +1,66 @@
+{
+  "module_id": "module1_convergence",
+  "run_name": "module1_pilot_lr_scan",
+  "description": "Chapter 4 module 1: learning-rate sensitivity and 5-seed stability.",
+  "seeds": [
+    0
+  ],
+  "environment": {
+    "n_systems": 5,
+    "max_steps": 50,
+    "discount_gamma": 0.99,
+    "belief_beta": 0.5,
+    "prior_belief_real": 0.5,
+    "payoffs": {
+      "g_a": 2.0,
+      "c_a": 1.5,
+      "l_a": 3.0,
+      "l_i": 4.0,
+      "g_i": 4.0,
+      "c_theta1": 1.5,
+      "c_theta2": 2.0
+    },
+    "history_length": 10
+  },
+  "training": {
+    "episodes": 80,
+    "batch_size": 256,
+    "num_gpus": 0,
+    "num_env_runners": 1,
+    "rollout_fragment_length": 128,
+    "lstm_cell_size": 128,
+    "actor_critic_hidden_dims": [
+      128,
+      128
+    ],
+    "gae_lambda": 0.97,
+    "clip_param": 0.2,
+    "num_sgd_iter": 4
+  },
+  "analysis": {
+    "learning_rates": [
+      0.0002,
+      0.0001,
+      7e-05,
+      5e-05
+    ],
+    "stability_learning_rate": 0.0001,
+    "convergence_rule": {
+      "threshold_ratio": 0.95,
+      "stability_window": 20,
+      "final_window": 30
+    }
+  },
+  "output": {
+    "root_dir": "results/ch4",
+    "save_yaml": false,
+    "write_readme": true,
+    "image_dpi": 300
+  },
+  "tags": [
+    "chapter4",
+    "module1",
+    "convergence",
+    "stability"
+  ]
+}
