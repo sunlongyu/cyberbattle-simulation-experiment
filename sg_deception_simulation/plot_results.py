@@ -246,19 +246,21 @@ def plot_scenario_utility(feasible: dict) -> None:
         baseline_values,
         width=width,
         color="white",
-        edgecolor=COLOR_BASELINE,
-        linewidth=1.4,
+        edgecolor="#9CB6D8",
+        linewidth=1.2,
+        hatch="//",
         label="静态披露策略",
     )
     bars2 = ax.bar(
         x + width / 2,
         pbne_values,
         width=width,
-        color=COLOR_PBNE,
-        alpha=0.88,
-        edgecolor=COLOR_PBNE,
+        color="#FFF4EC",
+        alpha=1.0,
+        edgecolor="#D99063",
         linewidth=1.0,
-        label="适用PBNE伪装策略",
+        hatch="\\\\",
+        label="PBNE伪装策略",
     )
 
     for bar in bars1:
@@ -291,7 +293,7 @@ def plot_scenario_utility(feasible: dict) -> None:
     plt.ylabel("防御者期望效用", fontproperties=FONT_MIXED, fontsize=10.5)
     plt.xlabel("实验场景", fontproperties=FONT_MIXED, fontsize=10.5)
     plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_MIXED, fontsize=10.5, pad=10)
-    plt.legend(loc="best", prop=FONT_MIXED, fontsize=10.0)
+    plt.legend(loc="upper left", bbox_to_anchor=(0.02, 0.98), prop=FONT_MIXED, fontsize=10.0)
     apply_academic_axes_style(ax, x_font=FONT_MIXED, y_font=FONT_EN)
     save_figure("fig3_1_defender_utility_comparison.png")
 
