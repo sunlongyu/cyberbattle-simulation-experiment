@@ -1,4 +1,4 @@
-# module1_convergence: module1_tuned_400
+# module1_convergence: server_module1_formal_1000
 
 ## Description
 Chapter 4 module 1: learning-rate sensitivity and 5-seed stability.
