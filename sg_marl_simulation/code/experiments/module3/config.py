@@ -99,6 +99,14 @@ MODULE3_BASELINES = {
         "env": {},
         "description": "普通 actor-critic 风格更新近似基线。",
     },
+    "Plain-MAPPO": {
+        "training": {
+            "learning_rate": 1e-4,
+            "num_sgd_iter": 8,
+        },
+        "env": {"signal_mode": "truthful"},
+        "description": "无欺骗伪装的普通 MAPPO 基线，防御方只能发送真实类型信号。",
+    },
 }
 
 MODULE3_ABLATIONS = {

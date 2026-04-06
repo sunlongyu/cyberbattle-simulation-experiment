@@ -87,6 +87,8 @@ class raw_env(AECEnv):
         self.lambda_D = signal_matrix
         self.beta = float(cfg.get("belief_beta", 0.5))
         self.disable_belief_input = bool(cfg.get("disable_belief_input", False))
+        self.disable_deception_signal = bool(cfg.get("disable_deception_signal", False))
+        self.signal_mode = str(cfg.get("signal_mode", "learned"))
 
         self.possible_agents = [DEFENDER, ATTACKER]
         self.agent_ids = self.possible_agents
@@ -239,11 +241,20 @@ class raw_env(AECEnv):
         acting_agent = self.agent_selection
         action = np.asarray(action, dtype=self._action_space.dtype)
         if acting_agent == DEFENDER:
-            self._current_defender_signals = action
+            if self.disable_deception_signal:
+                # Keep backward compatibility for earlier no-signal baselines.
+                self._current_defender_signals = np.zeros_like(action, dtype=self._action_space.dtype)
+            elif self.signal_mode == "truthful":
+                # No deception: the signal directly reveals the underlying system type.
+                self._current_defender_signals = self.system_types.astype(self._action_space.dtype, copy=True)
+            elif self.signal_mode == "constant_normal":
+                self._current_defender_signals = np.zeros_like(action, dtype=self._action_space.dtype)
+            else:
+                self._current_defender_signals = action
             self._defender_signal_history = np.roll(self._defender_signal_history, shift=1, axis=0)
-            self._defender_signal_history[0, :] = action
+            self._defender_signal_history[0, :] = self._current_defender_signals
             for idx in range(self.N):
-                self._full_signal_history[idx].append(int(action[idx]))
+                self._full_signal_history[idx].append(int(self._current_defender_signals[idx]))
         elif acting_agent == ATTACKER:
             self._current_attacker_actions = action
             self._attacker_action_history = np.roll(self._attacker_action_history, shift=1, axis=0)

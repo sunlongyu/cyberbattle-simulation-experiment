@@ -1,0 +1,9 @@
+{
+  "run_name": "module3_plain_mappo_truthful_v2",
+  "family": "baseline_truthful",
+  "variant_name": "Plain-MAPPO",
+  "summary_csv": "/home/sly/sg_marl_simulation_run/sg_marl_simulation/code/results/ch4/module3_effectiveness/csv/plain_mappo_truthful_summary.csv",
+  "episode_log_csv": "/home/sly/sg_marl_simulation_run/sg_marl_simulation/code/results/ch4/module3_effectiveness/csv/episode_log_baseline_truthful_Plain-MAPPO.csv",
+  "evaluation_csv": "/home/sly/sg_marl_simulation_run/sg_marl_simulation/code/results/ch4/module3_effectiveness/csv/evaluation_baseline_truthful_Plain-MAPPO.csv",
+  "checkpoint_path": "/home/sly/sg_marl_simulation_run/sg_marl_simulation/code/results/ch4/module3_effectiveness/logs/baseline_truthful_Plain-MAPPO"
+}

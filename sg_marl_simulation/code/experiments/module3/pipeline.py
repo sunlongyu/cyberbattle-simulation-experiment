@@ -45,7 +45,7 @@ from .config import (
     MODULE3_TRAINING,
 )
 
-rcParams["font.family"] = ["Songti SC", "Arial Unicode MS", "DejaVu Sans"]
+rcParams["font.family"] = ["Times New Roman", "Songti SC", "Arial Unicode MS", "DejaVu Sans"]
 rcParams["axes.unicode_minus"] = False
 rcParams["font.size"] = 10.5
 
@@ -361,6 +361,7 @@ def _plot_baseline_trajectory_and_cost(
         "SG-MAPPO": "#5DA5DA",
         "SG-MATRPO": "#F28E2B",
         "SG-MAA2C": "#60BD68",
+        "Plain-MAPPO": "#E15759",
     }
     smooth_window = 20
 
@@ -516,7 +517,8 @@ def _plot_ablation_compare(rows: List[dict], artifacts: ExperimentArtifacts) -> 
     ]
     fig, axes = plt.subplots(2, 2, figsize=(14, 9))
     axes = axes.flatten()
-    labels = [row["variant_name"] for row in rows]
+    label_map = {"完整SG-MAPPO": "SG-MAPPO"}
+    labels = [label_map.get(row["variant_name"], row["variant_name"]) for row in rows]
     colors = ["#0066CC", "#8B4513", "#00AADE"]
 
     for axis, (metric_key, metric_label) in zip(axes, metric_names):
