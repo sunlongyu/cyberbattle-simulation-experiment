@@ -358,82 +358,37 @@ def _plot_baseline_trajectory_and_cost(
 ) -> None:
     focus_variants = ["SG-MAPPO", "Plain-MAPPO"]
     results = [result for result in results if result.variant_name in focus_variants]
-    fig, axes = plt.subplots(1, 2, figsize=(15.5, 5.8))
+    fig, axes = plt.subplots(2, 2, figsize=(12.8, 8.6))
+    axes = axes.flatten()
     palette = {
         "SG-MAPPO": "#5DA5DA",
         "SG-MATRPO": "#F28E2B",
         "SG-MAA2C": "#60BD68",
         "Plain-MAPPO": "#E15759",
     }
-    smooth_window = 20
-
-    for result in results:
-        xs = [row["training_iteration"] for row in result.episode_rows]
-        defender_values = [row["defender_reward"] for row in result.episode_rows]
-        defender_mean = _rolling_mean(defender_values, smooth_window)
-        defender_std = _rolling_std(defender_values, smooth_window)
-        color = palette.get(result.variant_name)
-
-        axes[0].plot(xs, defender_mean, linewidth=2.5, label=result.variant_name, color=color)
-        axes[0].fill_between(
-            xs,
-            [m - s for m, s in zip(defender_mean, defender_std)],
-            [m + s for m, s in zip(defender_mean, defender_std)],
-            color=color,
-            alpha=0.12,
-        )
-
-    axes[0].set_title("SG-MAPPO与Plain-MAPPO防御方收益轨迹")
-    axes[0].set_xlabel("训练轮次")
-    axes[0].set_ylabel("防御方平均回合收益")
-    axes[0].grid(False)
-    axes[0].legend(frameon=False)
-
     metric_keys = [
         ("defender_reward", "防御方平均回合收益"),
         ("signal_effect", "信号效应"),
         ("real_host_attack_rate", "真实主机攻击率"),
         ("honeypot_hit_rate", "蜜罐命中率"),
-        ("deception_success_rate", "欺骗成功率"),
     ]
     labels = [result.variant_name for result in results]
-    raw_matrix = [
-        [float(result.summary_row[metric_key]) for metric_key, _ in metric_keys]
-        for result in results
-    ]
-
-    normalized_columns = []
-    for col_idx in range(len(metric_keys)):
-        column = [row[col_idx] for row in raw_matrix]
-        min_value = min(column)
-        max_value = max(column)
-        if abs(max_value - min_value) < 1e-12:
-            normalized_column = [0.5 for _ in column]
-        else:
-            normalized_column = [(value - min_value) / (max_value - min_value) for value in column]
-        normalized_columns.append(normalized_column)
-    normalized_matrix = list(map(list, zip(*normalized_columns)))
-
-    image = axes[1].imshow(normalized_matrix, cmap="YlGnBu", aspect="auto", vmin=0.0, vmax=1.0)
-    axes[1].set_title("关键指标对比")
-    axes[1].set_xticks(range(len(metric_keys)))
-    axes[1].set_xticklabels([label for _, label in metric_keys], rotation=12, ha="right")
-    axes[1].set_yticks(range(len(labels)))
-    axes[1].set_yticklabels(labels)
-    for row_idx, result in enumerate(results):
-        for col_idx, (metric_key, _) in enumerate(metric_keys):
-            value = float(result.summary_row[metric_key])
-            axes[1].text(
-                col_idx,
-                row_idx,
+    colors = [palette.get(label, "#999999") for label in labels]
+    for axis, (metric_key, metric_label) in zip(axes, metric_keys):
+        values = [float(result.summary_row[metric_key]) for result in results]
+        bars = axis.bar(labels, values, color=colors, width=0.48)
+        axis.set_title(metric_label)
+        axis.grid(True, axis="y", alpha=0.2, linestyle="--")
+        axis.tick_params(axis="x", rotation=0)
+        for bar, value in zip(bars, values):
+            axis.text(
+                bar.get_x() + bar.get_width() / 2,
+                value,
                 f"{value:.2f}" if abs(value) < 100 else f"{value:.1f}",
                 ha="center",
-                va="center",
+                va="bottom",
                 fontsize=8,
-                color="black",
             )
-    cbar = fig.colorbar(image, ax=axes[1], fraction=0.046, pad=0.04)
-    cbar.set_label("列内归一化值")
 
     plt.tight_layout()
     plt.savefig(
