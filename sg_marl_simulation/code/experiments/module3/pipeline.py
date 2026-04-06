@@ -356,6 +356,8 @@ def _plot_baseline_trajectory_and_cost(
     results: List[Module3RunResult],
     artifacts: ExperimentArtifacts,
 ) -> None:
+    focus_variants = ["SG-MAPPO", "Plain-MAPPO"]
+    results = [result for result in results if result.variant_name in focus_variants]
     fig, axes = plt.subplots(1, 3, figsize=(18, 5.8))
     palette = {
         "SG-MAPPO": "#5DA5DA",
