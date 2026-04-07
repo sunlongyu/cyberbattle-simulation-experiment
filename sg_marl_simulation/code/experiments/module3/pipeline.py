@@ -358,13 +358,13 @@ def _plot_baseline_trajectory_and_cost(
 ) -> None:
     focus_variants = ["SG-MAPPO", "Plain-MAPPO"]
     results = [result for result in results if result.variant_name in focus_variants]
-    fig, axes = plt.subplots(2, 2, figsize=(14, 9))
+    fig, axes = plt.subplots(2, 2, figsize=(13.8, 8.6))
     axes = axes.flatten()
     palette = {
-        "SG-MAPPO": "#0066CC",
+        "SG-MAPPO": "#4E79A7",
         "SG-MATRPO": "#F28E2B",
         "SG-MAA2C": "#60BD68",
-        "Plain-MAPPO": "#8B4513",
+        "Plain-MAPPO": "#D3725B",
     }
     metric_keys = [
         ("defender_reward", "防御方平均回合收益"),
@@ -378,7 +378,7 @@ def _plot_baseline_trajectory_and_cost(
         values = [float(result.summary_row[metric_key]) for result in results]
         bars = axis.bar(labels, values, color=colors, width=0.34)
         axis.set_title(metric_label)
-        axis.grid(True, axis="y", alpha=0.25, linestyle="--")
+        axis.grid(True, axis="y", alpha=0.22, linestyle="--")
         axis.tick_params(axis="x", rotation=0)
         axis.margins(x=0.18)
         for bar, value in zip(bars, values):
@@ -483,7 +483,7 @@ def _plot_ablation_compare(rows: List[dict], artifacts: ExperimentArtifacts) -> 
         ("deception_success_rate", "欺骗成功率"),
         ("signal_effect", "信号效应"),
     ]
-    fig, axes = plt.subplots(2, 2, figsize=(14, 9))
+    fig, axes = plt.subplots(2, 2, figsize=(13.8, 8.6))
     axes = axes.flatten()
     label_map = {"完整SG-MAPPO": "SG-MAPPO"}
     labels = [label_map.get(row["variant_name"], row["variant_name"]) for row in rows]
@@ -494,7 +494,7 @@ def _plot_ablation_compare(rows: List[dict], artifacts: ExperimentArtifacts) -> 
         bars = axis.bar(labels, values, color=colors[: len(labels)], width=0.34)
         axis.set_title(metric_label)
         axis.tick_params(axis="x", rotation=0)
-        axis.grid(True, axis="y", alpha=0.25, linestyle="--")
+        axis.grid(True, axis="y", alpha=0.22, linestyle="--")
         axis.margins(x=0.18)
         for bar, value in zip(bars, values):
             if value == value:
