@@ -358,13 +358,13 @@ def _plot_baseline_trajectory_and_cost(
 ) -> None:
     focus_variants = ["SG-MAPPO", "Plain-MAPPO"]
     results = [result for result in results if result.variant_name in focus_variants]
-    fig, axes = plt.subplots(2, 2, figsize=(12.8, 8.6))
+    fig, axes = plt.subplots(2, 2, figsize=(14, 9))
     axes = axes.flatten()
     palette = {
-        "SG-MAPPO": "#5DA5DA",
+        "SG-MAPPO": "#0066CC",
         "SG-MATRPO": "#F28E2B",
         "SG-MAA2C": "#60BD68",
-        "Plain-MAPPO": "#E15759",
+        "Plain-MAPPO": "#8B4513",
     }
     metric_keys = [
         ("defender_reward", "防御方平均回合收益"),
@@ -376,10 +376,11 @@ def _plot_baseline_trajectory_and_cost(
     colors = [palette.get(label, "#999999") for label in labels]
     for axis, (metric_key, metric_label) in zip(axes, metric_keys):
         values = [float(result.summary_row[metric_key]) for result in results]
-        bars = axis.bar(labels, values, color=colors, width=0.48)
+        bars = axis.bar(labels, values, color=colors, width=0.34)
         axis.set_title(metric_label)
-        axis.grid(True, axis="y", alpha=0.2, linestyle="--")
+        axis.grid(True, axis="y", alpha=0.25, linestyle="--")
         axis.tick_params(axis="x", rotation=0)
+        axis.margins(x=0.18)
         for bar, value in zip(bars, values):
             axis.text(
                 bar.get_x() + bar.get_width() / 2,
