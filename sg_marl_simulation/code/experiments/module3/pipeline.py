@@ -485,7 +485,11 @@ def _plot_ablation_compare(rows: List[dict], artifacts: ExperimentArtifacts) -> 
     ]
     fig, axes = plt.subplots(2, 2, figsize=(13.8, 8.6))
     axes = axes.flatten()
-    label_map = {"完整SG-MAPPO": "SG-MAPPO"}
+    label_map = {
+        "完整SG-MAPPO": "SG-MAPPO",
+        "去除信念输入": "No-Belief",
+        "去除LSTM": "No-LSTM",
+    }
     labels = [label_map.get(row["variant_name"], row["variant_name"]) for row in rows]
     colors = ["#0066CC", "#8B4513", "#00AADE"]
 
