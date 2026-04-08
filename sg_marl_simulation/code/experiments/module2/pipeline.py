@@ -30,7 +30,7 @@ from marl_core.chapter4_env import ACTION_ATTACK, ACTION_RETREAT, SIGNAL_HONEYPO
 from marl_core.io import EpisodeLogger, write_csv
 from .config import MODULE2_BASE_ENV, MODULE2_BASE_TRAINING, MODULE2_PAYOFFS, MODULE2_SWEEPS
 
-rcParams["font.family"] = ["Songti SC", "Arial Unicode MS", "DejaVu Sans"]
+rcParams["font.family"] = ["Times New Roman", "Songti SC", "Arial Unicode MS", "DejaVu Sans"]
 rcParams["axes.unicode_minus"] = False
 rcParams["font.size"] = 10.5
 

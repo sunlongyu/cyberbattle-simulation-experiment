@@ -1,0 +1,3336 @@
+{
+  "scenario_path": "/Users/SL/Documents/expproject/cyberbattle-simulation-experiment/cyborg_validation/scenarios/thesis_scenario.yaml",
+  "episodes": 10,
+  "max_steps": 30,
+  "host_type_mapping": {
+    "theta1_production_hosts": [
+      "Prod_Enterprise",
+      "Prod_Operational"
+    ],
+    "theta2_honeypot_surrogate_hosts": [
+      "Honey_Enterprise",
+      "Honey_Operational"
+    ],
+    "notes": "Custom thesis scenario with explicit production and honeypot-surrogate hosts. Theta1 maps to production hosts and theta2 maps to native decoy-image hosts."
+  },
+  "scenarios": {
+    "scenario_a_high_prior_theta1": {
+      "prior_theta1": 0.65,
+      "policies": {
+        "truthful_baseline": {
+          "aggregate": {
+            "episode_count": 10,
+            "blue_reward_mean": -339.69000000000005,
+            "red_reward_mean": 339.69000000000005,
+            "blue_success_mean": 7.4,
+            "attack_like_count_mean": 17.8,
+            "critical_host_compromise_rate": 0.9,
+            "production_compromise_rate": 0.9,
+            "honeypot_compromise_rate": 0.7,
+            "red_session_count_mean": 6.3,
+            "final_belief_theta1_mean": 0.9000000768339098,
+            "lambda_d_mean": 0.0,
+            "lambda_a_mean": 0.0,
+            "avg_belief_path": [
+              0.4000000008989011,
+              0.5000004294420978,
+              0.6999981732981658,
+              0.8999913748632518,
+              0.5000635414448164,
+              0.5000256888031882,
+              0.8000000168077602,
+              0.8000011406134117,
+              0.8000315219269977,
+              0.700028164882284,
+              0.5000268318347643,
+              0.6000301646097311,
+              0.6999996294110908,
+              0.5000349021855828,
+              0.5000544736293748,
+              0.5000108053863863,
+              0.6000329300940381,
+              0.6000014014843482,
+              0.5000009353167991,
+              0.500013439945092,
+              0.6000238808581414,
+              0.4000013541860915,
+              0.600013474269605,
+              0.7999988658066519,
+              0.6999941222669301,
+              0.40007010398051857,
+              0.40003162989430396,
+              0.7000222247990326,
+              0.7000069070700854,
+              0.9000000768339098
+            ]
+          },
+          "episodes": [
+            {
+              "seed": 20260315,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 8,
+              "attack_like_count": 7,
+              "belief_path": [
+                1.857142853693881e-09,
+                0.9999988982852098,
+                0.9999999999956524,
+                2.2370953802471064e-05,
+                0.9999999652616466,
+                8.203991839958821e-07,
+                0.9999998827906735,
+                0.9999999999980933,
+                0.9999999999999669,
+                0.0001347132626745844,
+                5.572547994377552e-11,
+                2.498772154513282e-13,
+                3.418419635197776e-14,
+                1.644424175949975e-14,
+                0.9999204082774059,
+                4.76339214690964e-08,
+                0.9999996660347769,
+                3.5681212809286347e-07,
+                6.280840893871319e-12,
+                1.119344305915095e-13,
+                0.9999606938706602,
+                6.175097695374271e-08,
+                3.294342438240137e-12,
+                0.9999886726257264,
+                9.759441481291585e-08,
+                0.9999997434903841,
+                3.9318568993784046e-07,
+                0.9999998463710583,
+                4.747870984179841e-07,
+                0.9999998566679672
+              ],
+              "final_belief_theta1": 0.9999998566679672,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 17,
+                "sigma1": 13
+              },
+              "type_counts": {
+                "theta2": 17,
+                "theta1": 13
+              },
+              "blue_action_counts": {
+                "Misinform": 17,
+                "Sleep": 13
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260316,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -391.7999999999999,
+              "red_reward_total": 391.7999999999999,
+              "blue_success_count": 5,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999994615385,
+                0.9999999999997369,
+                0.999999999999984,
+                0.9999999999999942,
+                0.0002573892474817678,
+                0.9999999858588016,
+                0.9999999999991243,
+                0.9999999999999751,
+                0.9999999999999933,
+                0.9999999999999958,
+                0.9999999999999964,
+                0.9999999999999967,
+                0.9999999999999969,
+                0.00031934766528881773,
+                0.9999999869378156,
+                0.9999999999991493,
+                4.076989113029248e-05,
+                0.9999999721441345,
+                8.898198631734079e-07,
+                0.9999998862413256,
+                0.9999999999981142,
+                0.9999999999999671,
+                0.9999999999999927,
+                0.9999999999999958,
+                0.9999999999999964,
+                0.9999999999999967,
+                0.0003159382623248186,
+                0.9999999868861191,
+                0.9999999999991482,
+                0.9999999999999754
+              ],
+              "final_belief_theta1": 0.9999999999999754,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 25,
+                "sigma2": 5
+              },
+              "type_counts": {
+                "theta1": 25,
+                "theta2": 5
+              },
+              "blue_action_counts": {
+                "Sleep": 25,
+                "Misinform": 5
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise",
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260317,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -410.0,
+              "red_reward_total": 410.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.857142853693881e-09,
+                9.076749328435681e-13,
+                5.494305358025327e-14,
+                0.9999489320242381,
+                0.9999999999821687,
+                1.3310861444279143e-05,
+                0.9999999579506276,
+                0.9999999999986924,
+                0.9999999999999714,
+                0.9999999999999929,
+                0.00023764829822107216,
+                6.86691241231696e-11,
+                0.9999962940271069,
+                0.999999999993207,
+                0.9999999999999474,
+                0.00011343364850685543,
+                0.9999999808830519,
+                1.0219970159137721e-06,
+                9.250016108836908e-12,
+                0.9999922521122311,
+                0.9999999999910896,
+                1.7180742634341363e-05,
+                0.9999999617188743,
+                0.9999999999987368,
+                0.9999999999999716,
+                0.00014243030290287144,
+                0.9999999824189348,
+                0.9999999999990512,
+                0.9999999999999745,
+                0.9999999999999933
+              ],
+              "final_belief_theta1": 0.9999999999999933,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 11,
+                "sigma1": 19
+              },
+              "type_counts": {
+                "theta2": 11,
+                "theta1": 19
+              },
+              "blue_action_counts": {
+                "Misinform": 11,
+                "Sleep": 19
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 3,
+                "Impact": 8
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 5
+            },
+            {
+              "seed": 20260318,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -360.90000000000003,
+              "red_reward_total": 360.90000000000003,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.857142853693881e-09,
+                9.076749328435681e-13,
+                0.9999817996683018,
+                0.9999999999878004,
+                0.9999999999999347,
+                0.00010479333474253325,
+                0.9999999803176011,
+                0.999999999999011,
+                0.999999999999974,
+                0.0001472258707459189,
+                5.757663991248463e-11,
+                0.9999960458740699,
+                0.9999999999930429,
+                1.8818167185943626e-05,
+                2.7012190368152878e-11,
+                1.9143915773267344e-13,
+                0.9999677356626531,
+                0.9999999999849405,
+                0.9999999999999294,
+                0.00010184868060499796,
+                0.9999999801101183,
+                1.007203183478767e-06,
+                9.200530644330818e-12,
+                1.2881199226267213e-13,
+                2.6789251225771594e-14,
+                0.9999334875809696,
+                0.9999999999803484,
+                0.9999999999999221,
+                9.824583108670832e-05,
+                0.9999999798448107
+              ],
+              "final_belief_theta1": 0.9999999798448107,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 14,
+                "sigma1": 16
+              },
+              "type_counts": {
+                "theta2": 14,
+                "theta1": 16
+              },
+              "blue_action_counts": {
+                "Misinform": 14,
+                "Sleep": 16
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260319,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -400.9000000000001,
+              "red_reward_total": 400.9000000000001,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999994615385,
+                3.7997815756127197e-06,
+                1.4995049055623946e-11,
+                0.9999935136440886,
+                1.198118616570068e-07,
+                0.9999997621326424,
+                0.9999999999975262,
+                0.9999999999999636,
+                0.9999999999999922,
+                0.9999999999999956,
+                0.9999999999999964,
+                0.0003068756636391712,
+                7.544272977183129e-11,
+                0.9999964200888126,
+                0.9999999999932929,
+                0.9999999999999476,
+                0.00011362924413848632,
+                5.234277135610526e-11,
+                0.9999959047839432,
+                1.4189742878565906e-07,
+                4.473988744865614e-12,
+                9.880220260831743e-14,
+                0.9999588473824627,
+                0.9999999999835301,
+                0.999999999999927,
+                0.00010062236335585507,
+                5.0053242586983365e-11,
+                2.402013973179939e-13,
+                0.9999703194952178,
+                0.9999999999853959
+              ],
+              "final_belief_theta1": 0.9999999999853959,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 17,
+                "sigma2": 13
+              },
+              "type_counts": {
+                "theta1": 17,
+                "theta2": 13
+              },
+              "blue_action_counts": {
+                "Sleep": 17,
+                "Misinform": 13
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260320,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -360.80000000000007,
+              "red_reward_total": 360.80000000000007,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.857142853693881e-09,
+                9.076749328435681e-13,
+                5.494305358025327e-14,
+                0.9999489320242381,
+                5.608133509095409e-08,
+                0.9999996855020196,
+                3.647834681279051e-07,
+                0.9999998420745454,
+                0.9999999999978724,
+                0.9999999999999656,
+                0.9999999999999925,
+                0.9999999999999958,
+                0.9999999999999964,
+                0.9999999999999967,
+                0.0003158437973960718,
+                0.9999999868846758,
+                0.9999999999991482,
+                4.074749698329482e-05,
+                0.9999999721385032,
+                0.999999999998876,
+                0.9999999999999729,
+                0.9999999999999931,
+                0.00023944619559629994,
+                0.9999999854777455,
+                1.1307554553246787e-06,
+                9.600623245658382e-12,
+                1.3084499631736943e-13,
+                0.9999628873962854,
+                0.9999999999841445,
+                0.9999999999999281
+              ],
+              "final_belief_theta1": 0.9999999999999281,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 11,
+                "sigma1": 19
+              },
+              "type_counts": {
+                "theta2": 11,
+                "theta1": 19
+              },
+              "blue_action_counts": {
+                "Misinform": 11,
+                "Sleep": 19
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260321,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -360.90000000000003,
+              "red_reward_total": 360.90000000000003,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999994615385,
+                3.7997815756127197e-06,
+                0.9999999333113263,
+                0.9999999999984506,
+                0.9999999999999694,
+                0.00013854856922135186,
+                0.9999999822392832,
+                1.0500411865956569e-06,
+                0.9999998929633743,
+                0.9999999999981559,
+                3.066993854286564e-05,
+                0.9999999690687144,
+                0.999999999998832,
+                0.9999999999999725,
+                0.9999999999999931,
+                0.9999999999999958,
+                0.0002879817359355274,
+                0.9999999864313021,
+                0.9999999999991374,
+                4.056052658040566e-05,
+                3.583114863065563e-11,
+                0.9999952920913064,
+                0.9999999999925817,
+                0.9999999999999456,
+                0.9999999999999911,
+                0.0002179782778858155,
+                0.9999999849670222,
+                1.1164684893571006e-06,
+                0.999999895351733,
+                0.9999999999981712
+              ],
+              "final_belief_theta1": 0.9999999999981712,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 21,
+                "sigma2": 9
+              },
+              "type_counts": {
+                "theta1": 21,
+                "theta2": 9
+              },
+              "blue_action_counts": {
+                "Sleep": 21,
+                "Misinform": 9
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260322,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -360.80000000000007,
+              "red_reward_total": 360.80000000000007,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999994615385,
+                0.9999999999997369,
+                0.999999999999984,
+                0.9999999999999942,
+                0.0002573892474817678,
+                7.071536366586141e-11,
+                2.727642511604073e-13,
+                0.9999716756115952,
+                6.96618064175226e-08,
+                0.9999997096162483,
+                0.9999999999973379,
+                2.679506814269509e-05,
+                3.0762548333168915e-11,
+                2.008177840554154e-13,
+                3.154311701755198e-14,
+                1.5964937426731252e-14,
+                0.999919537497077,
+                0.9999999999789224,
+                1.2516517741516324e-05,
+                2.3249286297175558e-11,
+                1.8116043900776339e-13,
+                3.0370092880206956e-14,
+                0.9999364873937803,
+                0.9999999999806792,
+                0.9999999999999227,
+                0.9999999999999898,
+                0.9999999999999951,
+                0.0002735595191110268,
+                0.9999999861723299,
+                1.1513278431887886e-06
+              ],
+              "final_belief_theta1": 1.1513278431887886e-06,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 15,
+                "sigma2": 15
+              },
+              "type_counts": {
+                "theta1": 15,
+                "theta2": 15
+              },
+              "blue_action_counts": {
+                "Sleep": 15,
+                "Misinform": 15
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260323,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -380.0,
+              "red_reward_total": 380.0,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.857142853693881e-09,
+                0.9999988982852098,
+                0.9999999999956524,
+                0.9999999999999554,
+                0.00012049481629254639,
+                0.999999981303115,
+                0.9999999999990294,
+                3.883841105776755e-05,
+                0.9999999716422895,
+                0.9999999999988687,
+                0.9999999999999727,
+                0.9999999999999931,
+                0.9999999999999958,
+                0.9999999999999964,
+                0.00030849723635129425,
+                7.558918565595457e-11,
+                2.7953490645446323e-13,
+                0.9999719299457678,
+                6.989335097559938e-08,
+                0.999999709970516,
+                0.999999999997339,
+                0.9999999999999627,
+                0.9999999999999922,
+                0.9999999999999956,
+                0.9999999999999964,
+                0.00030672492957943104,
+                7.542909108538805e-11,
+                0.9999964198506985,
+                1.4909044744590858e-07,
+                0.9999997805150744
+              ],
+              "final_belief_theta1": 0.9999997805150744,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 10,
+                "sigma1": 20
+              },
+              "type_counts": {
+                "theta2": 10,
+                "theta1": 20
+              },
+              "blue_action_counts": {
+                "Misinform": 10,
+                "Sleep": 20
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260324,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -370.80000000000007,
+              "red_reward_total": 370.80000000000007,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.857142853693881e-09,
+                0.9999988982852098,
+                0.9999999999956524,
+                0.9999999999999554,
+                0.9999999999999918,
+                0.9999999999999956,
+                0.9999999999999964,
+                0.9999999999999967,
+                0.0003152850047357677,
+                7.619701562320635e-11,
+                2.803597349423847e-13,
+                0.9999719603538407,
+                0.9999999999856981,
+                1.4435941150850368e-05,
+                2.4502157375007763e-11,
+                0.9999945856218697,
+                0.9999999999921902,
+                0.9999999999999445,
+                0.9999999999999911,
+                0.9999999999999953,
+                0.00027813457363365347,
+                7.276149275169693e-11,
+                2.756415448279417e-13,
+                3.544081226338165e-14,
+                0.9999399943195995,
+                5.285052094444914e-08,
+                3.1110148948177285e-12,
+                0.9999884314993511,
+                0.9999999999896738,
+                0.9999999999999385
+              ],
+              "final_belief_theta1": 0.9999999999999385,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 12,
+                "sigma1": 18
+              },
+              "type_counts": {
+                "theta2": 12,
+                "theta1": 18
+              },
+              "blue_action_counts": {
+                "Misinform": 12,
+                "Sleep": 18
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            }
+          ]
+        },
+        "pbne_production_camouflage": {
+          "aggregate": {
+            "episode_count": 10,
+            "blue_reward_mean": -245.56,
+            "red_reward_mean": 245.56,
+            "blue_success_mean": 10.8,
+            "attack_like_count_mean": 15.5,
+            "critical_host_compromise_rate": 0.6,
+            "production_compromise_rate": 0.7,
+            "honeypot_compromise_rate": 0.5,
+            "red_session_count_mean": 5.7,
+            "final_belief_theta1_mean": 0.7774578348643202,
+            "lambda_d_mean": 0.3972369327064615,
+            "lambda_a_mean": 0.875,
+            "avg_belief_path": [
+              0.5999999997666666,
+              0.7136671463789369,
+              0.716457413113442,
+              0.8214145319661523,
+              0.7695713483545409,
+              0.781697209710423,
+              0.8696568938131556,
+              0.9280208536957844,
+              0.8002010120588273,
+              0.8545748870670019,
+              0.7242160577734454,
+              0.9044589885815673,
+              0.6696128388439616,
+              0.8671994837834347,
+              0.5839912068248714,
+              0.8468003279734033,
+              0.638482074551984,
+              0.7584574314887665,
+              0.7181636126253484,
+              0.7175851359543147,
+              0.7521988841775166,
+              0.686593387489252,
+              0.715428160783533,
+              0.7065613358308157,
+              0.7032227669240741,
+              0.6356222193520509,
+              0.700381975441663,
+              0.7772447586353823,
+              0.7550717668994609,
+              0.7774578348643202
+            ]
+          },
+          "episodes": [
+            {
+              "seed": 20260315,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -370.0,
+              "red_reward_total": 370.0,
+              "blue_success_count": 12,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.43291482722931635,
+                0.6428290639326723,
+                0.424490024256929,
+                0.6427128435044835,
+                0.9999999982950385,
+                0.9999999999993785,
+                0.9999999999999778,
+                0.9996852238325702,
+                0.36954293870522636,
+                0.8637457217114124,
+                0.15632901954462616,
+                0.6808232459489756,
+                0.9999999985423953,
+                0.9719081699414908,
+                0.9999999998379341,
+                0.9913294777222026,
+                0.14715531761455233,
+                0.8233046571376083,
+                0.9999999989381205,
+                0.9758328231989937,
+                0.13456484826690715,
+                0.8088415730441181,
+                0.22208136356328234,
+                0.6688188435880437,
+                0.39165419933278384,
+                0.6462844305466642,
+                0.4188586892998079,
+                0.6431814238313819
+              ],
+              "final_belief_theta1": 0.6431814238313819,
+              "lambda_d_mean_episode": 0.47801549791639597,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 24,
+                "sigma1": 6
+              },
+              "type_counts": {
+                "theta2": 17,
+                "theta1": 13
+              },
+              "blue_action_counts": {
+                "Misinform": 24,
+                "Sleep": 6
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260316,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -391.7999999999999,
+              "red_reward_total": 391.7999999999999,
+              "blue_success_count": 5,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999988333332,
+                0.9999999999997293,
+                0.9999999999999836,
+                0.9999999999999942,
+                0.9998074576304052,
+                0.9999999999703382,
+                0.9999999999999076,
+                0.9999999999999889,
+                0.9999999999999949,
+                0.9999999999999962,
+                0.9999999999999967,
+                0.9999999999999967,
+                0.9999999999999967,
+                0.99984510598467,
+                0.9999999999726203,
+                0.9999999999999103,
+                0.9994747118175714,
+                0.9999999999570861,
+                0.9949406294456541,
+                0.9999999999010976,
+                0.9999999999998559,
+                0.9999999999999869,
+                0.9999999999999947,
+                0.999999999999996,
+                0.9999999999999964,
+                0.9999999999999967,
+                0.9998441178300661,
+                0.9999999999725562,
+                0.9999999999999101,
+                0.9999999999999891
+              ],
+              "final_belief_theta1": 0.9999999999999891,
+              "lambda_d_mean_episode": 0.037676609105180545,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma1": 25,
+                "sigma2": 5
+              },
+              "type_counts": {
+                "theta1": 25,
+                "theta2": 5
+              },
+              "blue_action_counts": {
+                "Sleep": 25,
+                "Misinform": 5
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise",
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260317,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 12,
+              "attack_like_count": 7,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.43291482722931635,
+                0.6428290639326723,
+                0.424490024256929,
+                0.6427128435044835,
+                0.4233626559891108,
+                0.6426971134896622,
+                0.4232103192692876,
+                0.6426949846400253,
+                0.42318970706178405,
+                0.642694696531124,
+                0.4231869175820783,
+                0.6426946575398164,
+                0.4231865400685033,
+                0.6426946522629166,
+                0.4231864889776234,
+                0.6426946515487658,
+                0.42318648206322523,
+                0.6426946514521159,
+                0.9999999982935033,
+                0.9709729053253934,
+                0.9999999998382054,
+                0.999999999999817,
+                0.9999999999999858,
+                0.9997332069920719,
+                0.9999999999665561,
+                0.9999999999999034,
+                0.9999999999999887,
+                0.9997552911444949
+              ],
+              "final_belief_theta1": 0.9997552911444949,
+              "lambda_d_mean_episode": 0.5362778129123065,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 23,
+                "sigma1": 7
+              },
+              "type_counts": {
+                "theta2": 11,
+                "theta1": 19
+              },
+              "blue_action_counts": {
+                "Misinform": 23,
+                "Sleep": 7
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260318,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -401.00000000000006,
+              "red_reward_total": 401.00000000000006,
+              "blue_success_count": 12,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.43291482722931635,
+                0.6428290639326723,
+                0.9999999983048236,
+                0.9713999544927722,
+                0.9999999998380109,
+                0.9999999999998173,
+                0.9999999999999858,
+                0.9997332815349048,
+                0.38385569234511946,
+                0.8655419840022145,
+                0.9999999989911783,
+                0.97729528521494,
+                0.12676488678801354,
+                0.8097551854089186,
+                0.220980085695081,
+                0.6689962731552511,
+                0.39143975329292424,
+                0.6463092157592863,
+                0.4188288029883668,
+                0.6431847913712013,
+                0.4225956719278317,
+                0.6427610021619291,
+                0.4231065043774453,
+                0.6427036313513347,
+                0.42317565697170934,
+                0.6426958667421039,
+                0.4231850161041724,
+                0.6426948159107579
+              ],
+              "final_belief_theta1": 0.6426948159107579,
+              "lambda_d_mean_episode": 0.541916409703758,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 25,
+                "sigma1": 5
+              },
+              "type_counts": {
+                "theta2": 14,
+                "theta1": 16
+              },
+              "blue_action_counts": {
+                "Misinform": 25,
+                "Sleep": 5
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260319,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 12,
+              "attack_like_count": 7,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.43291482722931635,
+                0.6428290639326723,
+                0.424490024256929,
+                0.6427128435044835,
+                0.9999999982950385,
+                0.9999999999993785,
+                0.9999999999999778,
+                0.9999999999999933,
+                0.9999999999999958,
+                0.9998299540537113,
+                0.4237037803032954,
+                0.8703237932822784,
+                0.9999999989962682,
+                0.9999999999995199,
+                0.9990272025625594,
+                0.27898460518372264,
+                0.8509685947799713,
+                0.17153703704972517,
+                0.6777410969494039,
+                0.38086600593190734,
+                0.6475383295330571,
+                0.41734661518491084,
+                0.6433519064678964,
+                0.42239422624917233,
+                0.6427836327151311,
+                0.4230792262491606,
+                0.642706694319375,
+                0.42317196499657844
+              ],
+              "final_belief_theta1": 0.42317196499657844,
+              "lambda_d_mean_episode": 0.5065718021288957,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 23,
+                "sigma1": 7
+              },
+              "type_counts": {
+                "theta1": 17,
+                "theta2": 13
+              },
+              "blue_action_counts": {
+                "Misinform": 23,
+                "Sleep": 7
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260320,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 11,
+              "attack_like_count": 7,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.43291482722931635,
+                0.6428290639326723,
+                0.424490024256929,
+                0.6427128435044835,
+                0.4233626559891108,
+                0.6426971134896622,
+                0.4232103192692876,
+                0.6426949846400253,
+                0.9999999982935313,
+                0.9999999999993772,
+                0.9999999999999776,
+                0.9999999999999933,
+                0.9997993042305652,
+                0.9999999999698821,
+                0.999999999999907,
+                0.9994678955602908,
+                0.999999999956882,
+                0.9999999999998939,
+                0.9999999999999885,
+                0.9999999999999949,
+                0.9998162264161669,
+                0.9999999999708427,
+                0.9956082325980775,
+                0.18164026896923152,
+                0.832339129231149,
+                0.9999999989508295,
+                0.9999999999994904,
+                0.9999999999999793
+              ],
+              "final_belief_theta1": 0.9999999999999793,
+              "lambda_d_mean_episode": 0.3247934090369562,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 16,
+                "sigma1": 14
+              },
+              "type_counts": {
+                "theta2": 11,
+                "theta1": 19
+              },
+              "blue_action_counts": {
+                "Misinform": 16,
+                "Sleep": 14
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260321,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -181.09999999999994,
+              "red_reward_total": 181.09999999999994,
+              "blue_success_count": 11,
+              "attack_like_count": 20,
+              "belief_path": [
+                0.9999999988333332,
+                0.9871730503383647,
+                0.9999999998603335,
+                0.9999999999998366,
+                0.9999999999999865,
+                0.9997372465756217,
+                0.9999999999667433,
+                0.9953914714367692,
+                0.17900883180497568,
+                0.8316861289011618,
+                0.19461247699673667,
+                0.6734523738478945,
+                0.3860533542883971,
+                0.6469336602903227,
+                0.41807587812046293,
+                0.6432696646168644,
+                0.42249337256991076,
+                0.6427724950983397,
+                0.9999999982941497,
+                0.970974795032588,
+                0.15998190091592937,
+                0.8061325546625332,
+                0.9999999989115251,
+                0.9999999999994722,
+                0.9999999999999789,
+                0.9996921167041529,
+                0.9999999999647458,
+                0.9952919864491079,
+                0.9999999999036946,
+                0.9999999999998574
+              ],
+              "final_belief_theta1": 0.9999999999998574,
+              "lambda_d_mean_episode": 0.31195701335890075,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma1": 12,
+                "sigma2": 18
+              },
+              "type_counts": {
+                "theta1": 21,
+                "theta2": 9
+              },
+              "blue_action_counts": {
+                "Sleep": 12,
+                "Misinform": 18
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 2,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 8
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": false,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260322,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -370.0,
+              "red_reward_total": 370.0,
+              "blue_success_count": 11,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.9999999983758403,
+                0.9999999999994436,
+                0.9989729652912493,
+                0.27498352210249893,
+                0.8498436297587156,
+                0.999999998974177,
+                0.9767405254522827,
+                0.9999999998363562,
+                0.9999999999998226,
+                0.9993251566729958,
+                0.3068553177305501,
+                0.8552161462709016,
+                0.16647374290717176,
+                0.6787421319625703,
+                0.9999999985316119,
+                0.9999999999993967,
+                0.9989419560738569,
+                0.27280496019856115,
+                0.8499782225735149,
+                0.172718651507578,
+                0.6775108564401571,
+                0.3811445084394049,
+                0.6475057736697435,
+                0.4173858767755981,
+                0.6433474770828137,
+                0.4223995656108224,
+                0.642783032839672,
+                0.4230799493200485
+              ],
+              "final_belief_theta1": 0.4230799493200485,
+              "lambda_d_mean_episode": 0.44220620223238466,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 23,
+                "sigma1": 7
+              },
+              "type_counts": {
+                "theta1": 15,
+                "theta2": 15
+              },
+              "blue_action_counts": {
+                "Misinform": 23,
+                "Sleep": 7
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260323,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -370.90000000000003,
+              "red_reward_total": 370.90000000000003,
+              "blue_success_count": 11,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.9999999983758403,
+                0.9999999999994436,
+                0.9989729652912493,
+                0.9999999999450713,
+                0.9999999999998841,
+                0.9994228395690129,
+                0.9999999999555724,
+                0.9999999999998928,
+                0.9999999999999882,
+                0.9999999999999949,
+                0.9999999999999962,
+                0.9998353368892293,
+                0.4265963555793449,
+                0.8706600555656218,
+                0.1481275893698521,
+                0.6825866950783298,
+                0.37500339620593,
+                0.6482260430128749,
+                0.4165172174416812,
+                0.643445511185142,
+                0.4222813907140678,
+                0.6427963103550637,
+                0.42306394501267985,
+                0.6427084102271943,
+                0.42316989671226546,
+                0.6426965135005238,
+                0.42318423652911785,
+                0.6426949034401366
+              ],
+              "final_belief_theta1": 0.6426949034401366,
+              "lambda_d_mean_episode": 0.4511615222489005,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 21,
+                "sigma1": 9
+              },
+              "type_counts": {
+                "theta2": 10,
+                "theta1": 20
+              },
+              "blue_action_counts": {
+                "Misinform": 21,
+                "Sleep": 9
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260324,
+              "scenario": "scenario_a_high_prior_theta1",
+              "policy": "pbne_production_camouflage",
+              "blue_reward_total": -370.80000000000007,
+              "red_reward_total": 370.80000000000007,
+              "blue_success_count": 11,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.6436873016814094,
+                0.9999999983758403,
+                0.9999999999994436,
+                0.9999999999999787,
+                0.9999999999999936,
+                0.9999999999999958,
+                0.9999999999999964,
+                0.9998401248369304,
+                0.4292542672850929,
+                0.8709597643322535,
+                0.9999999989969515,
+                0.9999999999995206,
+                0.9990276064132194,
+                0.2790153630433687,
+                0.8509734200063391,
+                0.17153129615778945,
+                0.6777422215842797,
+                0.9999999985263384,
+                0.9999999999993963,
+                0.9989416036748019,
+                0.2727806317097895,
+                0.8499742857874165,
+                0.17272334915260282,
+                0.677509943551656,
+                0.38114561266371283,
+                0.6475056446094101,
+                0.9999999983321519,
+                0.9999999999993798,
+                0.9999999999999778
+              ],
+              "final_belief_theta1": 0.9999999999999778,
+              "lambda_d_mean_episode": 0.341793048420936,
+              "lambda_a_mean_episode": 0.875,
+              "signal_counts": {
+                "sigma2": 17,
+                "sigma1": 13
+              },
+              "type_counts": {
+                "theta2": 12,
+                "theta1": 18
+              },
+              "blue_action_counts": {
+                "Misinform": 17,
+                "Sleep": 13
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "compared_policy": "pbne_production_camouflage",
+        "blue_reward_lift": 94.13000000000005,
+        "red_reward_reduction": 94.13000000000005,
+        "attack_like_count_reduction": 2.3000000000000007,
+        "final_belief_shift": -0.12254224196958963
+      }
+    },
+    "scenario_b_low_prior_theta1": {
+      "prior_theta1": 0.35,
+      "policies": {
+        "truthful_baseline": {
+          "aggregate": {
+            "episode_count": 10,
+            "blue_reward_mean": -388.18,
+            "red_reward_mean": 388.18,
+            "blue_success_mean": 8,
+            "attack_like_count_mean": 19,
+            "critical_host_compromise_rate": 1.0,
+            "production_compromise_rate": 1.0,
+            "honeypot_compromise_rate": 0.2,
+            "red_session_count_mean": 5.8,
+            "final_belief_theta1_mean": 0.19997689581748251,
+            "lambda_d_mean": 0.0,
+            "lambda_a_mean": 0.0,
+            "avg_belief_path": [
+              0.39999999958021976,
+              0.39999946038656664,
+              0.29999999033738123,
+              0.7999294913076289,
+              0.4000116745040773,
+              0.30000457057049784,
+              0.2999969598274119,
+              0.6999882533836664,
+              0.49995763321858877,
+              0.30000136038957304,
+              0.399996096149045,
+              0.20000113297184322,
+              0.29996732432524104,
+              0.39998559918087534,
+              0.2999696122707255,
+              0.20000032628241435,
+              0.39992819937927343,
+              0.299976751351631,
+              0.10000063527320256,
+              0.39994258889346423,
+              0.3999710404106294,
+              0.29998543706973185,
+              0.3999544874443181,
+              0.6999642407908363,
+              0.4000002836475588,
+              0.19998215386751644,
+              0.10000076550248518,
+              0.2999546832773314,
+              0.29995382162735335,
+              0.19997689581748251
+            ]
+          },
+          "episodes": [
+            {
+              "seed": 20260315,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -410.0,
+              "red_reward_total": 410.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                0.9999962002184243,
+                6.668867368068257e-08,
+                1.5494360311223755e-12,
+                0.9999673020318944,
+                3.021118133905627e-08,
+                0.9999991363575702,
+                0.9999999999913054,
+                7.926443733574248e-06,
+                8.985338086711628e-12,
+                5.838345170622695e-14,
+                9.154769751607102e-15,
+                4.630587030608638e-15,
+                3.60362467401693e-15,
+                0.9996957790698671,
+                1.3297535712417675e-08,
+                8.561595213902161e-13,
+                2.4586251184356786e-14,
+                6.659978770330239e-15,
+                4.11912018162533e-15,
+                0.9997103760022678,
+                1.3540334600075608e-08,
+                8.618775581731451e-13,
+                0.999959427985761,
+                2.790577010360213e-08,
+                1.1245622224951215e-12,
+                2.7180649780100602e-14,
+                6.9103562934095574e-15,
+                4.175424989283287e-15,
+                3.469035585790717e-15
+              ],
+              "final_belief_theta1": 3.469035585790717e-15,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 23,
+                "sigma1": 7
+              },
+              "type_counts": {
+                "theta2": 23,
+                "theta1": 7
+              },
+              "blue_action_counts": {
+                "Misinform": 23,
+                "Sleep": 7
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 3,
+                "Impact": 8
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 5
+            },
+            {
+              "seed": 20260316,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -400.9000000000001,
+              "red_reward_total": 400.9000000000001,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999981428571,
+                0.9999999999990923,
+                0.9999999999999452,
+                0.9999999999999805,
+                7.464129319858643e-05,
+                0.9999999512272971,
+                3.3107517953219933e-07,
+                0.9999996420451811,
+                0.9999999999937117,
+                8.929856912690735e-06,
+                9.38811225653005e-12,
+                0.9999831462296613,
+                3.8552687260929344e-08,
+                1.2665410981790207e-12,
+                2.8395896385340258e-14,
+                7.022448857814801e-15,
+                4.200214607765306e-15,
+                3.476598172296532e-15,
+                3.24298804374038e-15,
+                0.9996837499445537,
+                0.9999999999237172,
+                0.9999999999997196,
+                0.9999999999999643,
+                0.9999999999999833,
+                0.9999999999999873,
+                8.769132400290504e-05,
+                2.1755472151343037e-11,
+                0.9999876283788309,
+                4.3196713967565257e-08,
+                1.3206601722744833e-12
+              ],
+              "final_belief_theta1": 1.3206601722744833e-12,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 15,
+                "sigma2": 15
+              },
+              "type_counts": {
+                "theta1": 15,
+                "theta2": 15
+              },
+              "blue_action_counts": {
+                "Sleep": 15,
+                "Misinform": 15
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260317,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -380.0,
+              "red_reward_total": 380.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                2.631720219488959e-13,
+                1.59302344700149e-14,
+                0.999823889618945,
+                0.9999999999385003,
+                3.859398671007063e-06,
+                0.9999998549725876,
+                0.99999999999549,
+                1.0091288247023728e-05,
+                0.9999998981675199,
+                2.5252948775673166e-07,
+                2.528736939994635e-12,
+                3.662047958324629e-14,
+                0.9998703370107376,
+                0.9999999999450524,
+                4.022700410673622e-06,
+                7.001175696582106e-12,
+                5.3262933690521436e-14,
+                8.850789833026679e-15,
+                0.9997813929835432,
+                0.999999999933409,
+                3.7481074529704496e-06,
+                0.9999998534030337,
+                0.9999999999954721,
+                0.9999999999999007,
+                4.108591686657214e-05,
+                1.6460072398714743e-11,
+                7.294647092853087e-14,
+                9.9363460705591e-15,
+                4.772269243070976e-15
+              ],
+              "final_belief_theta1": 4.772269243070976e-15,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 18,
+                "sigma1": 12
+              },
+              "type_counts": {
+                "theta2": 18,
+                "theta1": 12
+              },
+              "blue_action_counts": {
+                "Misinform": 18,
+                "Sleep": 12
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260318,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -410.0,
+              "red_reward_total": 410.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                2.631720219488959e-13,
+                1.59302344700149e-14,
+                0.999823889618945,
+                0.9999999999385003,
+                3.859398671007063e-06,
+                6.8952471751345935e-12,
+                0.999981119977942,
+                0.9999999999729552,
+                5.221245061661251e-06,
+                7.706121722144661e-12,
+                5.5176320949560364e-14,
+                8.966454680141032e-15,
+                4.595315408371245e-15,
+                3.593502283501253e-15,
+                3.2826861078780486e-15,
+                0.9996851618548186,
+                0.9999999999238427,
+                3.5675182112494836e-06,
+                6.6986215521441516e-12,
+                5.2404323611910134e-14,
+                8.798032230151157e-15,
+                4.563370822460798e-15,
+                3.58429223018671e-15,
+                3.2795884657286716e-15,
+                0.9996850525250683,
+                0.9999999999238329,
+                3.5673505325594513e-06,
+                6.698505724923517e-12,
+                0.9999809178478042
+              ],
+              "final_belief_theta1": 0.9999809178478042,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 21,
+                "sigma1": 9
+              },
+              "type_counts": {
+                "theta2": 21,
+                "theta1": 9
+              },
+              "blue_action_counts": {
+                "Misinform": 21,
+                "Sleep": 9
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 3,
+                "Impact": 8
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 5
+            },
+            {
+              "seed": 20260319,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -380.0,
+              "red_reward_total": 380.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999981428571,
+                1.1017147902845597e-06,
+                4.3476769451680315e-12,
+                4.4699820931895255e-14,
+                8.298112200578941e-15,
+                4.466211913732248e-15,
+                3.556026996123619e-15,
+                3.270050411384306e-15,
+                0.9996847149952642,
+                0.999999999923803,
+                0.9999999999997196,
+                2.8039646159325374e-05,
+                1.4301807646954702e-11,
+                0.9999855640588492,
+                4.0812731052930453e-08,
+                0.9999992268234547,
+                1.197936513338663e-07,
+                1.922009214021284e-12,
+                3.310486787539629e-14,
+                7.430237590951263e-15,
+                4.2883450292952195e-15,
+                3.5032579993650344e-15,
+                3.252114542804183e-15,
+                0.9996840766248243,
+                1.3114108383326832e-08,
+                8.517958034228575e-13,
+                2.454007683270509e-14,
+                6.655374669460981e-15,
+                0.9997572268932259,
+                1.4448705681447038e-08
+              ],
+              "final_belief_theta1": 1.4448705681447038e-08,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 8,
+                "sigma2": 22
+              },
+              "type_counts": {
+                "theta1": 8,
+                "theta2": 22
+              },
+              "blue_action_counts": {
+                "Sleep": 8,
+                "Misinform": 22
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260320,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -370.0,
+              "red_reward_total": 370.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                2.631720219488959e-13,
+                1.59302344700149e-14,
+                0.999823889618945,
+                1.626026940168318e-08,
+                0.9999989153037196,
+                1.0576564833168347e-07,
+                0.9999994553185403,
+                1.3627041148076608e-07,
+                0.9999995038020948,
+                0.999999999992909,
+                0.999999999999883,
+                3.86660922709625e-05,
+                0.9999999378749268,
+                3.0287689882498875e-07,
+                2.703642305038232e-12,
+                0.9999733572450977,
+                3.257530371957894e-08,
+                0.99999915996635,
+                0.9999999999913938,
+                0.9999999999998743,
+                0.9999999999999734,
+                6.673386746515364e-05,
+                0.9999999491759678,
+                3.260952093260871e-07,
+                2.7781147014031092e-12,
+                3.790972398912423e-14,
+                0.9998719767740148,
+                0.9999999999453091,
+                4.02963599218721e-06
+              ],
+              "final_belief_theta1": 4.02963599218721e-06,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 15,
+                "sigma1": 15
+              },
+              "type_counts": {
+                "theta2": 15,
+                "theta1": 15
+              },
+              "blue_action_counts": {
+                "Misinform": 15,
+                "Sleep": 15
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260321,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -360.90000000000003,
+              "red_reward_total": 360.90000000000003,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999981428571,
+                1.1017147902845597e-06,
+                0.9999997699921631,
+                0.999999999994656,
+                0.9999999999998945,
+                4.0174839241572184e-05,
+                1.6324837923309396e-11,
+                7.27254177217839e-14,
+                0.9998992571055487,
+                1.9969927583263542e-08,
+                9.9431538675754e-13,
+                2.5977254326628655e-14,
+                0.9998528803795694,
+                0.9999999999424387,
+                0.9999999999997471,
+                0.9999999999999656,
+                6.070981657843676e-05,
+                1.9002673170489945e-11,
+                7.69048436751385e-14,
+                1.0131396783726124e-14,
+                4.806520538455321e-15,
+                3.653400366012382e-15,
+                0.9996973100276779,
+                0.9999999999249376,
+                3.5865731384615727e-06,
+                6.711761751790374e-12,
+                5.244211737215088e-14,
+                8.80036593046381e-15,
+                0.9997809331237509,
+                1.500544687535288e-08
+              ],
+              "final_belief_theta1": 1.500544687535288e-08,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 12,
+                "sigma2": 18
+              },
+              "type_counts": {
+                "theta1": 12,
+                "theta2": 18
+              },
+              "blue_action_counts": {
+                "Sleep": 12,
+                "Misinform": 18
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260322,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -370.0,
+              "red_reward_total": 370.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.9999999981428571,
+                0.9999999999990923,
+                0.9999999999999452,
+                0.9999999999999805,
+                7.464129319858643e-05,
+                2.0503271123083956e-11,
+                7.908549294001516e-14,
+                0.9999023165383367,
+                2.0197802859765983e-08,
+                9.98474406292501e-13,
+                0.9999615653281031,
+                2.8466938803546765e-08,
+                1.1328292493739153e-12,
+                2.7253987093583808e-14,
+                6.9172096155933815e-15,
+                4.1769478873490705e-15,
+                0.9997118571636694,
+                0.9999999999262859,
+                3.6105668138979485e-06,
+                6.7282450757190725e-12,
+                5.2489460529073095e-14,
+                8.803287790248825e-15,
+                0.9997809598690297,
+                1.500612102493961e-08,
+                0.999998882796844,
+                0.9999999999904419,
+                7.655053764233771e-06,
+                8.870912866259419e-12,
+                5.810882720789724e-14,
+                9.138904415083394e-15
+              ],
+              "final_belief_theta1": 9.138904415083394e-15,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma1": 11,
+                "sigma2": 19
+              },
+              "type_counts": {
+                "theta1": 11,
+                "theta2": 19
+              },
+              "blue_action_counts": {
+                "Sleep": 11,
+                "Misinform": 19
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260323,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -420.0,
+              "red_reward_total": 420.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                2.631720219488959e-13,
+                1.59302344700149e-14,
+                0.999823889618945,
+                1.626026940168318e-08,
+                0.9999989153037196,
+                1.0576564833168347e-07,
+                1.835934448178926e-12,
+                0.9999692804412662,
+                3.0912895615981705e-08,
+                0.999999143622029,
+                1.1537316162648359e-07,
+                0.9999994724648372,
+                1.3788335711902654e-07,
+                2.024066727360194e-12,
+                3.374099415899435e-14,
+                7.482446121889776e-15,
+                0.9997674637871415,
+                1.4679578907259772e-08,
+                8.878760251200755e-13,
+                2.4917469801369993e-14,
+                0.9998506090486835,
+                1.7275113722451292e-08,
+                0.999998939195285,
+                0.9999999999906224,
+                7.708907314984091e-06,
+                8.893820499987422e-12,
+                5.816398481782177e-14,
+                9.142094724000534e-15,
+                0.9997839812346866
+              ],
+              "final_belief_theta1": 0.9997839812346866,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 20,
+                "sigma1": 10
+              },
+              "type_counts": {
+                "theta2": 20,
+                "theta1": 10
+              },
+              "blue_action_counts": {
+                "Misinform": 20,
+                "Sleep": 10
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 3,
+                "Impact": 8
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 5
+            },
+            {
+              "seed": 20260324,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "truthful_baseline",
+              "blue_reward_total": -380.0,
+              "red_reward_total": 380.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                5.384615381715974e-10,
+                0.9999962002184243,
+                6.668867368068257e-08,
+                0.9999993546042982,
+                1.2802503959777505e-07,
+                1.9695766095465567e-12,
+                0.9999700643141823,
+                0.9999999999679572,
+                4.905476946681618e-06,
+                7.531282110522988e-12,
+                5.471244255925479e-14,
+                8.938648877196639e-15,
+                0.9997821857475608,
+                1.503714226927545e-08,
+                8.957716196110858e-13,
+                2.4998757625050827e-14,
+                0.9998507879110495,
+                1.7282729982835595e-08,
+                9.42832448895595e-13,
+                0.9999607460008155,
+                2.8246886981148963e-08,
+                1.1295998747932972e-12,
+                2.7225379504273802e-14,
+                6.914537644163436e-15,
+                4.1763542537434354e-15,
+                3.4693195884251783e-15,
+                3.240488671944033e-15,
+                0.9996836602609109,
+                1.310775387943472e-08,
+                8.51643940964741e-13
+              ],
+              "final_belief_theta1": 8.51643940964741e-13,
+              "lambda_d_mean_episode": 0.0,
+              "lambda_a_mean_episode": 0.0,
+              "signal_counts": {
+                "sigma2": 22,
+                "sigma1": 8
+              },
+              "type_counts": {
+                "theta2": 22,
+                "theta1": 8
+              },
+              "blue_action_counts": {
+                "Misinform": 22,
+                "Sleep": 8
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            }
+          ]
+        },
+        "pbne_honeypot_camouflage": {
+          "aggregate": {
+            "episode_count": 10,
+            "blue_reward_mean": -265.53000000000003,
+            "red_reward_mean": 265.53000000000003,
+            "blue_success_mean": 7.6,
+            "attack_like_count_mean": 15.2,
+            "critical_host_compromise_rate": 0.7,
+            "production_compromise_rate": 0.7,
+            "honeypot_compromise_rate": 0.5,
+            "red_session_count_mean": 5.7,
+            "final_belief_theta1_mean": 0.13630306620710442,
+            "lambda_d_mean": 0.30577387470856776,
+            "lambda_a_mean": 0.8125,
+            "avg_belief_path": [
+              0.35000000035,
+              0.2519842787553676,
+              0.2835425867381086,
+              0.18459485802950756,
+              0.34391608676871044,
+              0.14928246554776545,
+              0.21311144858342337,
+              0.2572845760559263,
+              0.23409271017115055,
+              0.23349349152450033,
+              0.2465022095485857,
+              0.15264434114046943,
+              0.09379581668529567,
+              0.220301630625012,
+              0.181946948948449,
+              0.1343830814009274,
+              0.09190196836107793,
+              0.15722126789802568,
+              0.048858968667787384,
+              0.1412225162899049,
+              0.17227637059972983,
+              0.10683287351228551,
+              0.2052862877753842,
+              0.20952209021254095,
+              0.26202468742785445,
+              0.2275995465128475,
+              0.10940726132552579,
+              0.1541478981802194,
+              0.1407592330701918,
+              0.13630306620710442
+            ]
+          },
+          "episodes": [
+            {
+              "seed": 20260315,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -380.0,
+              "red_reward_total": 380.0,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.166666665305555e-09,
+                0.01282694966163536,
+                1.3966650859712423e-10,
+                1.6352879915614968e-13,
+                0.0006548067627399216,
+                4.6540423634548834e-11,
+                0.005211841915312407,
+                0.8275780152753329,
+                0.1699688618611514,
+                0.8033906571578957,
+                0.32689822133514457,
+                0.6135217134915799,
+                0.3531156086706784,
+                0.5818645910966871,
+                0.35673703406794627,
+                1.7017937890164619e-09,
+                6.22504491158936e-13,
+                2.2321745562854415e-14,
+                6.56130060616219e-15,
+                4.1819070622168655e-15,
+                0.00017005085251727185,
+                2.833653901102945e-11,
+                9.093842549132341e-14,
+                0.0005277344809373019,
+                4.298733936602605e-11,
+                1.060062116084351e-13,
+                1.1638535298452021e-14,
+                5.163481880170141e-15,
+                3.829107176523805e-15,
+                3.43028470371371e-15
+              ],
+              "final_belief_theta1": 3.43028470371371e-15,
+              "lambda_d_mean_episode": 0.22259706430556267,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma2": 17,
+                "sigma1": 13
+              },
+              "type_counts": {
+                "theta2": 23,
+                "theta1": 7
+              },
+              "blue_action_counts": {
+                "Misinform": 17,
+                "Sleep": 13
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260316,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 8,
+              "attack_like_count": 7,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                0.5670851727706835,
+                0.3571709360673278,
+                0.575509975743071,
+                0.35728715649551657,
+                1.7049614604650326e-09,
+                0.028968939960191904,
+                0.840316364155474,
+                0.1938681889348013,
+                1.0884359303010624e-09,
+                0.024702865906978313,
+                1.6313854340544055e-10,
+                1.789885621073412e-13,
+                1.4112003672155747e-14,
+                5.542817985465436e-15,
+                3.93028261188945e-15,
+                3.4633538377312458e-15,
+                3.305905088015032e-15,
+                0.00015596614146314134,
+                0.5685128822317352,
+                0.1287749053983432,
+                0.8525415881494268,
+                0.3172659222030801,
+                0.6251749593467799,
+                0.35175296213373075,
+                1.6621188661874255e-09,
+                0.02889216291977809,
+                1.6183312829322663e-10,
+                1.829302439985983e-13
+              ],
+              "final_belief_theta1": 1.829302439985983e-13,
+              "lambda_d_mean_episode": 0.35963241560715176,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 18,
+                "sigma2": 12
+              },
+              "type_counts": {
+                "theta1": 15,
+                "theta2": 15
+              },
+              "blue_action_counts": {
+                "Sleep": 18,
+                "Misinform": 12
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260317,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 8,
+              "attack_like_count": 7,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                1.6241597596287285e-09,
+                0.026012176969561436,
+                0.855988065077334,
+                0.193856034999767,
+                0.774313353142945,
+                0.33170157902347286,
+                1.5264472110665164e-09,
+                0.0283939139323856,
+                1.6197851691642538e-10,
+                1.8248742169478008e-13,
+                1.4212866756302633e-14,
+                0.0002666821043243139,
+                0.6161324422129195,
+                0.13445361089753272,
+                1.0088234629102637e-09,
+                4.840028567042896e-13,
+                2.0347962580590318e-14,
+                0.0003043039462491416,
+                0.627551539470358,
+                0.1358827649521037,
+                0.84411301874353,
+                0.31908381874139297,
+                0.6229752012727795,
+                0.35201160081994215,
+                1.6641109309869176e-09,
+                6.199672631462769e-13,
+                2.228823273889381e-14,
+                6.557674967449191e-15
+              ],
+              "final_belief_theta1": 6.557674967449191e-15,
+              "lambda_d_mean_episode": 0.3444831779764059,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 18,
+                "sigma2": 12
+              },
+              "type_counts": {
+                "theta2": 18,
+                "theta1": 12
+              },
+              "blue_action_counts": {
+                "Sleep": 18,
+                "Misinform": 12
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 5,
+                "ExploitRemoteService": 5,
+                "PrivilegeEscalate": 2,
+                "Sleep": 17
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 4
+            },
+            {
+              "seed": 20260318,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": 0.0,
+              "red_reward_total": 0.0,
+              "blue_success_count": 7,
+              "attack_like_count": 5,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                1.6241597596287285e-09,
+                0.026012176969561436,
+                0.855988065077334,
+                0.193856034999767,
+                0.774313353142945,
+                0.33170157902347286,
+                0.6076853763312491,
+                0.3537882334209652,
+                0.5810499753459226,
+                0.35682844840867645,
+                0.5773878760262553,
+                0.3572407905807408,
+                0.5768912682417993,
+                0.35729661128707313,
+                0.5768240415697599,
+                0.35730416609574644,
+                1.7064869391529073e-09,
+                6.2280884808161e-13,
+                2.232575983921826e-14,
+                6.561734666281138e-15,
+                4.182008834792206e-15,
+                3.543360362855259e-15,
+                3.333797203300529e-15,
+                0.00015644887183304627,
+                0.5687917836337282,
+                0.1288070251334086,
+                1.0028233714672716e-09,
+                0.022488873429449437
+              ],
+              "final_belief_theta1": 0.022488873429449437,
+              "lambda_d_mean_episode": 0.45991343926351536,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 21,
+                "sigma2": 9
+              },
+              "type_counts": {
+                "theta2": 21,
+                "theta1": 9
+              },
+              "blue_action_counts": {
+                "Sleep": 21,
+                "Misinform": 9
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 1,
+                "DiscoverNetworkServices": 4,
+                "ExploitRemoteService": 4,
+                "PrivilegeEscalate": 1,
+                "Sleep": 20
+              },
+              "active_red_hosts": [
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": false,
+              "red_session_count": 3
+            },
+            {
+              "seed": 20260319,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -370.90000000000003,
+              "red_reward_total": 370.90000000000003,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                0.5670851727706835,
+                0.3571709360673278,
+                1.6951763824699619e-09,
+                6.133768883192237e-13,
+                2.2200777129645256e-14,
+                6.5481971823315635e-15,
+                0.00020054374576045355,
+                0.591044559040273,
+                0.1314182289394951,
+                1.005552271195187e-09,
+                4.814821619799232e-13,
+                0.0009738784657248673,
+                5.38642576830828e-11,
+                0.0054981383484091866,
+                1.019917033948641e-10,
+                1.4566949423292708e-13,
+                1.308215866778239e-14,
+                5.390436993978299e-15,
+                3.890182669772044e-15,
+                3.450312313070807e-15,
+                3.3013200279429665e-15,
+                0.00015588654142682575,
+                2.744414242793073e-11,
+                8.987418358701284e-14,
+                1.095273834538189e-14,
+                5.0493980813492234e-15,
+                0.00018225944644788858,
+                2.906873010178327e-11
+              ],
+              "final_belief_theta1": 2.906873010178327e-11,
+              "lambda_d_mean_episode": 0.1736108081138375,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 11,
+                "sigma2": 19
+              },
+              "type_counts": {
+                "theta1": 8,
+                "theta2": 22
+              },
+              "blue_action_counts": {
+                "Sleep": 11,
+                "Misinform": 19
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260320,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -370.0,
+              "red_reward_total": 370.0,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.166666665305555e-09,
+                2.7070037807359986e-13,
+                1.6431727321897568e-14,
+                0.0002812966071992501,
+                3.4101835921559345e-11,
+                0.0046510704370363995,
+                9.587330297644584e-11,
+                0.0067884051849107455,
+                1.1026873578565426e-10,
+                0.007144346276092485,
+                0.8436048807651236,
+                0.1740850790226192,
+                1.0581163251265836e-09,
+                0.024083028618799823,
+                1.633511076219806e-10,
+                1.7835871902433515e-13,
+                0.0006760409737966433,
+                4.7090411488553795e-11,
+                0.005234297562413416,
+                0.8278047696047571,
+                0.16995253294879054,
+                0.8034279421736876,
+                0.32689477455762755,
+                0.6135274881416061,
+                0.35311512441399706,
+                0.5818653609163672,
+                0.35673696822944534,
+                0.5774986410236298,
+                0.3572284031128808,
+                0.5769062661511032
+              ],
+              "final_belief_theta1": 0.5769062661511032,
+              "lambda_d_mean_episode": 0.31090189565709553,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma2": 10,
+                "sigma1": 20
+              },
+              "type_counts": {
+                "theta2": 15,
+                "theta1": 15
+              },
+              "blue_action_counts": {
+                "Misinform": 10,
+                "Sleep": 20
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260321,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -351.5999999999999,
+              "red_reward_total": 351.5999999999999,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                0.5670851727706835,
+                0.3571709360673278,
+                0.575509975743071,
+                0.35728715649551657,
+                1.7049614604650326e-09,
+                6.21524488082678e-13,
+                0.0010696775169378328,
+                5.5757897657695077e-11,
+                1.1665117523489353e-13,
+                1.2055537823024103e-14,
+                0.00025101467019816935,
+                0.6108496250724378,
+                0.13380227931661065,
+                0.8465824507638579,
+                0.31855965154716953,
+                0.623609434439866,
+                0.35193709752957114,
+                0.5832860256156629,
+                0.356576700446338,
+                1.7004740377891094e-09,
+                0.029009406653406795,
+                0.8400994967199759,
+                0.19385932917135687,
+                1.0884615435701575e-09,
+                5.276920978758852e-13,
+                0.0010072377762302437,
+                0.7235851680719592,
+                0.1494409233940977
+              ],
+              "final_belief_theta1": 0.1494409233940977,
+              "lambda_d_mean_episode": 0.44125269959023317,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 22,
+                "sigma2": 8
+              },
+              "type_counts": {
+                "theta1": 12,
+                "theta2": 18
+              },
+              "blue_action_counts": {
+                "Sleep": 22,
+                "Misinform": 8
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 6,
+                "Impact": 5
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise",
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 8
+            },
+            {
+              "seed": 20260322,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -411.0000000000001,
+              "red_reward_total": 411.0000000000001,
+              "blue_success_count": 7,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                0.5670851727706835,
+                0.3571709360673278,
+                0.575509975743071,
+                0.35728715649551657,
+                0.576637344010889,
+                0.3573028865103378,
+                0.5767896807307125,
+                0.3573050153599747,
+                0.5768102929382161,
+                0.35730530346887607,
+                1.706492965146454e-09,
+                6.228063016427592e-13,
+                2.2325726258436494e-14,
+                6.561731035425814e-15,
+                0.00020069609619932066,
+                0.591112096931092,
+                0.1314182898498385,
+                1.0055705244514606e-09,
+                4.814888602415649e-13,
+                2.0309017053229804e-14,
+                0.00030408961742092505,
+                3.5093717513902065e-11,
+                0.004700155134482394,
+                0.8220580260987129,
+                0.16854385701546185,
+                0.8051181383581214,
+                0.3265964988784899,
+                0.6138881434092305
+              ],
+              "final_belief_theta1": 0.6138881434092305,
+              "lambda_d_mean_episode": 0.4584957948293936,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 22,
+                "sigma2": 8
+              },
+              "type_counts": {
+                "theta1": 11,
+                "theta2": 19
+              },
+              "blue_action_counts": {
+                "Sleep": 22,
+                "Misinform": 8
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            },
+            {
+              "seed": 20260323,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -360.80000000000007,
+              "red_reward_total": 360.80000000000007,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                0.5,
+                0.35631269831859064,
+                0.5670851727706835,
+                0.3571709360673278,
+                1.6951763824699619e-09,
+                0.028600045507227743,
+                1.6198900410469687e-10,
+                1.8267139981329025e-13,
+                0.0006820050993061921,
+                4.724292221110432e-11,
+                0.005240494910932026,
+                1.001972070777644e-10,
+                0.006898701164389278,
+                1.1092901045501622e-10,
+                1.5024117187930513e-13,
+                1.3231725514537745e-14,
+                5.413027345232163e-15,
+                0.00018698130198230713,
+                2.934359147466454e-11,
+                9.211425848387919e-14,
+                1.1052385991190925e-14,
+                0.0002431208697702123,
+                3.231985077374907e-11,
+                0.004560555261887894,
+                0.82042210486871,
+                0.16815106519922812,
+                1.0498391964359003e-09,
+                5.098774231999432e-13,
+                2.074156754056522e-14,
+                0.0003064556578118425
+              ],
+              "final_belief_theta1": 0.0003064556578118425,
+              "lambda_d_mean_episode": 0.1756065812878488,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma1": 14,
+                "sigma2": 16
+              },
+              "type_counts": {
+                "theta2": 20,
+                "theta1": 10
+              },
+              "blue_action_counts": {
+                "Sleep": 14,
+                "Misinform": 16
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 5,
+                "Impact": 6
+              },
+              "active_red_hosts": [
+                "Honey_Operational",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1",
+                "User2"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Operational"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 7
+            },
+            {
+              "seed": 20260324,
+              "scenario": "scenario_b_low_prior_theta1",
+              "policy": "pbne_honeypot_camouflage",
+              "blue_reward_total": -411.0000000000001,
+              "red_reward_total": 411.0000000000001,
+              "blue_success_count": 8,
+              "attack_like_count": 19,
+              "belief_path": [
+                1.166666665305555e-09,
+                0.01282694966163536,
+                1.3966650859712423e-10,
+                0.007788249411950941,
+                1.1602870582785958e-10,
+                1.527460832972504e-13,
+                0.0006385899543349513,
+                0.6888043555807332,
+                0.1442145906341982,
+                1.0196143514432473e-09,
+                4.918092486388494e-13,
+                2.0468086264025795e-14,
+                0.00030496339319196515,
+                0.6277377101996747,
+                0.13590646542781232,
+                1.0104036058887826e-09,
+                0.022759252312407007,
+                1.6382414998855902e-10,
+                1.7696678901033612e-13,
+                0.0006740965846216146,
+                4.7040507353938786e-11,
+                1.0957890675275381e-13,
+                1.1781326486656022e-14,
+                5.186697223786525e-15,
+                3.8354315778842465e-15,
+                3.432367903955995e-15,
+                3.2949932991810627e-15,
+                0.00015577658988589078,
+                2.7437018616799947e-11,
+                8.986560059235304e-14
+              ],
+              "final_belief_theta1": 8.986560059235304e-14,
+              "lambda_d_mean_episode": 0.11124487045463352,
+              "lambda_a_mean_episode": 0.8125,
+              "signal_counts": {
+                "sigma2": 19,
+                "sigma1": 11
+              },
+              "type_counts": {
+                "theta2": 22,
+                "theta1": 8
+              },
+              "blue_action_counts": {
+                "Misinform": 19,
+                "Sleep": 11
+              },
+              "red_action_counts": {
+                "DiscoverRemoteSystems": 3,
+                "DiscoverNetworkServices": 8,
+                "ExploitRemoteService": 8,
+                "PrivilegeEscalate": 4,
+                "Impact": 7
+              },
+              "active_red_hosts": [
+                "Honey_Enterprise",
+                "Prod_Enterprise",
+                "Prod_Operational",
+                "User0",
+                "User1"
+              ],
+              "production_hosts_compromised": [
+                "Prod_Enterprise",
+                "Prod_Operational"
+              ],
+              "honeypot_hosts_compromised": [
+                "Honey_Enterprise"
+              ],
+              "critical_host_compromised": true,
+              "red_session_count": 6
+            }
+          ]
+        }
+      },
+      "comparison": {
+        "compared_policy": "pbne_honeypot_camouflage",
+        "blue_reward_lift": 122.64999999999998,
+        "red_reward_reduction": 122.64999999999998,
+        "attack_like_count_reduction": 3.8000000000000007,
+        "final_belief_shift": -0.0636738296103781
+      }
+    }
+  }
+}

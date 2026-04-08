@@ -1,0 +1,84 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='828' viewBox='0 0 1280 828'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='640.0' y='32.0' font-size='18' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>图4-6 SG-MAPPO与Plain-MAPPO的点估计与评估区间</text>
+<rect x='40.0' y='60.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='329.5' y='84.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>防御方平均回合收益</text>
+<line x1='162.0' y1='106.0' x2='162.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='162.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>15</text>
+<line x1='271.2' y1='106.0' x2='271.2' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='271.2' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>95</text>
+<line x1='380.5' y1='106.0' x2='380.5' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='380.5' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>174</text>
+<line x1='489.8' y1='106.0' x2='489.8' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='489.8' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>253</text>
+<line x1='599.0' y1='106.0' x2='599.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='599.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>332</text>
+<text x='152.0' y='173.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='556.7' y1='169.0' x2='556.7' y2='169.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='556.7' cy='169.0' r='5.6' fill='#1F5AA6'/>
+<text x='556.7' y='159.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>301.3</text>
+<text x='152.0' y='299.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>Plain-MAPPO</text>
+<line x1='204.3' y1='295.0' x2='204.3' y2='295.0' stroke='#C95F3C' stroke-width='3' stroke-linecap='round'/>
+<circle cx='204.3' cy='295.0' r='5.6' fill='#C95F3C'/>
+<text x='204.3' y='285.0' font-size='10' fill='#C95F3C' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>46.1</text>
+<rect x='661.0' y='60.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='950.5' y='84.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>信号效应</text>
+<line x1='783.0' y1='106.0' x2='783.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='783.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>-0.01</text>
+<line x1='892.2' y1='106.0' x2='892.2' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='892.2' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.06</text>
+<line x1='1001.5' y1='106.0' x2='1001.5' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1001.5' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.13</text>
+<line x1='1110.8' y1='106.0' x2='1110.8' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1110.8' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.19</text>
+<line x1='1220.0' y1='106.0' x2='1220.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1220.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.26</text>
+<text x='773.0' y='173.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='976.8' y1='169.0' x2='1177.7' y2='169.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='1006.6' cy='169.0' r='5.6' fill='#1F5AA6'/>
+<text x='1006.6' y='159.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.129</text>
+<text x='773.0' y='299.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>Plain-MAPPO</text>
+<line x1='825.3' y1='295.0' x2='1031.7' y2='295.0' stroke='#C95F3C' stroke-width='3' stroke-linecap='round'/>
+<circle cx='910.7' cy='295.0' r='5.6' fill='#C95F3C'/>
+<text x='910.7' y='285.0' font-size='10' fill='#C95F3C' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.072</text>
+<rect x='40.0' y='430.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='329.5' y='454.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>真实主机攻击率</text>
+<line x1='162.0' y1='476.0' x2='162.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='162.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.27</text>
+<line x1='271.2' y1='476.0' x2='271.2' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='271.2' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.39</text>
+<line x1='380.5' y1='476.0' x2='380.5' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='380.5' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.52</text>
+<line x1='489.8' y1='476.0' x2='489.8' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='489.8' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.64</text>
+<line x1='599.0' y1='476.0' x2='599.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='599.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.76</text>
+<text x='152.0' y='543.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='204.3' y1='539.0' x2='334.9' y2='539.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='264.5' cy='539.0' r='5.6' fill='#1F5AA6'/>
+<text x='264.5' y='529.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.385</text>
+<text x='152.0' y='669.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>Plain-MAPPO</text>
+<line x1='427.9' y1='665.0' x2='556.7' y2='665.0' stroke='#C95F3C' stroke-width='3' stroke-linecap='round'/>
+<circle cx='491.8' cy='665.0' r='5.6' fill='#C95F3C'/>
+<text x='491.8' y='655.0' font-size='10' fill='#C95F3C' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.640</text>
+<rect x='661.0' y='430.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='950.5' y='454.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>蜜罐命中率</text>
+<line x1='783.0' y1='476.0' x2='783.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='783.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.07</text>
+<line x1='892.2' y1='476.0' x2='892.2' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='892.2' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.14</text>
+<line x1='1001.5' y1='476.0' x2='1001.5' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1001.5' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.21</text>
+<line x1='1110.8' y1='476.0' x2='1110.8' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1110.8' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.27</text>
+<line x1='1220.0' y1='476.0' x2='1220.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1220.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.34</text>
+<text x='773.0' y='543.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='958.2' y1='539.0' x2='1177.7' y2='539.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='1061.9' cy='539.0' r='5.6' fill='#1F5AA6'/>
+<text x='1061.9' y='529.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.244</text>
+<text x='773.0' y='669.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>Plain-MAPPO</text>
+<line x1='825.3' y1='665.0' x2='997.2' y2='665.0' stroke='#C95F3C' stroke-width='3' stroke-linecap='round'/>
+<circle cx='915.7' cy='665.0' r='5.6' fill='#C95F3C'/>
+<text x='915.7' y='655.0' font-size='10' fill='#C95F3C' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.151</text>
+</svg>

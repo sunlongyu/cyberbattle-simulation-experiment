@@ -16,6 +16,8 @@ Each module uses the same subdirectories:
 - `configs/`: experiment config snapshots in JSON and optional YAML
 - `logs/`: runtime logs and diagnostics
 
+For repository hygiene, keep `logs/` as local runtime output and do not version large training logs in Git unless a specific diagnostic file is required for review.
+
 ## Naming Rules
 
 - Figures: `fig_4_x_suffix.png` and `fig_4_x_suffix.pdf`

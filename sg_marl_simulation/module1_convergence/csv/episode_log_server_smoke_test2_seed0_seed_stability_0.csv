@@ -1,0 +1,3 @@
+seed,learning_rate,training_iteration,time_total_s,timesteps_total,episode_reward_mean,episode_len_mean,defender_reward,attacker_reward,defender_policy_loss,attacker_policy_loss,defender_entropy,attacker_entropy,defender_vf_loss,attacker_vf_loss
+0,0.0001,1,1.1067593097686768,128,-958.5,50.0,-443.5,-515.0,-0.06984048867598176,-0.0257236422970891,3.4151471614837647,3.373961091041565,9.882562732696533,10.0
+0,0.0001,2,2.153372287750244,256,-969.8,50.0,-395.6,-574.2,-0.04636604636907578,-0.06635862719267607,3.394920563697815,3.349375867843628,9.916400051116943,10.0

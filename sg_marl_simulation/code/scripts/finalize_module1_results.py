@@ -25,7 +25,7 @@ CONVERGENCE_RULE = {
     "final_window": 30,
 }
 
-rcParams["font.family"] = ["Songti SC", "Arial Unicode MS", "DejaVu Sans"]
+rcParams["font.family"] = ["Times New Roman", "Songti SC", "Arial Unicode MS", "DejaVu Sans"]
 rcParams["axes.unicode_minus"] = False
 rcParams["font.size"] = 10.5
 

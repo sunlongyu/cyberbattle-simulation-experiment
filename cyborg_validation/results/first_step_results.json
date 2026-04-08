@@ -1,0 +1,558 @@
+{
+  "scenario_path": "/Users/SL/Documents/expproject/CybORG/CybORG/Simulator/Scenarios/scenario_files/Scenario2.yaml",
+  "episodes": 10,
+  "max_steps": 25,
+  "policies": {
+    "baseline": {
+      "config": {
+        "camouflage_steps": 0,
+        "host_cycle": []
+      },
+      "aggregate": {
+        "episode_count": 10,
+        "blue_reward_mean": -17.48,
+        "red_reward_mean": 17.48,
+        "blue_success_mean": 0,
+        "critical_host_compromise_rate": 0.2,
+        "red_session_count_mean": 5.9
+      },
+      "episodes": [
+        {
+          "seed": 20260315,
+          "policy": "baseline",
+          "blue_reward_total": -22.2,
+          "red_reward_total": 22.2,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 7,
+            "ExploitRemoteService": 7
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise1",
+            "User0",
+            "User1",
+            "User2",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 8
+        },
+        {
+          "seed": 20260316,
+          "policy": "baseline",
+          "blue_reward_total": -23.400000000000002,
+          "red_reward_total": 23.400000000000002,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 10,
+            "PrivilegeEscalate": 7,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise1",
+            "Enterprise2",
+            "User0",
+            "User1",
+            "User2",
+            "User3"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 7
+        },
+        {
+          "seed": 20260317,
+          "policy": "baseline",
+          "blue_reward_total": -18.7,
+          "red_reward_total": 18.7,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 10,
+            "PrivilegeEscalate": 7,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise1",
+            "Enterprise2",
+            "Op_Server0",
+            "User0",
+            "User2"
+          ],
+          "critical_host_compromised": true,
+          "red_session_count": 6
+        },
+        {
+          "seed": 20260318,
+          "policy": "baseline",
+          "blue_reward_total": -13.299999999999997,
+          "red_reward_total": 13.299999999999997,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 9,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise1",
+            "User0",
+            "User1",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 4
+        },
+        {
+          "seed": 20260319,
+          "policy": "baseline",
+          "blue_reward_total": -11.499999999999998,
+          "red_reward_total": 11.499999999999998,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User1",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 5
+        },
+        {
+          "seed": 20260320,
+          "policy": "baseline",
+          "blue_reward_total": -15.400000000000004,
+          "red_reward_total": 15.400000000000004,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User2",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 6
+        },
+        {
+          "seed": 20260321,
+          "policy": "baseline",
+          "blue_reward_total": -18.1,
+          "red_reward_total": 18.1,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 9,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User1",
+            "User2",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 5
+        },
+        {
+          "seed": 20260322,
+          "policy": "baseline",
+          "blue_reward_total": -25.299999999999997,
+          "red_reward_total": 25.299999999999997,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 10,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise2",
+            "User0",
+            "User1",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 5
+        },
+        {
+          "seed": 20260323,
+          "policy": "baseline",
+          "blue_reward_total": -19.3,
+          "red_reward_total": 19.3,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 10,
+            "PrivilegeEscalate": 6,
+            "ExploitRemoteService": 7
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise2",
+            "Op_Server0",
+            "User0",
+            "User1",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": true,
+          "red_session_count": 8
+        },
+        {
+          "seed": 20260324,
+          "policy": "baseline",
+          "blue_reward_total": -7.6000000000000005,
+          "red_reward_total": 7.6000000000000005,
+          "blue_success_count": 0,
+          "blue_action_counts": {
+            "Sleep": 25
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User2",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 5
+        }
+      ]
+    },
+    "camouflage": {
+      "config": {
+        "camouflage_steps": 8,
+        "host_cycle": [
+          "User1",
+          "User2",
+          "User3",
+          "Enterprise0",
+          "Enterprise1",
+          "Op_Server0"
+        ]
+      },
+      "aggregate": {
+        "episode_count": 10,
+        "blue_reward_mean": -16.209999999999997,
+        "red_reward_mean": 16.209999999999997,
+        "blue_success_mean": 7,
+        "critical_host_compromise_rate": 0.0,
+        "red_session_count_mean": 5.1
+      },
+      "episodes": [
+        {
+          "seed": 20260315,
+          "policy": "camouflage",
+          "blue_reward_total": -15.199999999999996,
+          "red_reward_total": 15.199999999999996,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise1",
+            "User0",
+            "User2",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 6
+        },
+        {
+          "seed": 20260316,
+          "policy": "camouflage",
+          "blue_reward_total": -16.799999999999997,
+          "red_reward_total": 16.799999999999997,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 9,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 3
+        },
+        {
+          "seed": 20260317,
+          "policy": "camouflage",
+          "blue_reward_total": -16.799999999999997,
+          "red_reward_total": 16.799999999999997,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 9,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User1",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 4
+        },
+        {
+          "seed": 20260318,
+          "policy": "camouflage",
+          "blue_reward_total": -12.199999999999998,
+          "red_reward_total": 12.199999999999998,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 9,
+            "ExploitRemoteService": 5
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 4
+        },
+        {
+          "seed": 20260319,
+          "policy": "camouflage",
+          "blue_reward_total": -15.899999999999997,
+          "red_reward_total": 15.899999999999997,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 5
+        },
+        {
+          "seed": 20260320,
+          "policy": "camouflage",
+          "blue_reward_total": -13.200000000000001,
+          "red_reward_total": 13.200000000000001,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise1",
+            "User0",
+            "User1",
+            "User2",
+            "User3",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 6
+        },
+        {
+          "seed": 20260321,
+          "policy": "camouflage",
+          "blue_reward_total": -21.200000000000003,
+          "red_reward_total": 21.200000000000003,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 7,
+            "ExploitRemoteService": 7
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise1",
+            "User0",
+            "User1",
+            "User2",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 7
+        },
+        {
+          "seed": 20260322,
+          "policy": "camouflage",
+          "blue_reward_total": -11.299999999999999,
+          "red_reward_total": 11.299999999999999,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "User0",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 4
+        },
+        {
+          "seed": 20260323,
+          "policy": "camouflage",
+          "blue_reward_total": -25.299999999999997,
+          "red_reward_total": 25.299999999999997,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 10,
+            "PrivilegeEscalate": 7,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise1",
+            "Enterprise2",
+            "User0",
+            "User1",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 6
+        },
+        {
+          "seed": 20260324,
+          "policy": "camouflage",
+          "blue_reward_total": -14.2,
+          "red_reward_total": 14.2,
+          "blue_success_count": 7,
+          "blue_action_counts": {
+            "Misinform": 8,
+            "Sleep": 17
+          },
+          "red_action_counts": {
+            "DiscoverRemoteSystems": 2,
+            "DiscoverNetworkServices": 9,
+            "PrivilegeEscalate": 8,
+            "ExploitRemoteService": 6
+          },
+          "active_red_hosts": [
+            "Enterprise0",
+            "Enterprise1",
+            "User0",
+            "User2",
+            "User4"
+          ],
+          "critical_host_compromised": false,
+          "red_session_count": 6
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "blue_reward_lift": 1.2700000000000031,
+    "interpretation": "Positive blue_reward_lift means the current camouflage policy outperformed the no-camouflage baseline under the same CybORG Scenario2 and red-agent setting."
+  }
+}

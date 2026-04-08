@@ -47,7 +47,8 @@
     "baselines": [
       "SG-MAPPO",
       "SG-MATRPO",
-      "SG-MAA2C"
+      "SG-MAA2C",
+      "Plain-MAPPO"
     ]
   },
   "output": {

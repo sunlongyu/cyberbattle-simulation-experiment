@@ -1,0 +1,100 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='828' viewBox='0 0 1280 828'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='640.0' y='32.0' font-size='18' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>图4-7 消融实验的点估计与评估区间</text>
+<rect x='40.0' y='60.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='329.5' y='84.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>防御方最终平均回报</text>
+<line x1='162.0' y1='106.0' x2='162.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='162.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>527</text>
+<line x1='271.2' y1='106.0' x2='271.2' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='271.2' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>559</text>
+<line x1='380.5' y1='106.0' x2='380.5' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='380.5' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>590</text>
+<line x1='489.8' y1='106.0' x2='489.8' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='489.8' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>622</text>
+<line x1='599.0' y1='106.0' x2='599.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='599.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>653</text>
+<text x='152.0' y='152.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='204.3' y1='148.0' x2='204.3' y2='148.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='204.3' cy='148.0' r='5.6' fill='#1F5AA6'/>
+<text x='204.3' y='138.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>539.5</text>
+<text x='152.0' y='236.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-Belief</text>
+<line x1='556.7' y1='232.0' x2='556.7' y2='232.0' stroke='#9B5A2E' stroke-width='3' stroke-linecap='round'/>
+<circle cx='556.7' cy='232.0' r='5.6' fill='#9B5A2E'/>
+<text x='556.7' y='222.0' font-size='10' fill='#9B5A2E' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>641.0</text>
+<text x='152.0' y='320.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-LSTM</text>
+<line x1='249.2' y1='316.0' x2='249.2' y2='316.0' stroke='#1E9BA7' stroke-width='3' stroke-linecap='round'/>
+<circle cx='249.2' cy='316.0' r='5.6' fill='#1E9BA7'/>
+<text x='249.2' y='306.0' font-size='10' fill='#1E9BA7' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>552.4</text>
+<rect x='661.0' y='60.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='950.5' y='84.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>真实主机攻击率</text>
+<line x1='783.0' y1='106.0' x2='783.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='783.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.22</text>
+<line x1='892.2' y1='106.0' x2='892.2' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='892.2' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.29</text>
+<line x1='1001.5' y1='106.0' x2='1001.5' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1001.5' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.37</text>
+<line x1='1110.8' y1='106.0' x2='1110.8' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1110.8' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.44</text>
+<line x1='1220.0' y1='106.0' x2='1220.0' y2='358.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1220.0' y='376.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.51</text>
+<text x='773.0' y='152.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='825.3' y1='148.0' x2='1121.8' y2='148.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='966.4' cy='148.0' r='5.6' fill='#1F5AA6'/>
+<text x='966.4' y='138.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.342</text>
+<text x='773.0' y='236.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-Belief</text>
+<line x1='847.5' y1='232.0' x2='1177.7' y2='232.0' stroke='#9B5A2E' stroke-width='3' stroke-linecap='round'/>
+<circle cx='1013.4' cy='232.0' r='5.6' fill='#9B5A2E'/>
+<text x='1013.4' y='222.0' font-size='10' fill='#9B5A2E' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.373</text>
+<text x='773.0' y='320.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-LSTM</text>
+<line x1='870.4' y1='316.0' x2='1013.4' y2='316.0' stroke='#1E9BA7' stroke-width='3' stroke-linecap='round'/>
+<circle cx='935.7' cy='316.0' r='5.6' fill='#1E9BA7'/>
+<text x='935.7' y='306.0' font-size='10' fill='#1E9BA7' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.322</text>
+<rect x='40.0' y='430.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='329.5' y='454.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>欺骗成功率</text>
+<line x1='162.0' y1='476.0' x2='162.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='162.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.34</text>
+<line x1='271.2' y1='476.0' x2='271.2' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='271.2' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.43</text>
+<line x1='380.5' y1='476.0' x2='380.5' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='380.5' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.51</text>
+<line x1='489.8' y1='476.0' x2='489.8' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='489.8' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.60</text>
+<line x1='599.0' y1='476.0' x2='599.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='599.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.69</text>
+<text x='152.0' y='522.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='204.3' y1='518.0' x2='547.1' y2='518.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='393.9' cy='518.0' r='5.6' fill='#1F5AA6'/>
+<text x='393.9' y='508.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.526</text>
+<text x='152.0' y='606.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-Belief</text>
+<line x1='287.3' y1='602.0' x2='556.7' y2='602.0' stroke='#9B5A2E' stroke-width='3' stroke-linecap='round'/>
+<circle cx='423.8' cy='602.0' r='5.6' fill='#9B5A2E'/>
+<text x='423.8' y='592.0' font-size='10' fill='#9B5A2E' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.550</text>
+<text x='152.0' y='690.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-LSTM</text>
+<line x1='270.3' y1='686.0' x2='491.9' y2='686.0' stroke='#1E9BA7' stroke-width='3' stroke-linecap='round'/>
+<circle cx='377.2' cy='686.0' r='5.6' fill='#1E9BA7'/>
+<text x='377.2' y='676.0' font-size='10' fill='#1E9BA7' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.512</text>
+<rect x='661.0' y='430.0' width='579.0' height='326.0' fill='white' stroke='#E3E9F0'/>
+<text x='950.5' y='454.0' font-size='14' fill='#222222' text-anchor='middle' font-weight='bold' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>信号效应</text>
+<line x1='783.0' y1='476.0' x2='783.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='783.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>-0.02</text>
+<line x1='892.2' y1='476.0' x2='892.2' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='892.2' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.06</text>
+<line x1='1001.5' y1='476.0' x2='1001.5' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1001.5' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.14</text>
+<line x1='1110.8' y1='476.0' x2='1110.8' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1110.8' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.22</text>
+<line x1='1220.0' y1='476.0' x2='1220.0' y2='728.0' stroke='#E8EDF3' stroke-dasharray='4 4'/>
+<text x='1220.0' y='746.0' font-size='10' fill='#556677' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.30</text>
+<text x='773.0' y='522.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>SG-MAPPO</text>
+<line x1='960.8' y1='518.0' x2='1177.7' y2='518.0' stroke='#1F5AA6' stroke-width='3' stroke-linecap='round'/>
+<circle cx='1045.0' cy='518.0' r='5.6' fill='#1F5AA6'/>
+<text x='1045.0' y='508.0' font-size='10' fill='#1F5AA6' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.172</text>
+<text x='773.0' y='606.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-Belief</text>
+<line x1='853.0' y1='602.0' x2='995.8' y2='602.0' stroke='#9B5A2E' stroke-width='3' stroke-linecap='round'/>
+<circle cx='921.5' cy='602.0' r='5.6' fill='#9B5A2E'/>
+<text x='921.5' y='592.0' font-size='10' fill='#9B5A2E' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.082</text>
+<text x='773.0' y='690.0' font-size='12' fill='#222222' text-anchor='end' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>No-LSTM</text>
+<line x1='825.3' y1='686.0' x2='905.2' y2='686.0' stroke='#1E9BA7' stroke-width='3' stroke-linecap='round'/>
+<circle cx='870.1' cy='686.0' r='5.6' fill='#1E9BA7'/>
+<text x='870.1' y='676.0' font-size='10' fill='#1E9BA7' text-anchor='middle' font-weight='normal' font-family='PingFang SC, Microsoft YaHei, Helvetica, Arial'>0.044</text>
+</svg>

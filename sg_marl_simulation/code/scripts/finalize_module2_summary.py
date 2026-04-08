@@ -12,7 +12,7 @@ TABLE_PATH = ROOT / "tables" / "tab_4_3_parameter_sensitivity_overview.csv"
 FIG_PATH_PNG = ROOT / "figures" / "fig_4_5_parameter_sensitivity_overview.png"
 FIG_PATH_PDF = ROOT / "figures" / "fig_4_5_parameter_sensitivity_overview.pdf"
 
-rcParams["font.family"] = ["Songti SC", "Arial Unicode MS", "DejaVu Sans"]
+rcParams["font.family"] = ["Times New Roman", "Songti SC", "Arial Unicode MS", "DejaVu Sans"]
 rcParams["axes.unicode_minus"] = False
 rcParams["font.size"] = 10.5
 
