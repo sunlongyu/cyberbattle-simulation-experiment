@@ -1,0 +1,45 @@
+scenario,scenario_label,initial_belief,strategy,strategy_label,stage,certain_honeypot_probability,critical_uncertainty_probability,certain_real_probability,other_probability
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,2,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,3,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,4,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,5,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,6,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,7,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,8,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,9,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,10,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,11,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,2,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,3,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,4,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,5,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,6,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,7,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,8,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,9,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,10,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,11,0.35,0.0,0.65,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,2,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,3,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,4,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,5,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,6,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,7,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,8,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,9,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,10,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,11,0.3583333333333334,0.6416666666666666,0.0,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,2,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,3,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,4,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,5,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,6,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,7,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,8,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,9,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,10,0.65,0.0,0.35,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,11,0.65,0.0,0.35,0.0
