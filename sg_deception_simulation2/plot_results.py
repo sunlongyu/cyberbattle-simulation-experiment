@@ -27,6 +27,18 @@ COLOR_CERTAIN_HONEYPOT = "#5B7FA3"
 COLOR_CRITICAL_UNCERTAINTY = "#E39A1F"
 COLOR_CERTAIN_REAL = "#C56565"
 COLOR_OTHER_STATE = "#D6DCE5"
+STRATEGY_ORDER = [
+    "truthful_baseline",
+    "full_pooling_baseline",
+    "static_random_baseline",
+    "recursive_pbne",
+]
+STRATEGY_STYLES = {
+    "truthful_baseline": {"color": "#5077B8", "marker": "o", "linestyle": "--", "linewidth": 1.45},
+    "static_random_baseline": {"color": "#54A24B", "marker": "^", "linestyle": "-.", "linewidth": 1.45},
+    "full_pooling_baseline": {"color": "#B279A2", "marker": "D", "linestyle": ":", "linewidth": 1.45},
+    "recursive_pbne": {"color": "#D97941", "marker": "s", "linestyle": "-", "linewidth": 1.85},
+}
 FONT_MIXED = None
 FONT_EN = None
 
@@ -86,56 +98,28 @@ def plot_experiment_one(experiment_result: dict) -> None:
     scenario_order = ["scenario_a", "scenario_b"]
     for axis, scenario_key in zip(axes, scenario_order):
         scenario = experiment_result["scenarios"][scenario_key]
-        pbne_rows = scenario["horizon_sweep"]["recursive_pbne"]
-        baseline_rows = scenario["horizon_sweep"]["truthful_baseline"]
-        stages = np.array([row["horizon"] for row in pbne_rows], dtype=float)
-        pbne_values = np.array([row["discounted_cumulative_defender_utility"] for row in pbne_rows], dtype=float)
-        baseline_values = np.array([row["discounted_cumulative_defender_utility"] for row in baseline_rows], dtype=float)
-        advantage_values = pbne_values - baseline_values
+        stages = np.array(
+            [row["horizon"] for row in scenario["horizon_sweep"]["recursive_pbne"]],
+            dtype=float,
+        )
 
         axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
-        axis.plot(
-            stages,
-            baseline_values,
-            color=COLOR_BASELINE,
-            linewidth=1.6,
-            marker="o",
-            markersize=4.4,
-            markerfacecolor="white",
-            markeredgecolor=COLOR_BASELINE,
-            label="真实披露基线",
-        )
-        axis.plot(
-            stages,
-            pbne_values,
-            color=COLOR_PBNE,
-            linewidth=1.8,
-            linestyle="-",
-            marker="s",
-            markersize=4.6,
-            markerfacecolor=COLOR_PBNE,
-            markeredgecolor="white",
-            label="递归 PBNE 策略",
-        )
-        axis.fill_between(stages, baseline_values, pbne_values, color="#F4D7C3", alpha=0.28)
-        axis.text(
-            0.97,
-            0.92,
-            f"终局增益: {advantage_values[-1]:.2f}",
-            transform=axis.transAxes,
-            ha="right",
-            va="top",
-            fontproperties=FONT_MIXED,
-            fontsize=10.0,
-            color=COLOR_TEXT,
-            bbox={
-                "boxstyle": "round,pad=0.22",
-                "facecolor": "white",
-                "edgecolor": "#D9D9D9",
-                "linewidth": 0.8,
-                "alpha": 0.94,
-            },
-        )
+        for strategy_key in STRATEGY_ORDER:
+            rows = scenario["horizon_sweep"][strategy_key]
+            values = np.array([row["discounted_cumulative_defender_utility"] for row in rows], dtype=float)
+            style = STRATEGY_STYLES[strategy_key]
+            axis.plot(
+                stages,
+                values,
+                color=style["color"],
+                linewidth=style["linewidth"],
+                linestyle=style["linestyle"],
+                marker=style["marker"],
+                markersize=4.2 if strategy_key != "recursive_pbne" else 4.6,
+                markerfacecolor="white" if strategy_key != "recursive_pbne" else style["color"],
+                markeredgecolor=style["color"] if strategy_key != "recursive_pbne" else "white",
+                label=scenario["strategy_labels"][strategy_key],
+            )
         axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
         axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
         axis.set_xticks(stages)
@@ -143,7 +127,7 @@ def plot_experiment_one(experiment_result: dict) -> None:
         apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
 
     axes[0].set_ylabel("防御方折扣累计期望收益", fontproperties=FONT_MIXED, fontsize=10.5)
-    axes[1].legend(loc="best", prop=FONT_MIXED, fontsize=9.8)
+    axes[1].legend(loc="best", prop=FONT_MIXED, fontsize=9.0)
     fig.suptitle("不同场景下防御方折扣累计期望收益对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
     save_figure("fig3_2_cumulative_defender_utility_comparison.png")
 
@@ -158,46 +142,41 @@ def plot_stage_average_payoff_convergence(experiment_result: dict) -> None:
 
     for col_index, scenario_key in enumerate(scenario_order):
         scenario = experiment_result["scenarios"][scenario_key]
-        pbne_rows = scenario["horizon_sweep"]["recursive_pbne"]
-        baseline_rows = scenario["horizon_sweep"]["truthful_baseline"]
-        stages = np.array([row["horizon"] for row in pbne_rows], dtype=float)
+        stages = np.array(
+            [row["horizon"] for row in scenario["horizon_sweep"]["recursive_pbne"]],
+            dtype=float,
+        )
 
         for row_index, (metric_key, ylabel) in enumerate(row_specs):
             axis = axes[row_index, col_index]
-            pbne_values = np.array([row[metric_key] for row in pbne_rows], dtype=float)
-            baseline_values = np.array([row[metric_key] for row in baseline_rows], dtype=float)
             axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
-            axis.plot(
-                stages,
-                baseline_values,
-                color=COLOR_BASELINE,
-                linewidth=1.5,
-                linestyle="--",
-                marker="o",
-                markersize=4.0,
-                markerfacecolor="white",
-                markeredgecolor=COLOR_BASELINE,
-                label="真实披露基线",
-            )
-            axis.plot(
-                stages,
-                pbne_values,
-                color=COLOR_PBNE,
-                linewidth=1.8,
-                marker="s",
-                markersize=4.2,
-                markerfacecolor=COLOR_PBNE,
-                markeredgecolor="white",
-                label="递归 PBNE 策略",
-            )
+            pbne_values = None
+            for strategy_key in STRATEGY_ORDER:
+                rows = scenario["horizon_sweep"][strategy_key]
+                values = np.array([row[metric_key] for row in rows], dtype=float)
+                if strategy_key == "recursive_pbne":
+                    pbne_values = values
+                style = STRATEGY_STYLES[strategy_key]
+                axis.plot(
+                    stages,
+                    values,
+                    color=style["color"],
+                    linewidth=style["linewidth"],
+                    linestyle=style["linestyle"],
+                    marker=style["marker"],
+                    markersize=3.8,
+                    markerfacecolor="white" if strategy_key != "recursive_pbne" else style["color"],
+                    markeredgecolor=style["color"] if strategy_key != "recursive_pbne" else "white",
+                    label=scenario["strategy_labels"][strategy_key],
+                )
             axis.set_xticks(stages)
             axis.grid(True, axis="y")
-            if row_index == 0:
+            if row_index == 0 and pbne_values is not None:
                 axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
                 axis.text(
                     0.97,
                     0.90,
-                    f"末期均值: {pbne_values[-1]:.2f}",
+                    f"PBNE 末期: {pbne_values[-1]:.2f}",
                     transform=axis.transAxes,
                     ha="right",
                     va="top",
@@ -218,39 +197,53 @@ def plot_stage_average_payoff_convergence(experiment_result: dict) -> None:
                 axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
             apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
 
-    axes[0, 1].legend(loc="best", prop=FONT_MIXED, fontsize=9.8)
+    axes[0, 1].legend(loc="best", prop=FONT_MIXED, fontsize=8.6)
     fig.suptitle("攻防双方递归期望收益随终止时域变化", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
     save_figure("fig3_2b_stage_average_payoff_convergence.png")
 
 
 def plot_terminal_belief_distribution(experiment_result: dict) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.6), sharex=True, sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(10.8, 5.2), sharex=True, sharey=True)
     scenario_order = ["scenario_a", "scenario_b"]
     category_specs = [
         ("certain_honeypot", "确信蜜罐", COLOR_CERTAIN_HONEYPOT),
         ("critical_uncertainty", "保持不确定", COLOR_CRITICAL_UNCERTAINTY),
+        ("other_uncertainty", "其他不确定", COLOR_OTHER_STATE),
         ("certain_real", "确信真实", COLOR_CERTAIN_REAL),
     ]
 
+    def terminal_state_composition(probability_mass: dict, threshold: float) -> dict:
+        composition = {
+            "certain_honeypot": 0.0,
+            "critical_uncertainty": 0.0,
+            "other_uncertainty": 0.0,
+            "certain_real": 0.0,
+        }
+        rounded_threshold = round(threshold, 6)
+        for belief_key, probability in probability_mass.items():
+            belief = float(belief_key)
+            if belief <= 0.05:
+                composition["certain_honeypot"] += probability
+            elif belief >= 0.95:
+                composition["certain_real"] += probability
+            elif abs(round(belief, 6) - rounded_threshold) <= 1e-6:
+                composition["critical_uncertainty"] += probability
+            else:
+                composition["other_uncertainty"] += probability
+        return composition
+
     for axis, scenario_key in zip(axes, scenario_order):
         scenario = experiment_result["scenarios"][scenario_key]
-        baseline_mass = scenario["results"]["truthful_baseline"]["terminal_probability_mass"]
-        pbne_mass = scenario["results"]["recursive_pbne"]["terminal_probability_mass"]
-        threshold_key = next(
-            key for key in pbne_mass.keys() if key not in {"0.000000", "1.000000"}
-        ) if any(key not in {"0.000000", "1.000000"} for key in pbne_mass.keys()) else None
-        distributions = {
-            "真实披露基线": {
-                "certain_honeypot": baseline_mass.get("0.000000", 0.0),
-                "critical_uncertainty": baseline_mass.get(threshold_key, 0.0) if threshold_key else 0.0,
-                "certain_real": baseline_mass.get("1.000000", 0.0),
-            },
-            "递归 PBNE 策略": {
-                "certain_honeypot": pbne_mass.get("0.000000", 0.0),
-                "critical_uncertainty": pbne_mass.get(threshold_key, 0.0) if threshold_key else 0.0,
-                "certain_real": pbne_mass.get("1.000000", 0.0),
-            },
-        }
+        distributions = {}
+        # Matplotlib places larger y positions above smaller ones in this barh
+        # layout, so insert the plotting data in reverse to display the desired
+        # top-to-bottom order.
+        for strategy_key in reversed(STRATEGY_ORDER):
+            probability_mass = scenario["results"][strategy_key]["terminal_probability_mass"]
+            distributions[scenario["results"][strategy_key]["strategy_label"]] = terminal_state_composition(
+                probability_mass,
+                experiment_result["threshold_belief"],
+            )
 
         y_positions = np.arange(len(distributions))
         axis.grid(axis="x")
@@ -258,7 +251,7 @@ def plot_terminal_belief_distribution(experiment_result: dict) -> None:
             left = 0.0
             for category_key, category_label, color in category_specs:
                 width = values[category_key]
-                axis.barh(index, width, left=left, height=0.46, color=color, edgecolor="white", linewidth=0.8)
+                axis.barh(index, width, left=left, height=0.50, color=color, edgecolor="white", linewidth=0.8)
                 if width >= 0.08:
                     axis.text(
                         left + width / 2.0,
@@ -268,7 +261,7 @@ def plot_terminal_belief_distribution(experiment_result: dict) -> None:
                         va="center",
                         fontproperties=FONT_EN,
                         fontsize=9.8,
-                        color="white" if category_key != "critical_uncertainty" else COLOR_TEXT,
+                        color=COLOR_TEXT if category_key in {"critical_uncertainty", "other_uncertainty"} else "white",
                     )
                 left += width
 
@@ -277,7 +270,6 @@ def plot_terminal_belief_distribution(experiment_result: dict) -> None:
         axis.set_yticklabels(list(distributions.keys()), fontproperties=FONT_MIXED, fontsize=10.5)
         axis.set_xticks(np.linspace(0.0, 1.0, 6))
         axis.set_xticklabels([f"{int(tick * 100)}%" for tick in np.linspace(0.0, 1.0, 6)], fontproperties=FONT_EN, fontsize=10.5)
-        axis.invert_yaxis()
         axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
         apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_MIXED)
 
@@ -286,13 +278,13 @@ def plot_terminal_belief_distribution(experiment_result: dict) -> None:
     axes[1].set_xlabel("终局识别状态占比", fontproperties=FONT_MIXED, fontsize=10.5)
     legend_handles = [Patch(facecolor=color, edgecolor="none") for _, _, color in category_specs]
     legend_labels = [label for _, label, _ in category_specs]
-    axes[1].legend(legend_handles, legend_labels, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3, prop=FONT_MIXED, fontsize=9.8)
+    axes[1].legend(legend_handles, legend_labels, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=4, prop=FONT_MIXED, fontsize=9.4)
     fig.suptitle("终局公共信念分布对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
     save_figure("fig3_4_terminal_public_belief_distribution.png")
 
 
-def plot_experiment_three(experiment_result: dict) -> None:
-    fig, axes = plt.subplots(2, 2, figsize=(10.8, 7.6))
+def plot_experiment_three(experiment_result: dict, gamma_result: dict) -> None:
+    fig, axes = plt.subplots(3, 2, figsize=(11.6, 11.2))
     palette = ["#4C78A8", "#F58518", "#54A24B", "#B279A2"]
     markers = ["o", "s", "^", "D"]
     title_labels = {
@@ -313,7 +305,10 @@ def plot_experiment_three(experiment_result: dict) -> None:
             return str(int(value))
         return f"{value:.2f}".rstrip("0").rstrip(".")
 
-    for axis, panel in zip(axes.flat, experiment_result["plot_panels"]):
+    sensitivity_axes = [axes[0, 0], axes[0, 1], axes[1, 0], axes[1, 1]]
+    gamma_axes = [axes[2, 0], axes[2, 1]]
+
+    for axis, panel in zip(sensitivity_axes, experiment_result["plot_panels"]):
         handles = []
         labels = []
         for index, series in enumerate(panel["series"]):
@@ -352,6 +347,47 @@ def plot_experiment_three(experiment_result: dict) -> None:
         apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
         axis.legend(handles, labels, loc="best", prop=FONT_MIXED, fontsize=9.4)
 
+    gamma_titles = {
+        "scenario_a": "折扣因子 γ（场景 A）",
+        "scenario_b": "折扣因子 γ（场景 B）",
+    }
+    for axis, scenario_key in zip(gamma_axes, ["scenario_a", "scenario_b"]):
+        scenario = gamma_result["scenarios"][scenario_key]
+        handles = []
+        labels = []
+        stages = None
+        for series_index, series in enumerate(scenario["series"]):
+            color = palette[series_index % len(palette)]
+            marker = markers[series_index % len(markers)]
+            horizon_rows = series["horizon_rows"]
+            stages = np.array([row["horizon"] for row in horizon_rows], dtype=float)
+            defender_values = np.array(
+                [row["discounted_cumulative_defender_utility"] for row in horizon_rows],
+                dtype=float,
+            )
+            line, = axis.plot(
+                stages,
+                defender_values,
+                color=color,
+                linewidth=1.8,
+                marker=marker,
+                markersize=4.2,
+                markerfacecolor="white",
+                markeredgecolor=color,
+            )
+            handles.append(line)
+            labels.append(f"γ={format_parameter_value(float(series['gamma']))}")
+
+        axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
+        axis.set_title(gamma_titles[scenario_key], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
+        axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.set_ylabel("防御方折扣累计期望收益", fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.grid(True, axis="y")
+        if stages is not None:
+            axis.set_xticks(stages)
+        apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
+        axis.legend(handles, labels, loc="best", prop=FONT_MIXED, fontsize=9.4)
+
     fig.suptitle("关键参数变化下递归 PBNE 防御方折扣累计期望收益对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.99)
     save_figure("fig3_5_parameter_sensitivity_analysis.png")
 
@@ -361,10 +397,11 @@ def main() -> None:
     experiment_one = load_json(RESULTS_DIR / "experiment1_payoff_comparison.json")
     experiment_two = load_json(RESULTS_DIR / "experiment2_belief_dynamics.json")
     experiment_three = load_json(RESULTS_DIR / "experiment3_sensitivity_analysis.json")
+    gamma_sensitivity = load_json(RESULTS_DIR / "experiment4_gamma_sensitivity.json")
     plot_experiment_one(experiment_one)
     plot_stage_average_payoff_convergence(experiment_one)
     plot_terminal_belief_distribution(experiment_two)
-    plot_experiment_three(experiment_three)
+    plot_experiment_three(experiment_three, gamma_sensitivity)
     print("Figure written to", FIGURES_DIR / "fig3_2_cumulative_defender_utility_comparison.png")
     print("Figure written to", FIGURES_DIR / "fig3_2b_stage_average_payoff_convergence.png")
     print("Figure written to", FIGURES_DIR / "fig3_4_terminal_public_belief_distribution.png")

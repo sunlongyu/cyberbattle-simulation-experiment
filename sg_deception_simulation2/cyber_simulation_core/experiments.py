@@ -16,24 +16,36 @@ from .model import (
     utility,
 )
 from .strategies import (
+    FULL_POOLING_BASELINE,
     RECURSIVE_PBNE_HONEYPOT,
     RECURSIVE_PBNE_PRODUCTION,
+    STATIC_RANDOM_BASELINE,
     TRUTHFUL_BASELINE,
+    full_pooling_stage_policy,
     honeypot_camouflage_stage_policy,
     production_camouflage_stage_policy,
+    static_random_stage_policy,
     truthful_stage_policy,
 )
 
 SCENARIO_A_PRIOR = 0.65
-SCENARIO_B_PRIOR = 0.35
-SCENARIO_B_C_THETA2 = 1.35
+SCENARIO_B_PRIOR = 0.25
+SCENARIO_B_C_THETA2 = 3.0
 BELIEF_MONTE_CARLO_RUNS = 4000
 BELIEF_MONTE_CARLO_SEED = 20260414
 HORIZON_SWEEP_MAX = 15
+GAMMA_SENSITIVITY_GRID = [0.50, 0.65, 0.80, 0.95]
+RECURSIVE_STRATEGIES = {RECURSIVE_PBNE_PRODUCTION, RECURSIVE_PBNE_HONEYPOT}
+STRATEGY_LABELS = {
+    "recursive_pbne": "递归 PBNE 策略",
+    "truthful_baseline": "真实披露基线",
+    "static_random_baseline": "随机伪装基线",
+    "full_pooling_baseline": "完全混同基线",
+}
 SENSITIVITY_GRID_MAP: Dict[str, Dict[str, List[float]]] = {
     "prior_theta1": {
         "scenario_a": [0.56, 0.60, 0.65, 0.70, 0.75, 0.80, 0.84],
-        "scenario_b": [0.16, 0.20, 0.25, 0.30, 0.35, 0.40, 0.44],
+        "scenario_b": [0.12, 0.16, 0.20, 0.25, 0.30, 0.35, 0.40],
     },
     "defender_loss": {
         "scenario_a": [8.0, 10.0, 12.0, 14.0],
@@ -45,7 +57,7 @@ SENSITIVITY_GRID_MAP: Dict[str, Dict[str, List[float]]] = {
     },
     "c_theta2": {
         "scenario_a": [0.9, 1.1, 1.3, 1.5, 1.7, 1.9],
-        "scenario_b": [0.9, 1.1, 1.35, 1.5, 1.7, 1.9],
+        "scenario_b": [2.0, 2.5, 3.0, 3.5, 4.0],
     },
 }
 SENSITIVITY_PARAMETER_LABELS = {
@@ -85,7 +97,7 @@ SENSITIVITY_PLOT_SPECS = [
         "scenario_key": "scenario_b",
         "strategy_name": RECURSIVE_PBNE_HONEYPOT,
         "title": "蜜罐系统伪装成本 c_theta2（场景 B）",
-        "grid_values": [0.9, 1.1, 1.35, 1.7],
+        "grid_values": [2.0, 2.5, 3.0, 3.5],
     },
 ]
 
@@ -130,11 +142,36 @@ def _build_experiment_scenarios(config: GameConfig) -> Dict[str, Dict[str, objec
         },
         "scenario_b": {
             "label": "场景 B",
-            "description": "低初始信念 p_1，偏向第二类半分离结构“以假乱真”；为满足第二类半分离 PBNE 的不偏离约束，场景内使用较低的蜜罐伪装成本。",
+            "description": "低初始信念 p_1，偏向第二类半分离结构；场景内设置较高的蜜罐伪装成本，用于考察完全混同与递归 PBNE 在成本控制上的差异。",
             "initial_belief": SCENARIO_B_PRIOR,
             "pbne_strategy": RECURSIVE_PBNE_HONEYPOT,
-            "pbne_label": "递归 PBNE 策略（以假乱真）",
+            "pbne_label": STRATEGY_LABELS["recursive_pbne"],
             "config": replace(config, prior_theta1=SCENARIO_B_PRIOR, c_theta2=SCENARIO_B_C_THETA2),
+        },
+    }
+
+
+def _build_strategy_specs(scenario: Dict[str, object], solution: BackwardInductionResult | None = None) -> Dict[str, Dict[str, object]]:
+    return {
+        "truthful_baseline": {
+            "strategy_name": TRUTHFUL_BASELINE,
+            "strategy_label": STRATEGY_LABELS["truthful_baseline"],
+            "solution": None,
+        },
+        "full_pooling_baseline": {
+            "strategy_name": FULL_POOLING_BASELINE,
+            "strategy_label": STRATEGY_LABELS["full_pooling_baseline"],
+            "solution": None,
+        },
+        "static_random_baseline": {
+            "strategy_name": STATIC_RANDOM_BASELINE,
+            "strategy_label": STRATEGY_LABELS["static_random_baseline"],
+            "solution": None,
+        },
+        "recursive_pbne": {
+            "strategy_name": scenario["pbne_strategy"],
+            "strategy_label": STRATEGY_LABELS["recursive_pbne"],
+            "solution": solution,
         },
     }
 
@@ -346,6 +383,10 @@ def _build_stage_policy(
 ):
     if strategy_name == TRUTHFUL_BASELINE:
         return truthful_stage_policy(stage, belief_theta1, config)
+    if strategy_name == STATIC_RANDOM_BASELINE:
+        return static_random_stage_policy(stage, belief_theta1, config)
+    if strategy_name == FULL_POOLING_BASELINE:
+        return full_pooling_stage_policy(stage, belief_theta1, config)
     if solution is None:
         raise ValueError(f"{strategy_name} requires a backward-induction solution.")
     stage_record = solution.stage_records[stage - 1]
@@ -584,10 +625,14 @@ def _build_experiment_two_seed_map() -> Dict[str, Dict[str, int]]:
         "scenario_a": {
             "recursive_pbne": BELIEF_MONTE_CARLO_SEED + 11,
             "truthful_baseline": BELIEF_MONTE_CARLO_SEED + 12,
+            "static_random_baseline": BELIEF_MONTE_CARLO_SEED + 13,
+            "full_pooling_baseline": BELIEF_MONTE_CARLO_SEED + 14,
         },
         "scenario_b": {
             "recursive_pbne": BELIEF_MONTE_CARLO_SEED + 21,
             "truthful_baseline": BELIEF_MONTE_CARLO_SEED + 22,
+            "static_random_baseline": BELIEF_MONTE_CARLO_SEED + 23,
+            "full_pooling_baseline": BELIEF_MONTE_CARLO_SEED + 24,
         },
     }
 
@@ -645,6 +690,30 @@ def _terminal_uncertainty_probability_from_distribution(
     return belief_distribution.get(_belief_key(threshold), 0.0)
 
 
+def _terminal_state_composition(
+    belief_distribution: Dict[str, float],
+    threshold: float,
+) -> Dict[str, float]:
+    composition = {
+        "certain_honeypot": 0.0,
+        "critical_uncertainty": 0.0,
+        "other_uncertainty": 0.0,
+        "certain_real": 0.0,
+    }
+    rounded_threshold = round(threshold, 6)
+    for belief_key, probability in belief_distribution.items():
+        belief = float(belief_key)
+        if belief <= 0.05:
+            composition["certain_honeypot"] += probability
+        elif belief >= 0.95:
+            composition["certain_real"] += probability
+        elif abs(round(belief, 6) - rounded_threshold) <= 1e-6:
+            composition["critical_uncertainty"] += probability
+        else:
+            composition["other_uncertainty"] += probability
+    return composition
+
+
 def _mean_attack_probability(stage_rows: List[Dict[str, object]]) -> float:
     if not stage_rows:
         return 0.0
@@ -662,7 +731,7 @@ def horizon_sweep(
     for horizon in range(1, max_horizon + 1):
         horizon_config = replace(config, horizon=horizon)
         solution = None
-        if strategy_name != TRUTHFUL_BASELINE:
+        if strategy_name in RECURSIVE_STRATEGIES:
             solution = backward_induction(strategy_name, horizon_config, initial_belief)
         forward_result = forward_simulation(strategy_name, horizon_config, initial_belief, solution)
         rows.append(
@@ -702,10 +771,23 @@ def run_experiment_one(config: GameConfig) -> Dict[str, object]:
         initial_belief = scenario["initial_belief"]
         scenario_config = scenario["config"]
         solution = backward_induction(scenario["pbne_strategy"], scenario_config, initial_belief)
-        pbne_result = forward_simulation(scenario["pbne_strategy"], scenario_config, initial_belief, solution)
-        truthful_result = forward_simulation(TRUTHFUL_BASELINE, scenario_config, initial_belief)
-        pbne_horizon_rows = horizon_sweep(scenario["pbne_strategy"], scenario_config, initial_belief, max_horizon=HORIZON_SWEEP_MAX)
-        truthful_horizon_rows = horizon_sweep(TRUTHFUL_BASELINE, scenario_config, initial_belief, max_horizon=HORIZON_SWEEP_MAX)
+        strategy_specs = _build_strategy_specs(scenario, solution)
+        scenario_strategy_results: Dict[str, object] = {}
+        scenario_horizon_rows: Dict[str, List[Dict[str, object]]] = {}
+
+        for strategy_key, strategy_spec in strategy_specs.items():
+            scenario_strategy_results[strategy_key] = forward_simulation(
+                strategy_spec["strategy_name"],
+                scenario_config,
+                initial_belief,
+                strategy_spec["solution"],
+            )
+            scenario_horizon_rows[strategy_key] = horizon_sweep(
+                strategy_spec["strategy_name"],
+                scenario_config,
+                initial_belief,
+                max_horizon=HORIZON_SWEEP_MAX,
+            )
 
         results["scenarios"][scenario_key] = {
             "label": scenario["label"],
@@ -720,14 +802,9 @@ def run_experiment_one(config: GameConfig) -> Dict[str, object]:
             "pbne_strategy_name": scenario["pbne_strategy"],
             "pbne_label": scenario["pbne_label"],
             "truthful_label": "真实披露基线",
-            "results": {
-                "recursive_pbne": pbne_result,
-                "truthful_baseline": truthful_result,
-            },
-            "horizon_sweep": {
-                "recursive_pbne": pbne_horizon_rows,
-                "truthful_baseline": truthful_horizon_rows,
-            },
+            "strategy_labels": {key: spec["strategy_label"] for key, spec in strategy_specs.items()},
+            "results": scenario_strategy_results,
+            "horizon_sweep": scenario_horizon_rows,
             "backward_induction": {
                 "strategy_name": solution.strategy_name,
                 "initial_belief": solution.initial_belief,
@@ -758,19 +835,7 @@ def run_experiment_two(config: GameConfig) -> Dict[str, object]:
         scenario_config = scenario["config"]
         solution = backward_induction(scenario["pbne_strategy"], scenario_config, initial_belief)
         scenario_results: Dict[str, Dict[str, object]] = {}
-
-        strategy_map = {
-            "recursive_pbne": {
-                "strategy_name": scenario["pbne_strategy"],
-                "strategy_label": scenario["pbne_label"],
-                "solution": solution,
-            },
-            "truthful_baseline": {
-                "strategy_name": TRUTHFUL_BASELINE,
-                "strategy_label": "真实披露基线",
-                "solution": None,
-            },
-        }
+        strategy_map = _build_strategy_specs(scenario, solution)
 
         for strategy_key, strategy_spec in strategy_map.items():
             seed = seed_map[scenario_key][strategy_key]
@@ -851,6 +916,7 @@ def run_experiment_two(config: GameConfig) -> Dict[str, object]:
             },
             "pbne_label": scenario["pbne_label"],
             "truthful_label": "真实披露基线",
+            "strategy_labels": {key: spec["strategy_label"] for key, spec in strategy_map.items()},
             "results": scenario_results,
         }
 
@@ -996,11 +1062,133 @@ def run_experiment_three(config: GameConfig) -> Dict[str, object]:
     return results
 
 
+def run_gamma_sensitivity_experiment(config: GameConfig) -> Dict[str, object]:
+    scenarios = _build_experiment_scenarios(config)
+    results: Dict[str, object] = {
+        "experiment_name": "γ 敏感性机制实验",
+        "figure_title": "折扣因子 γ 下递归 PBNE 收益路径对比",
+        "gamma_values": GAMMA_SENSITIVITY_GRID,
+        "horizon_sweep_max": HORIZON_SWEEP_MAX,
+        "scenarios": {},
+    }
+
+    for scenario_key, scenario in scenarios.items():
+        initial_belief = scenario["initial_belief"]
+        scenario_series: List[Dict[str, object]] = []
+        for gamma_value in GAMMA_SENSITIVITY_GRID:
+            scenario_config = replace(scenario["config"], gamma=gamma_value)
+            solution = backward_induction(scenario["pbne_strategy"], scenario_config, initial_belief)
+            forward_result = forward_simulation(scenario["pbne_strategy"], scenario_config, initial_belief, solution)
+            horizon_rows = horizon_sweep(
+                scenario["pbne_strategy"],
+                scenario_config,
+                initial_belief,
+                max_horizon=HORIZON_SWEEP_MAX,
+            )
+            stage_rows: List[Dict[str, object]] = []
+            for stage_record in solution.stage_records:
+                initial_belief_record = stage_record["belief_records"][_belief_key(initial_belief)]
+                if scenario["pbne_strategy"] == RECURSIVE_PBNE_PRODUCTION:
+                    stage_rows.append(
+                        {
+                            "stage": stage_record["stage"],
+                            "equilibrium_attack_probability": stage_record["attack_after_sigma2"],
+                            "camouflage_probability": initial_belief_record["x_t"],
+                            "mechanism_label": "y_t",
+                        }
+                    )
+                else:
+                    stage_rows.append(
+                        {
+                            "stage": stage_record["stage"],
+                            "equilibrium_attack_probability": stage_record["attack_after_sigma1"],
+                            "camouflage_probability": initial_belief_record["z_t"],
+                            "mechanism_label": "q_t",
+                        }
+                    )
+
+            scenario_series.append(
+                {
+                    "gamma": gamma_value,
+                    "strategy_name": scenario["pbne_strategy"],
+                    "strategy_label": STRATEGY_LABELS["recursive_pbne"],
+                    "stage_rows": stage_rows,
+                    "horizon_rows": horizon_rows,
+                    "discounted_cumulative_defender_utility": forward_result["discounted_cumulative_defender_utility"],
+                    "discounted_cumulative_attacker_utility": forward_result["discounted_cumulative_attacker_utility"],
+                    "mean_attack_probability": _mean_attack_probability(forward_result["stage_rows"]),
+                    "terminal_public_belief_mean": _terminal_belief_mean_from_distribution(
+                        forward_result["final_belief_distribution"]
+                    ),
+                    "terminal_uncertainty_probability": _terminal_uncertainty_probability_from_distribution(
+                        forward_result["final_belief_distribution"],
+                        attacker_indifference_threshold(scenario_config),
+                    ),
+                }
+            )
+
+        results["scenarios"][scenario_key] = {
+            "label": scenario["label"],
+            "description": scenario["description"],
+            "initial_belief": initial_belief,
+            "pbne_strategy_name": scenario["pbne_strategy"],
+            "series": scenario_series,
+        }
+
+    return results
+
+
+def build_gamma_sensitivity_rows(experiment_result: Dict[str, object]) -> List[Dict[str, object]]:
+    rows: List[Dict[str, object]] = []
+    for scenario_key, scenario in experiment_result["scenarios"].items():
+        for series in scenario["series"]:
+            for stage_row in series["stage_rows"]:
+                rows.append(
+                    {
+                        "scenario": scenario_key,
+                        "scenario_label": scenario["label"],
+                        "initial_belief": scenario["initial_belief"],
+                        "gamma": series["gamma"],
+                        "stage": stage_row["stage"],
+                        "mechanism_label": stage_row["mechanism_label"],
+                        "equilibrium_attack_probability": stage_row["equilibrium_attack_probability"],
+                        "camouflage_probability": stage_row["camouflage_probability"],
+                        "discounted_cumulative_defender_utility": series["discounted_cumulative_defender_utility"],
+                        "mean_attack_probability": series["mean_attack_probability"],
+                        "terminal_uncertainty_probability": series["terminal_uncertainty_probability"],
+                    }
+                )
+    return rows
+
+
+def build_gamma_horizon_rows(experiment_result: Dict[str, object]) -> List[Dict[str, object]]:
+    rows: List[Dict[str, object]] = []
+    for scenario_key, scenario in experiment_result["scenarios"].items():
+        for series in scenario["series"]:
+            for horizon_row in series["horizon_rows"]:
+                rows.append(
+                    {
+                        "scenario": scenario_key,
+                        "scenario_label": scenario["label"],
+                        "initial_belief": scenario["initial_belief"],
+                        "gamma": series["gamma"],
+                        "horizon": horizon_row["horizon"],
+                        "discounted_cumulative_defender_utility": horizon_row["discounted_cumulative_defender_utility"],
+                        "discounted_cumulative_attacker_utility": horizon_row["discounted_cumulative_attacker_utility"],
+                        "mean_attack_probability": horizon_row["mean_attack_probability"],
+                        "terminal_public_belief_mean": horizon_row["terminal_public_belief_mean"],
+                        "terminal_uncertainty_probability": horizon_row["terminal_uncertainty_probability"],
+                    }
+                )
+    return rows
+
+
 def build_summary_rows(experiment_result: Dict[str, object]) -> List[Dict[str, object]]:
     rows: List[Dict[str, object]] = []
     for scenario_key, scenario in experiment_result["scenarios"].items():
         for strategy_key, strategy_result in scenario["results"].items():
             final_horizon_row = scenario["horizon_sweep"][strategy_key][-1]
+            strategy_label = scenario["strategy_labels"][strategy_key]
             rows.append(
                 {
                     "scenario": scenario_key,
@@ -1010,7 +1198,7 @@ def build_summary_rows(experiment_result: Dict[str, object]) -> List[Dict[str, o
                     "c_theta1": scenario["config"]["c_theta1"],
                     "c_theta2": scenario["config"]["c_theta2"],
                     "strategy": strategy_key,
-                    "strategy_label": scenario["pbne_label"] if strategy_key == "recursive_pbne" else scenario["truthful_label"],
+                    "strategy_label": strategy_label,
                     "cumulative_defender_utility": strategy_result["cumulative_defender_utility"],
                     "cumulative_attacker_utility": strategy_result["cumulative_attacker_utility"],
                     "discounted_cumulative_defender_utility": final_horizon_row["discounted_cumulative_defender_utility"],
@@ -1024,7 +1212,7 @@ def build_stage_rows(experiment_result: Dict[str, object]) -> List[Dict[str, obj
     rows: List[Dict[str, object]] = []
     for scenario_key, scenario in experiment_result["scenarios"].items():
         for strategy_key, horizon_rows in scenario["horizon_sweep"].items():
-            strategy_label = scenario["pbne_label"] if strategy_key == "recursive_pbne" else scenario["truthful_label"]
+            strategy_label = scenario["strategy_labels"][strategy_key]
             for stage_row in horizon_rows:
                 rows.append(
                     {
@@ -1138,10 +1326,12 @@ def build_terminal_uncertainty_rows(experiment_result: Dict[str, object]) -> Lis
 
 def build_terminal_state_rows(experiment_result: Dict[str, object]) -> List[Dict[str, object]]:
     rows: List[Dict[str, object]] = []
-    threshold_key = _belief_key(experiment_result["threshold_belief"])
     for scenario_key, scenario in experiment_result["scenarios"].items():
         for strategy_key, strategy_result in scenario["results"].items():
-            probability_mass = strategy_result["terminal_probability_mass"]
+            composition = _terminal_state_composition(
+                strategy_result["terminal_probability_mass"],
+                experiment_result["threshold_belief"],
+            )
             rows.append(
                 {
                     "scenario": scenario_key,
@@ -1149,9 +1339,10 @@ def build_terminal_state_rows(experiment_result: Dict[str, object]) -> List[Dict
                     "initial_belief": scenario["initial_belief"],
                     "strategy": strategy_key,
                     "strategy_label": strategy_result["strategy_label"],
-                    "certain_honeypot_probability": probability_mass.get("0.000000", 0.0),
-                    "critical_uncertainty_probability": probability_mass.get(threshold_key, 0.0),
-                    "certain_real_probability": probability_mass.get("1.000000", 0.0),
+                    "certain_honeypot_probability": composition["certain_honeypot"],
+                    "critical_uncertainty_probability": composition["critical_uncertainty"],
+                    "other_uncertainty_probability": composition["other_uncertainty"],
+                    "certain_real_probability": composition["certain_real"],
                 }
             )
     return rows
