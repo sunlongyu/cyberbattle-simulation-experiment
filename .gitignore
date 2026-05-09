@@ -9,4 +9,5 @@ __pycache__/
 .mplconfig/
 .venv/
 cyborg_validation/*.md
+!cyborg_validation/README.md
 sg_marl_simulation/**/logs/
