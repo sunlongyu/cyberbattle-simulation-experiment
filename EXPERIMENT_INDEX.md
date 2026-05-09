@@ -2,7 +2,7 @@
 
 ## Chapter 3: Signaling Game
 
-Formal thesis-facing directory: `sg_deception_simulation2/`
+Formal thesis-facing directory: `sg_deception_simulation_main/`
 
 - `cyber_simulation_core/`: model, strategy, configuration, and experiment logic.
 - `run_experiments.py`: generates Chapter 3 JSON and CSV outputs.
@@ -15,16 +15,6 @@ Formal experiments:
 1. Four-strategy defender cumulative utility comparison.
 2. Four-strategy terminal belief comparison.
 3. Parameter sensitivity analysis, including discount factor sensitivity.
-
-Independent earlier/alternate directory: `sg_deception_simulation/`
-
-- Keep this separate from `sg_deception_simulation2/`.
-- Use it only when comparing or preserving the earlier Chapter 3 experiment path.
-
-Related validation directory: `cyborg_validation/`
-
-- Keep CyberBattle/CybORG mapping scripts, scenario files, and compact validation results here.
-- Do not keep thesis rewrite drafts or prose-polishing notes in this directory.
 
 ## Chapter 4: MARL
 
@@ -44,7 +34,6 @@ Formal experiments:
 ## Local-Only Or Ignored Content
 
 - `.venv/`, `.mplconfig/`, `__pycache__/`, `.DS_Store`: machine-local artifacts.
-- `cyborg_validation/*.md`: local thesis-writing drafts unless explicitly promoted. `README.md` is the only Markdown file expected in `cyborg_validation/`.
 
 ## When Adding New Results
 
