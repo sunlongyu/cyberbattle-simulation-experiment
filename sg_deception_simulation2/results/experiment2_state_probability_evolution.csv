@@ -1,0 +1,89 @@
+scenario,scenario_label,initial_belief,strategy,strategy_label,stage,certain_honeypot_probability,critical_uncertainty_probability,certain_real_probability,other_probability
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,2,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,3,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,4,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,5,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,6,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,7,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,8,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,9,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,10,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,11,0.35,0.0,0.65,0.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,2,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,3,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,4,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,5,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,6,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,7,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,8,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,9,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,10,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,11,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,2,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,3,0.0,0.0,0.37861538461538474,0.6213846153846153
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,4,0.0,0.0,0.4746437869822486,0.5253562130177514
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,5,0.0,0.0,0.5366929085116068,0.4633070914883932
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,6,0.0,0.0,0.576786187038269,0.423213812961731
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,7,0.0,0.0,0.6026926131631892,0.39730738683681077
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,8,0.0,0.0,0.619432150043907,0.3805678499560931
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,9,0.0,0.0,0.6302484661822169,0.3697515338177832
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,10,0.0,0.0,0.6372374704562017,0.3627625295437984
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,11,0.0,0.0,0.6417534424486226,0.3582465575513774
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,1,0.0,0.0,0.0,1.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,2,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,3,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,4,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,5,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,6,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,7,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,8,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,9,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,10,0.0,0.77,0.23000000000000007,0.0
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,11,0.0,0.77,0.23000000000000007,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,2,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,3,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,4,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,5,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,6,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,7,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,8,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,9,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,10,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,11,0.75,0.0,0.25,0.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,2,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,3,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,4,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,5,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,6,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,7,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,8,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,9,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,10,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,11,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,2,0.5416666666666666,0.45833333333333337,0.0,0.0
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,3,0.6921296296296295,0.0,0.0,0.30787037037037035
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,4,0.7339248971193415,0.0,0.0,0.26607510288065844
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,5,0.7455346936442615,0.0,0.0,0.25446530635573844
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,6,0.748759637123406,0.0,0.0,0.251240362876594
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,7,0.7496554547565016,0.0,0.0,0.25034454524349836
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,8,0.7499042929879172,0.0,0.0,0.2500957070120829
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,9,0.7499734147188659,0.0,0.0,0.25002658528113414
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,10,0.749992615199685,0.0,0.0,0.25000738480031504
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,11,0.7499979486665792,0.0,0.0,0.25000205133342085
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,1,0.0,0.0,0.0,1.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,2,0.5416666666666666,0.45833333333333337,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,3,0.5416666666666666,0.4583333333333333,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,4,0.5416666666666666,0.45833333333333326,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,5,0.5416666666666666,0.45833333333333326,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,6,0.5416666666666666,0.45833333333333326,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,7,0.5416666666666666,0.4583333333333332,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,8,0.5416666666666666,0.45833333333333315,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,9,0.5416666666666666,0.45833333333333315,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,10,0.5416666666666666,0.45833333333333315,0.0,0.0
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,11,0.5416666666666666,0.4583333333333331,0.0,0.0

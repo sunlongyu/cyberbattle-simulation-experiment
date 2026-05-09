@@ -1,0 +1,1821 @@
+{
+  "experiment_name": "γ 敏感性机制实验",
+  "figure_title": "折扣因子 γ 下递归 PBNE 收益路径对比",
+  "gamma_values": [
+    0.5,
+    0.65,
+    0.8,
+    0.95
+  ],
+  "horizon_sweep_max": 15,
+  "scenarios": {
+    "scenario_a": {
+      "label": "场景 A",
+      "description": "高初始信念 p_1，偏向第一类半分离结构“以真乱假”。",
+      "initial_belief": 0.65,
+      "pbne_strategy_name": "recursive_pbne_production",
+      "series": [
+        {
+          "gamma": 0.5,
+          "strategy_name": "recursive_pbne_production",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.861111111111111,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": -4.786111111111113,
+              "discounted_cumulative_attacker_utility": 2.3000000000000003,
+              "undiscounted_cumulative_defender_utility": -4.786111111111113,
+              "undiscounted_cumulative_attacker_utility": 2.3000000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": -7.179166666666669,
+              "discounted_cumulative_attacker_utility": 3.450000000000001,
+              "undiscounted_cumulative_defender_utility": -9.572222222222226,
+              "undiscounted_cumulative_attacker_utility": 4.600000000000001,
+              "mean_attack_probability": 0.8930555555555556,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": -8.375694444444447,
+              "discounted_cumulative_attacker_utility": 4.025000000000001,
+              "undiscounted_cumulative_defender_utility": -14.35833333333334,
+              "undiscounted_cumulative_attacker_utility": 6.900000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": -8.973958333333337,
+              "discounted_cumulative_attacker_utility": 4.3125,
+              "undiscounted_cumulative_defender_utility": -19.144444444444453,
+              "undiscounted_cumulative_attacker_utility": 9.200000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": -9.273090277777783,
+              "discounted_cumulative_attacker_utility": 4.456250000000001,
+              "undiscounted_cumulative_defender_utility": -23.930555555555564,
+              "undiscounted_cumulative_attacker_utility": 11.500000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": -9.422656250000005,
+              "discounted_cumulative_attacker_utility": 4.528125,
+              "undiscounted_cumulative_defender_utility": -28.716666666666676,
+              "undiscounted_cumulative_attacker_utility": 13.800000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": -9.497439236111116,
+              "discounted_cumulative_attacker_utility": 4.5640625,
+              "undiscounted_cumulative_defender_utility": -33.50277777777779,
+              "undiscounted_cumulative_attacker_utility": 16.1,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": -9.534830729166671,
+              "discounted_cumulative_attacker_utility": 4.58203125,
+              "undiscounted_cumulative_defender_utility": -38.2888888888889,
+              "undiscounted_cumulative_attacker_utility": 18.400000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": -9.553526475694449,
+              "discounted_cumulative_attacker_utility": 4.591015625,
+              "undiscounted_cumulative_defender_utility": -43.07500000000001,
+              "undiscounted_cumulative_attacker_utility": 20.700000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": -9.562874348958339,
+              "discounted_cumulative_attacker_utility": 4.5955078125,
+              "undiscounted_cumulative_defender_utility": -47.86111111111112,
+              "undiscounted_cumulative_attacker_utility": 23.000000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": -9.567548285590282,
+              "discounted_cumulative_attacker_utility": 4.59775390625,
+              "undiscounted_cumulative_defender_utility": -52.64722222222223,
+              "undiscounted_cumulative_attacker_utility": 25.300000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": -9.569885253906255,
+              "discounted_cumulative_attacker_utility": 4.598876953125,
+              "undiscounted_cumulative_defender_utility": -57.433333333333344,
+              "undiscounted_cumulative_attacker_utility": 27.600000000000005,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": -9.571053738064242,
+              "discounted_cumulative_attacker_utility": 4.5994384765625,
+              "undiscounted_cumulative_defender_utility": -62.219444444444456,
+              "undiscounted_cumulative_attacker_utility": 29.900000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": -9.571637980143235,
+              "discounted_cumulative_attacker_utility": 4.59971923828125,
+              "undiscounted_cumulative_defender_utility": -67.00555555555557,
+              "undiscounted_cumulative_attacker_utility": 32.2,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": -9.571930101182732,
+              "discounted_cumulative_attacker_utility": 4.599859619140625,
+              "undiscounted_cumulative_defender_utility": -71.79166666666669,
+              "undiscounted_cumulative_attacker_utility": 34.50000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            }
+          ],
+          "discounted_cumulative_defender_utility": -9.562874348958339,
+          "discounted_cumulative_attacker_utility": 4.5955078125,
+          "mean_attack_probability": 0.8930555555555557,
+          "terminal_public_belief_mean": 0.6500003500000001,
+          "terminal_uncertainty_probability": 0.77
+        },
+        {
+          "gamma": 0.65,
+          "strategy_name": "recursive_pbne_production",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.8611111111111114,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.8611111111111109,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.8611111111111109,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.861111111111111,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": -4.786111111111113,
+              "discounted_cumulative_attacker_utility": 2.3000000000000003,
+              "undiscounted_cumulative_defender_utility": -4.786111111111113,
+              "undiscounted_cumulative_attacker_utility": 2.3000000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": -7.897083333333336,
+              "discounted_cumulative_attacker_utility": 3.7950000000000017,
+              "undiscounted_cumulative_defender_utility": -9.572222222222226,
+              "undiscounted_cumulative_attacker_utility": 4.600000000000001,
+              "mean_attack_probability": 0.8930555555555556,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": -9.919215277777782,
+              "discounted_cumulative_attacker_utility": 4.766750000000001,
+              "undiscounted_cumulative_defender_utility": -14.35833333333334,
+              "undiscounted_cumulative_attacker_utility": 6.900000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": -11.23360104166667,
+              "discounted_cumulative_attacker_utility": 5.398387500000002,
+              "undiscounted_cumulative_defender_utility": -19.144444444444453,
+              "undiscounted_cumulative_attacker_utility": 9.200000000000003,
+              "mean_attack_probability": 0.8930555555555556,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": -12.08795178819445,
+              "discounted_cumulative_attacker_utility": 5.808951875000001,
+              "undiscounted_cumulative_defender_utility": -23.930555555555564,
+              "undiscounted_cumulative_attacker_utility": 11.500000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": -12.643279773437504,
+              "discounted_cumulative_attacker_utility": 6.075818718750001,
+              "undiscounted_cumulative_defender_utility": -28.716666666666676,
+              "undiscounted_cumulative_attacker_utility": 13.800000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": -13.00424296384549,
+              "discounted_cumulative_attacker_utility": 6.249282167187501,
+              "undiscounted_cumulative_defender_utility": -33.50277777777779,
+              "undiscounted_cumulative_attacker_utility": 16.1,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": -13.238869037610682,
+              "discounted_cumulative_attacker_utility": 6.362033408671877,
+              "undiscounted_cumulative_defender_utility": -38.2888888888889,
+              "undiscounted_cumulative_attacker_utility": 18.400000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": -13.391375985558057,
+              "discounted_cumulative_attacker_utility": 6.435321715636721,
+              "undiscounted_cumulative_defender_utility": -43.07500000000001,
+              "undiscounted_cumulative_attacker_utility": 20.700000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": -13.49050550172385,
+              "discounted_cumulative_attacker_utility": 6.482959115163869,
+              "undiscounted_cumulative_defender_utility": -47.86111111111112,
+              "undiscounted_cumulative_attacker_utility": 23.000000000000007,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": -13.554939687231618,
+              "discounted_cumulative_attacker_utility": 6.5139234248565145,
+              "undiscounted_cumulative_defender_utility": -52.64722222222223,
+              "undiscounted_cumulative_attacker_utility": 25.300000000000008,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": -13.596821907811666,
+              "discounted_cumulative_attacker_utility": 6.534050226156736,
+              "undiscounted_cumulative_defender_utility": -57.433333333333344,
+              "undiscounted_cumulative_attacker_utility": 27.60000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": -13.624045351188691,
+              "discounted_cumulative_attacker_utility": 6.547132647001878,
+              "undiscounted_cumulative_defender_utility": -62.219444444444456,
+              "undiscounted_cumulative_attacker_utility": 29.90000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": -13.641740589383765,
+              "discounted_cumulative_attacker_utility": 6.5556362205512215,
+              "undiscounted_cumulative_defender_utility": -67.00555555555557,
+              "undiscounted_cumulative_attacker_utility": 32.20000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": -13.653242494210561,
+              "discounted_cumulative_attacker_utility": 6.561163543358295,
+              "undiscounted_cumulative_defender_utility": -71.79166666666669,
+              "undiscounted_cumulative_attacker_utility": 34.50000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            }
+          ],
+          "discounted_cumulative_defender_utility": -13.49050550172385,
+          "discounted_cumulative_attacker_utility": 6.482959115163869,
+          "mean_attack_probability": 0.8930555555555557,
+          "terminal_public_belief_mean": 0.6500003500000001,
+          "terminal_uncertainty_probability": 0.77
+        },
+        {
+          "gamma": 0.8,
+          "strategy_name": "recursive_pbne_production",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.861111111111111,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": -4.786111111111113,
+              "discounted_cumulative_attacker_utility": 2.3000000000000003,
+              "undiscounted_cumulative_defender_utility": -4.786111111111113,
+              "undiscounted_cumulative_attacker_utility": 2.3000000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": -8.615000000000002,
+              "discounted_cumulative_attacker_utility": 4.1400000000000015,
+              "undiscounted_cumulative_defender_utility": -9.572222222222226,
+              "undiscounted_cumulative_attacker_utility": 4.600000000000001,
+              "mean_attack_probability": 0.8930555555555556,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": -11.678111111111116,
+              "discounted_cumulative_attacker_utility": 5.612000000000002,
+              "undiscounted_cumulative_defender_utility": -14.35833333333334,
+              "undiscounted_cumulative_attacker_utility": 6.900000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": -14.128600000000006,
+              "discounted_cumulative_attacker_utility": 6.789600000000002,
+              "undiscounted_cumulative_defender_utility": -19.144444444444453,
+              "undiscounted_cumulative_attacker_utility": 9.200000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": -16.088991111111117,
+              "discounted_cumulative_attacker_utility": 7.7316800000000026,
+              "undiscounted_cumulative_defender_utility": -23.930555555555564,
+              "undiscounted_cumulative_attacker_utility": 11.500000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": -17.657304000000007,
+              "discounted_cumulative_attacker_utility": 8.485344000000003,
+              "undiscounted_cumulative_defender_utility": -28.716666666666676,
+              "undiscounted_cumulative_attacker_utility": 13.800000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": -18.91195431111112,
+              "discounted_cumulative_attacker_utility": 9.088275200000004,
+              "undiscounted_cumulative_defender_utility": -33.50277777777779,
+              "undiscounted_cumulative_attacker_utility": 16.1,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": -19.915674560000006,
+              "discounted_cumulative_attacker_utility": 9.570620160000004,
+              "undiscounted_cumulative_defender_utility": -38.2888888888889,
+              "undiscounted_cumulative_attacker_utility": 18.400000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": -20.71865075911112,
+              "discounted_cumulative_attacker_utility": 9.956496128000005,
+              "undiscounted_cumulative_defender_utility": -43.07500000000001,
+              "undiscounted_cumulative_attacker_utility": 20.700000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": -21.36103171840001,
+              "discounted_cumulative_attacker_utility": 10.265196902400005,
+              "undiscounted_cumulative_defender_utility": -47.86111111111112,
+              "undiscounted_cumulative_attacker_utility": 23.000000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": -21.87493648583112,
+              "discounted_cumulative_attacker_utility": 10.512157521920004,
+              "undiscounted_cumulative_defender_utility": -52.64722222222223,
+              "undiscounted_cumulative_attacker_utility": 25.300000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": -22.28606029977601,
+              "discounted_cumulative_attacker_utility": 10.709726017536006,
+              "undiscounted_cumulative_defender_utility": -57.433333333333344,
+              "undiscounted_cumulative_attacker_utility": 27.600000000000005,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": -22.614959350931922,
+              "discounted_cumulative_attacker_utility": 10.867780814028805,
+              "undiscounted_cumulative_defender_utility": -62.219444444444456,
+              "undiscounted_cumulative_attacker_utility": 29.900000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": -22.878078591856653,
+              "discounted_cumulative_attacker_utility": 10.994224651223044,
+              "undiscounted_cumulative_defender_utility": -67.00555555555557,
+              "undiscounted_cumulative_attacker_utility": 32.2,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": -23.088573984596437,
+              "discounted_cumulative_attacker_utility": 11.095379720978437,
+              "undiscounted_cumulative_defender_utility": -71.79166666666669,
+              "undiscounted_cumulative_attacker_utility": 34.50000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            }
+          ],
+          "discounted_cumulative_defender_utility": -21.36103171840001,
+          "discounted_cumulative_attacker_utility": 10.265196902400005,
+          "mean_attack_probability": 0.8930555555555557,
+          "terminal_public_belief_mean": 0.6500003500000001,
+          "terminal_uncertainty_probability": 0.77
+        },
+        {
+          "gamma": 0.95,
+          "strategy_name": "recursive_pbne_production",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.861111111111111,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.8611111111111112,
+              "camouflage_probability": 0.6461538461538461,
+              "mechanism_label": "y_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": -4.786111111111113,
+              "discounted_cumulative_attacker_utility": 2.3000000000000003,
+              "undiscounted_cumulative_defender_utility": -4.786111111111113,
+              "undiscounted_cumulative_attacker_utility": 2.3000000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": -9.33291666666667,
+              "discounted_cumulative_attacker_utility": 4.485000000000001,
+              "undiscounted_cumulative_defender_utility": -9.572222222222226,
+              "undiscounted_cumulative_attacker_utility": 4.600000000000001,
+              "mean_attack_probability": 0.8930555555555556,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": -13.65238194444445,
+              "discounted_cumulative_attacker_utility": 6.560750000000001,
+              "undiscounted_cumulative_defender_utility": -14.35833333333334,
+              "undiscounted_cumulative_attacker_utility": 6.900000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": -17.75587395833334,
+              "discounted_cumulative_attacker_utility": 8.532712500000002,
+              "undiscounted_cumulative_defender_utility": -19.144444444444453,
+              "undiscounted_cumulative_attacker_utility": 9.200000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": -21.654191371527784,
+              "discounted_cumulative_attacker_utility": 10.406076875,
+              "undiscounted_cumulative_defender_utility": -23.930555555555564,
+              "undiscounted_cumulative_attacker_utility": 11.500000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": -25.357592914062508,
+              "discounted_cumulative_attacker_utility": 12.185773031250001,
+              "undiscounted_cumulative_defender_utility": -28.716666666666676,
+              "undiscounted_cumulative_attacker_utility": 13.800000000000002,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": -28.87582437947049,
+              "discounted_cumulative_attacker_utility": 13.8764843796875,
+              "undiscounted_cumulative_defender_utility": -33.50277777777779,
+              "undiscounted_cumulative_attacker_utility": 16.1,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": -32.21814427160808,
+              "discounted_cumulative_attacker_utility": 15.482660160703125,
+              "undiscounted_cumulative_defender_utility": -38.2888888888889,
+              "undiscounted_cumulative_attacker_utility": 18.400000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": -35.39334816913879,
+              "discounted_cumulative_attacker_utility": 17.008527152667966,
+              "undiscounted_cumulative_defender_utility": -43.07500000000001,
+              "undiscounted_cumulative_attacker_utility": 20.700000000000003,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": -38.40979187179296,
+              "discounted_cumulative_attacker_utility": 18.458100795034568,
+              "undiscounted_cumulative_defender_utility": -47.86111111111112,
+              "undiscounted_cumulative_attacker_utility": 23.000000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": -41.27541338931442,
+              "discounted_cumulative_attacker_utility": 19.83519575528284,
+              "undiscounted_cumulative_defender_utility": -52.64722222222223,
+              "undiscounted_cumulative_attacker_utility": 25.300000000000004,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": -43.997753830959816,
+              "discounted_cumulative_attacker_utility": 21.1434359675187,
+              "undiscounted_cumulative_defender_utility": -57.433333333333344,
+              "undiscounted_cumulative_attacker_utility": 27.600000000000005,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": -46.58397725052293,
+              "discounted_cumulative_attacker_utility": 22.386264169142763,
+              "undiscounted_cumulative_defender_utility": -62.219444444444456,
+              "undiscounted_cumulative_attacker_utility": 29.900000000000006,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": -49.0408894991079,
+              "discounted_cumulative_attacker_utility": 23.566950960685624,
+              "undiscounted_cumulative_defender_utility": -67.00555555555557,
+              "undiscounted_cumulative_attacker_utility": 32.2,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": -51.374956135263616,
+              "discounted_cumulative_attacker_utility": 24.688603412651343,
+              "undiscounted_cumulative_defender_utility": -71.79166666666669,
+              "undiscounted_cumulative_attacker_utility": 34.50000000000001,
+              "mean_attack_probability": 0.8930555555555557,
+              "terminal_public_belief_mean": 0.6500003500000001,
+              "terminal_uncertainty_probability": 0.77
+            }
+          ],
+          "discounted_cumulative_defender_utility": -38.40979187179296,
+          "discounted_cumulative_attacker_utility": 18.458100795034568,
+          "mean_attack_probability": 0.8930555555555557,
+          "terminal_public_belief_mean": 0.6500003500000001,
+          "terminal_uncertainty_probability": 0.77
+        }
+      ]
+    },
+    "scenario_b": {
+      "label": "场景 B",
+      "description": "低初始信念 p_1，偏向第二类半分离结构；场景内设置较高的蜜罐伪装成本，用于考察完全混同与递归 PBNE 在成本控制上的差异。",
+      "initial_belief": 0.25,
+      "pbne_strategy_name": "recursive_pbne_honeypot",
+      "series": [
+        {
+          "gamma": 0.5,
+          "strategy_name": "recursive_pbne_honeypot",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": 0.15,
+              "discounted_cumulative_attacker_utility": 0.0,
+              "undiscounted_cumulative_defender_utility": 0.15,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.1375,
+              "terminal_public_belief_mean": 0.25000020833333336,
+              "terminal_uncertainty_probability": 0.45833333333333337
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": 0.22499999999999998,
+              "discounted_cumulative_attacker_utility": 5.551115123125783e-17,
+              "undiscounted_cumulative_defender_utility": 0.3,
+              "undiscounted_cumulative_attacker_utility": 1.1102230246251565e-16,
+              "mean_attack_probability": 0.1375,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.4583333333333333
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": 0.2625000000000001,
+              "discounted_cumulative_attacker_utility": 0.0,
+              "undiscounted_cumulative_defender_utility": 0.4500000000000002,
+              "undiscounted_cumulative_attacker_utility": 2.220446049250313e-16,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": 0.28125000000000006,
+              "discounted_cumulative_attacker_utility": 9.71445146547012e-17,
+              "undiscounted_cumulative_defender_utility": 0.6000000000000002,
+              "undiscounted_cumulative_attacker_utility": 5.551115123125783e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": 0.290625,
+              "discounted_cumulative_attacker_utility": 1.5265566588595902e-16,
+              "undiscounted_cumulative_defender_utility": 0.7500000000000002,
+              "undiscounted_cumulative_attacker_utility": 9.992007221626409e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": 0.2953125000000002,
+              "discounted_cumulative_attacker_utility": 7.28583859910259e-17,
+              "undiscounted_cumulative_defender_utility": 0.9000000000000004,
+              "undiscounted_cumulative_attacker_utility": 1.4432899320127035e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.4583333333333332
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": 0.29765625000000007,
+              "discounted_cumulative_attacker_utility": 1.457167719820518e-16,
+              "undiscounted_cumulative_defender_utility": 1.0500000000000003,
+              "undiscounted_cumulative_attacker_utility": 2.1094237467877974e-15,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": 0.298828125,
+              "discounted_cumulative_attacker_utility": 1.8301332671555315e-16,
+              "undiscounted_cumulative_defender_utility": 1.2000000000000002,
+              "undiscounted_cumulative_attacker_utility": 2.886579864025407e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": 0.2994140625000002,
+              "discounted_cumulative_attacker_utility": 9.107298248878237e-17,
+              "undiscounted_cumulative_defender_utility": 1.3500000000000003,
+              "undiscounted_cumulative_attacker_utility": 3.6637359812630166e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": 0.2997070312500001,
+              "discounted_cumulative_attacker_utility": 1.5525775109992423e-16,
+              "undiscounted_cumulative_defender_utility": 1.5000000000000002,
+              "undiscounted_cumulative_attacker_utility": 4.440892098500626e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.4583333333333331
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": 0.299853515625,
+              "discounted_cumulative_attacker_utility": 1.8832591736073212e-16,
+              "undiscounted_cumulative_defender_utility": 1.6500000000000001,
+              "undiscounted_cumulative_attacker_utility": 5.440092820663267e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": 0.29992675781250017,
+              "discounted_cumulative_attacker_utility": 9.410874857174178e-17,
+              "undiscounted_cumulative_defender_utility": 1.8000000000000003,
+              "undiscounted_cumulative_attacker_utility": 6.5503158452884236e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": 0.2999633789062501,
+              "discounted_cumulative_attacker_utility": 1.569653695215889e-16,
+              "undiscounted_cumulative_defender_utility": 1.9500000000000002,
+              "undiscounted_cumulative_attacker_utility": 7.66053886991358e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": 0.29998168945312503,
+              "discounted_cumulative_attacker_utility": 1.8927459426165694e-16,
+              "undiscounted_cumulative_defender_utility": 2.1,
+              "undiscounted_cumulative_attacker_utility": 8.992806499463768e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.458333333333333
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": 0.2999908447265627,
+              "discounted_cumulative_attacker_utility": 9.463052086725043e-17,
+              "undiscounted_cumulative_defender_utility": 2.2500000000000004,
+              "undiscounted_cumulative_attacker_utility": 1.0436096431476471e-14,
+              "mean_attack_probability": 0.13749999999999993,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.4583333333333329
+            }
+          ],
+          "discounted_cumulative_defender_utility": 0.2997070312500001,
+          "discounted_cumulative_attacker_utility": 1.5525775109992423e-16,
+          "mean_attack_probability": 0.13749999999999996,
+          "terminal_public_belief_mean": 0.2500002083333332,
+          "terminal_uncertainty_probability": 0.4583333333333331
+        },
+        {
+          "gamma": 0.65,
+          "strategy_name": "recursive_pbne_honeypot",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": 0.15,
+              "discounted_cumulative_attacker_utility": 0.0,
+              "undiscounted_cumulative_defender_utility": 0.15,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.1375,
+              "terminal_public_belief_mean": 0.25000020833333336,
+              "terminal_uncertainty_probability": 0.45833333333333337
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": 0.24750000000000016,
+              "discounted_cumulative_attacker_utility": -3.8857805861880476e-17,
+              "undiscounted_cumulative_defender_utility": 0.30000000000000016,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.4583333333333333
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": 0.3108750000000001,
+              "discounted_cumulative_attacker_utility": 9.381384558082574e-17,
+              "undiscounted_cumulative_defender_utility": 0.4500000000000002,
+              "undiscounted_cumulative_attacker_utility": 2.220446049250313e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": 0.35206875000000026,
+              "discounted_cumulative_attacker_utility": 9.951761636983749e-17,
+              "undiscounted_cumulative_defender_utility": 0.6000000000000003,
+              "undiscounted_cumulative_attacker_utility": 4.440892098500626e-16,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": 0.37884468750000017,
+              "discounted_cumulative_attacker_utility": 2.340655447241602e-16,
+              "undiscounted_cumulative_defender_utility": 0.7500000000000003,
+              "undiscounted_cumulative_attacker_utility": 8.881784197001252e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": 0.39624904687500007,
+              "discounted_cumulative_attacker_utility": 3.344035118257871e-16,
+              "undiscounted_cumulative_defender_utility": 0.9000000000000004,
+              "undiscounted_cumulative_attacker_utility": 1.4432899320127035e-15,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.4583333333333332
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": 0.40756188046875025,
+              "discounted_cumulative_attacker_utility": 2.969740668656851e-16,
+              "undiscounted_cumulative_defender_utility": 1.0500000000000005,
+              "undiscounted_cumulative_attacker_utility": 1.9984014443252818e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": 0.4149152223046877,
+              "discounted_cumulative_attacker_utility": 3.8910979638026595e-16,
+              "undiscounted_cumulative_defender_utility": 1.2000000000000004,
+              "undiscounted_cumulative_attacker_utility": 2.7755575615628914e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": 0.4196948944980472,
+              "discounted_cumulative_attacker_utility": 3.360708199055818e-16,
+              "undiscounted_cumulative_defender_utility": 1.3500000000000005,
+              "undiscounted_cumulative_attacker_utility": 3.4416913763379853e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": 0.4228016814237307,
+              "discounted_cumulative_attacker_utility": 4.180603539356842e-16,
+              "undiscounted_cumulative_defender_utility": 1.5000000000000004,
+              "undiscounted_cumulative_attacker_utility": 4.3298697960381105e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.4583333333333331
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": 0.4248210929254249,
+              "discounted_cumulative_attacker_utility": 4.697051337943675e-16,
+              "undiscounted_cumulative_defender_utility": 1.6500000000000004,
+              "undiscounted_cumulative_attacker_utility": 5.329070518200751e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": 0.4261337104015264,
+              "discounted_cumulative_attacker_utility": 3.9636655236079065e-16,
+              "undiscounted_cumulative_defender_utility": 1.8000000000000005,
+              "undiscounted_cumulative_attacker_utility": 6.328271240363392e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": 0.42698691176099224,
+              "discounted_cumulative_attacker_utility": 4.626497570057605e-16,
+              "undiscounted_cumulative_defender_utility": 1.9500000000000004,
+              "undiscounted_cumulative_attacker_utility": 7.66053886991358e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": 0.42754149264464514,
+              "discounted_cumulative_attacker_utility": 3.8737995934537714e-16,
+              "undiscounted_cumulative_defender_utility": 2.1000000000000005,
+              "undiscounted_cumulative_attacker_utility": 8.770761894538737e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.458333333333333
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": 0.4279019702190194,
+              "discounted_cumulative_attacker_utility": 4.551862666067293e-16,
+              "undiscounted_cumulative_defender_utility": 2.2500000000000004,
+              "undiscounted_cumulative_attacker_utility": 1.021405182655144e-14,
+              "mean_attack_probability": 0.13749999999999993,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.4583333333333329
+            }
+          ],
+          "discounted_cumulative_defender_utility": 0.4228016814237307,
+          "discounted_cumulative_attacker_utility": 4.180603539356842e-16,
+          "mean_attack_probability": 0.13749999999999996,
+          "terminal_public_belief_mean": 0.2500002083333332,
+          "terminal_uncertainty_probability": 0.4583333333333331
+        },
+        {
+          "gamma": 0.8,
+          "strategy_name": "recursive_pbne_honeypot",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": 0.15,
+              "discounted_cumulative_attacker_utility": 0.0,
+              "undiscounted_cumulative_defender_utility": 0.15,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.1375,
+              "terminal_public_belief_mean": 0.25000020833333336,
+              "terminal_uncertainty_probability": 0.45833333333333337
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": 0.27000000000000013,
+              "discounted_cumulative_attacker_utility": -2.2204460492503126e-17,
+              "undiscounted_cumulative_defender_utility": 0.30000000000000016,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.4583333333333333
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": 0.36600000000000016,
+              "discounted_cumulative_attacker_utility": 1.4210854715202006e-16,
+              "undiscounted_cumulative_defender_utility": 0.4500000000000002,
+              "undiscounted_cumulative_attacker_utility": 2.220446049250313e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": 0.4428000000000003,
+              "discounted_cumulative_attacker_utility": 2.19380069665931e-16,
+              "undiscounted_cumulative_defender_utility": 0.6000000000000003,
+              "undiscounted_cumulative_attacker_utility": 4.440892098500626e-16,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": 0.5042400000000002,
+              "discounted_cumulative_attacker_utility": 4.376943252282218e-16,
+              "undiscounted_cumulative_defender_utility": 0.7500000000000003,
+              "undiscounted_cumulative_attacker_utility": 8.881784197001252e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": 0.5533920000000003,
+              "discounted_cumulative_attacker_utility": 5.37703215286456e-16,
+              "undiscounted_cumulative_defender_utility": 0.9000000000000005,
+              "undiscounted_cumulative_attacker_utility": 1.3322676295501878e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.4583333333333332
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": 0.5927136000000004,
+              "discounted_cumulative_attacker_utility": 7.578364602522927e-16,
+              "undiscounted_cumulative_defender_utility": 1.0500000000000005,
+              "undiscounted_cumulative_attacker_utility": 1.9984014443252818e-15,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": 0.6241708800000004,
+              "discounted_cumulative_attacker_utility": 8.462038181278334e-16,
+              "undiscounted_cumulative_defender_utility": 1.2000000000000006,
+              "undiscounted_cumulative_attacker_utility": 2.6645352591003757e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": 0.6493367040000004,
+              "discounted_cumulative_attacker_utility": 1.0232633940177043e-15,
+              "undiscounted_cumulative_defender_utility": 1.3500000000000005,
+              "undiscounted_cumulative_attacker_utility": 3.4416913763379853e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": 0.6694693632000004,
+              "discounted_cumulative_attacker_utility": 1.0771718166324723e-15,
+              "undiscounted_cumulative_defender_utility": 1.5000000000000007,
+              "undiscounted_cumulative_attacker_utility": 4.218847493575595e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.4583333333333331
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": 0.6855754905600006,
+              "discounted_cumulative_attacker_utility": 1.2348598829703409e-15,
+              "undiscounted_cumulative_defender_utility": 1.6500000000000006,
+              "undiscounted_cumulative_attacker_utility": 5.218048215738236e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": 0.6984603924480003,
+              "discounted_cumulative_attacker_utility": 1.378928982376238e-15,
+              "undiscounted_cumulative_defender_utility": 1.8000000000000005,
+              "undiscounted_cumulative_attacker_utility": 6.328271240363392e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": 0.7087683139584007,
+              "discounted_cumulative_attacker_utility": 1.3824094507981505e-15,
+              "undiscounted_cumulative_defender_utility": 1.9500000000000006,
+              "undiscounted_cumulative_attacker_utility": 7.438494264988549e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": 0.7170146511667204,
+              "discounted_cumulative_attacker_utility": 1.5107015467947357e-15,
+              "undiscounted_cumulative_defender_utility": 2.1000000000000005,
+              "undiscounted_cumulative_attacker_utility": 8.770761894538737e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.458333333333333
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": 0.7236117209333767,
+              "discounted_cumulative_attacker_utility": 1.4988138304579486e-15,
+              "undiscounted_cumulative_defender_utility": 2.250000000000001,
+              "undiscounted_cumulative_attacker_utility": 1.0103029524088925e-14,
+              "mean_attack_probability": 0.13749999999999993,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.4583333333333329
+            }
+          ],
+          "discounted_cumulative_defender_utility": 0.6694693632000004,
+          "discounted_cumulative_attacker_utility": 1.0771718166324723e-15,
+          "mean_attack_probability": 0.13749999999999996,
+          "terminal_public_belief_mean": 0.2500002083333332,
+          "terminal_uncertainty_probability": 0.4583333333333331
+        },
+        {
+          "gamma": 0.95,
+          "strategy_name": "recursive_pbne_honeypot",
+          "strategy_label": "递归 PBNE 策略",
+          "stage_rows": [
+            {
+              "stage": 1,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 2,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 3,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 4,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 5,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 6,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 7,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 8,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 9,
+              "equilibrium_attack_probability": 0.29999999999999993,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            },
+            {
+              "stage": 10,
+              "equilibrium_attack_probability": 0.3,
+              "camouflage_probability": 0.2777777777777778,
+              "mechanism_label": "q_t"
+            }
+          ],
+          "horizon_rows": [
+            {
+              "horizon": 1,
+              "discounted_cumulative_defender_utility": 0.15,
+              "discounted_cumulative_attacker_utility": 0.0,
+              "undiscounted_cumulative_defender_utility": 0.15,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.1375,
+              "terminal_public_belief_mean": 0.25000020833333336,
+              "terminal_uncertainty_probability": 0.45833333333333337
+            },
+            {
+              "horizon": 2,
+              "discounted_cumulative_defender_utility": 0.29250000000000015,
+              "discounted_cumulative_attacker_utility": -5.551115123125788e-18,
+              "undiscounted_cumulative_defender_utility": 0.30000000000000016,
+              "undiscounted_cumulative_attacker_utility": 0.0,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.4583333333333333
+            },
+            {
+              "horizon": 3,
+              "discounted_cumulative_defender_utility": 0.4278750000000001,
+              "discounted_cumulative_attacker_utility": 2.0039525594484075e-16,
+              "undiscounted_cumulative_defender_utility": 0.4500000000000002,
+              "undiscounted_cumulative_attacker_utility": 2.220446049250313e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 4,
+              "discounted_cumulative_defender_utility": 0.5564812500000003,
+              "discounted_cumulative_attacker_utility": 3.8020975257069265e-16,
+              "undiscounted_cumulative_defender_utility": 0.6000000000000003,
+              "undiscounted_cumulative_attacker_utility": 4.440892098500626e-16,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 5,
+              "discounted_cumulative_defender_utility": 0.6786571875000003,
+              "discounted_cumulative_attacker_utility": 7.5248418607287695e-16,
+              "undiscounted_cumulative_defender_utility": 0.7500000000000003,
+              "undiscounted_cumulative_attacker_utility": 8.881784197001252e-16,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.2500002083333333,
+              "terminal_uncertainty_probability": 0.45833333333333326
+            },
+            {
+              "horizon": 6,
+              "discounted_cumulative_defender_utility": 0.7947243281250003,
+              "discounted_cumulative_attacker_utility": 1.0810295367202903e-15,
+              "undiscounted_cumulative_defender_utility": 0.9000000000000005,
+              "undiscounted_cumulative_attacker_utility": 1.3322676295501878e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.4583333333333332
+            },
+            {
+              "horizon": 7,
+              "discounted_cumulative_defender_utility": 0.9049881117187504,
+              "discounted_cumulative_attacker_utility": 1.5857815165165597e-15,
+              "undiscounted_cumulative_defender_utility": 1.0500000000000005,
+              "undiscounted_cumulative_attacker_utility": 1.9984014443252818e-15,
+              "mean_attack_probability": 0.13749999999999998,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 8,
+              "discounted_cumulative_defender_utility": 1.009738706132813,
+              "discounted_cumulative_attacker_utility": 2.031804609368276e-15,
+              "undiscounted_cumulative_defender_utility": 1.2000000000000006,
+              "undiscounted_cumulative_attacker_utility": 2.6645352591003757e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 9,
+              "discounted_cumulative_defender_utility": 1.1092517708261722,
+              "discounted_cumulative_attacker_utility": 2.5626722993145326e-15,
+              "undiscounted_cumulative_defender_utility": 1.3500000000000005,
+              "undiscounted_cumulative_attacker_utility": 3.4416913763379853e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333325,
+              "terminal_uncertainty_probability": 0.45833333333333315
+            },
+            {
+              "horizon": 10,
+              "discounted_cumulative_defender_utility": 1.2037891822848639,
+              "discounted_cumulative_attacker_utility": 3.033505316808737e-15,
+              "undiscounted_cumulative_defender_utility": 1.5000000000000007,
+              "undiscounted_cumulative_attacker_utility": 4.218847493575595e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.4583333333333331
+            },
+            {
+              "horizon": 11,
+              "discounted_cumulative_defender_utility": 1.2935997231706204,
+              "discounted_cumulative_attacker_utility": 3.650732865539842e-15,
+              "undiscounted_cumulative_defender_utility": 1.6500000000000006,
+              "undiscounted_cumulative_attacker_utility": 5.218048215738236e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 12,
+              "discounted_cumulative_defender_utility": 1.3789197370120896,
+              "discounted_cumulative_attacker_utility": 4.196785504171809e-15,
+              "undiscounted_cumulative_defender_utility": 1.8000000000000007,
+              "undiscounted_cumulative_attacker_utility": 6.217248937900877e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 13,
+              "discounted_cumulative_defender_utility": 1.4599737501614851,
+              "discounted_cumulative_attacker_utility": 4.878990560511338e-15,
+              "undiscounted_cumulative_defender_utility": 1.9500000000000006,
+              "undiscounted_cumulative_attacker_utility": 7.438494264988549e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.2500002083333332,
+              "terminal_uncertainty_probability": 0.45833333333333304
+            },
+            {
+              "horizon": 14,
+              "discounted_cumulative_defender_utility": 1.5369750626534109,
+              "discounted_cumulative_attacker_utility": 5.480614755522478e-15,
+              "undiscounted_cumulative_defender_utility": 2.100000000000001,
+              "undiscounted_cumulative_attacker_utility": 8.659739592076221e-15,
+              "mean_attack_probability": 0.13749999999999996,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.458333333333333
+            },
+            {
+              "horizon": 15,
+              "discounted_cumulative_defender_utility": 1.6101263095207403,
+              "discounted_cumulative_attacker_utility": 6.209763568365833e-15,
+              "undiscounted_cumulative_defender_utility": 2.250000000000001,
+              "undiscounted_cumulative_attacker_utility": 1.0103029524088925e-14,
+              "mean_attack_probability": 0.13749999999999993,
+              "terminal_public_belief_mean": 0.25000020833333314,
+              "terminal_uncertainty_probability": 0.4583333333333329
+            }
+          ],
+          "discounted_cumulative_defender_utility": 1.2037891822848639,
+          "discounted_cumulative_attacker_utility": 3.033505316808737e-15,
+          "mean_attack_probability": 0.13749999999999996,
+          "terminal_public_belief_mean": 0.2500002083333332,
+          "terminal_uncertainty_probability": 0.4583333333333331
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+scenario,scenario_label,initial_belief,strategy,strategy_label,certain_honeypot_probability,critical_uncertainty_probability,certain_real_probability
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,0.0,0.7659999999999434,0.23400000000000018
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,0.3532499999999888,0.0,0.6467499999999565
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,0.3594999999999881,0.6404999999999572,0.0
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,0.6584999999999552,0.0,0.3414999999999901

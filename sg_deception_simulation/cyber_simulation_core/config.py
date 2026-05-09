@@ -5,8 +5,7 @@ from dataclasses import dataclass
 class GameConfig:
     horizon: int = 10
     prior_theta1: float = 0.5
-    beta: float = 1.0
-    epsilon: float = 0.02
+    gamma: float = 0.85
 
     attack_cost: float = 2.0
     attack_gain: float = 12.0
@@ -21,8 +20,6 @@ class GameConfig:
 
     c_theta1: float = 2.5
     c_theta2: float = 1.5
-
-    monte_carlo_runs: int = 4000
 
 
 DEFAULT_CONFIG = GameConfig()

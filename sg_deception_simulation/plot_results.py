@@ -13,32 +13,34 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import font_manager
 from matplotlib.font_manager import FontProperties
+from matplotlib.patches import Patch
 
 
 RESULTS_DIR = Path("sg_deception_simulation/results")
 FIGURES_DIR = RESULTS_DIR / "figures"
-FONT_CN = None
-FONT_EN = None
-FONT_MIXED = None
-COLOR_BASELINE = "#3F51FF"
-COLOR_PBNE = "#FF4D4F"
-COLOR_PBNE_ALT = "#2CA02C"
-COLOR_ACCENT = "#F5A623"
-COLOR_GRID = "#D9D9D9"
+COLOR_BASELINE = "#5077B8"
+COLOR_PBNE = "#D97941"
 COLOR_TEXT = "#1F1F1F"
+COLOR_GRID = "#D9D9D9"
+COLOR_CERTAIN_HONEYPOT = "#5B7FA3"
+COLOR_CRITICAL_UNCERTAINTY = "#E39A1F"
+COLOR_CERTAIN_REAL = "#C56565"
+COLOR_OTHER_STATE = "#D6DCE5"
+FONT_MIXED = None
+FONT_EN = None
 
 
 def configure_matplotlib() -> None:
-    global FONT_CN, FONT_EN, FONT_MIXED
+    global FONT_MIXED, FONT_EN
     available = {font.name for font in font_manager.fontManager.ttflist}
     cn_font = "Songti SC" if "Songti SC" in available else "STSong"
     en_font = "Times New Roman" if "Times New Roman" in available else "Times"
+    symbol_font = "DejaVu Sans" if "DejaVu Sans" in available else en_font
 
-    FONT_CN = FontProperties(family=[cn_font], size=10.5)
+    FONT_MIXED = FontProperties(family=[en_font, cn_font, symbol_font], size=10.5)
     FONT_EN = FontProperties(family=[en_font], size=10.5)
-    FONT_MIXED = FontProperties(family=[en_font, cn_font], size=10.5)
 
-    matplotlib.rcParams["font.family"] = [en_font, cn_font]
+    matplotlib.rcParams["font.family"] = [en_font, cn_font, symbol_font]
     matplotlib.rcParams["axes.unicode_minus"] = False
     matplotlib.rcParams["figure.dpi"] = 160
     matplotlib.rcParams["savefig.dpi"] = 320
@@ -51,26 +53,6 @@ def configure_matplotlib() -> None:
     matplotlib.rcParams["axes.facecolor"] = "white"
     matplotlib.rcParams["figure.facecolor"] = "white"
     matplotlib.rcParams["savefig.facecolor"] = "white"
-    matplotlib.rcParams["axes.titleweight"] = "regular"
-    matplotlib.rcParams["axes.labelcolor"] = COLOR_TEXT
-    matplotlib.rcParams["xtick.color"] = COLOR_TEXT
-    matplotlib.rcParams["ytick.color"] = COLOR_TEXT
-    matplotlib.rcParams["lines.markersize"] = 4.2
-    matplotlib.rcParams["lines.linewidth"] = 1.5
-
-
-def apply_academic_axes_style(ax, x_font=None, y_font=None) -> None:
-    ax.spines["top"].set_visible(True)
-    ax.spines["right"].set_visible(True)
-    ax.tick_params(direction="out", length=4.2, width=0.85, colors=COLOR_TEXT)
-    x_font = x_font or FONT_EN
-    y_font = y_font or FONT_EN
-    for label in ax.get_xticklabels():
-        label.set_fontproperties(x_font)
-        label.set_fontsize(10.5)
-    for label in ax.get_yticklabels():
-        label.set_fontproperties(y_font)
-        label.set_fontsize(10.5)
 
 
 def load_json(path: Path) -> dict:
@@ -84,486 +66,308 @@ def save_figure(filename: str) -> None:
     plt.close()
 
 
-
-def plot_academic_line(
-    ax,
-    x,
-    y,
-    *,
-    color: str,
-    label: str,
-    marker: str,
-    linestyle: str = "-",
-    hollow: bool = False,
-):
-    return ax.plot(
-        x,
-        y,
-        color=color,
-        label=label,
-        linestyle=linestyle,
-        marker=marker,
-        markersize=4.6,
-        markerfacecolor="white" if hollow else color,
-        markeredgecolor=color,
-        markeredgewidth=1.0,
-        linewidth=1.6,
-    )[0]
-
-
-def catmull_rom_spline(x: list[float] | np.ndarray, y: list[float] | np.ndarray, samples_per_segment: int = 24) -> tuple[np.ndarray, np.ndarray]:
-    x_arr = np.asarray(x, dtype=float)
-    y_arr = np.asarray(y, dtype=float)
-    if x_arr.size < 3:
-        return x_arr, y_arr
-
-    xs: list[float] = []
-    ys: list[float] = []
-    x_pad = np.concatenate(([x_arr[0]], x_arr, [x_arr[-1]]))
-    y_pad = np.concatenate(([y_arr[0]], y_arr, [y_arr[-1]]))
-
-    for idx in range(1, len(x_pad) - 2):
-        p0x, p1x, p2x, p3x = x_pad[idx - 1 : idx + 3]
-        p0y, p1y, p2y, p3y = y_pad[idx - 1 : idx + 3]
-        t_values = np.linspace(0.0, 1.0, samples_per_segment, endpoint=False)
-        for t in t_values:
-            t2 = t * t
-            t3 = t2 * t
-            xs.append(
-                0.5
-                * (
-                    (2 * p1x)
-                    + (-p0x + p2x) * t
-                    + (2 * p0x - 5 * p1x + 4 * p2x - p3x) * t2
-                    + (-p0x + 3 * p1x - 3 * p2x + p3x) * t3
-                )
-            )
-            ys.append(
-                0.5
-                * (
-                    (2 * p1y)
-                    + (-p0y + p2y) * t
-                    + (2 * p0y - 5 * p1y + 4 * p2y - p3y) * t2
-                    + (-p0y + 3 * p1y - 3 * p2y + p3y) * t3
-                )
-            )
-
-    xs.append(float(x_arr[-1]))
-    ys.append(float(y_arr[-1]))
-    return np.asarray(xs), np.clip(np.asarray(ys), -0.03, 1.03)
-
-
-def plot_smoothed_series(
-    ax,
-    x,
-    y,
-    *,
-    color: str,
-    label: str,
-    marker: str,
-    linestyle: str = "-",
-    hollow: bool = False,
-):
-    smooth_x, smooth_y = catmull_rom_spline(x, y)
-    ax.plot(
-        smooth_x,
-        smooth_y,
-        color=color,
-        linestyle=linestyle,
-        linewidth=1.6,
-        label=label,
-    )
-    ax.plot(
-        x,
-        y,
-        linestyle="None",
-        marker=marker,
-        markersize=4.8,
-        markerfacecolor="white" if hollow else color,
-        markeredgecolor=color,
-        markeredgewidth=1.0,
-        color=color,
-    )
-
-
-def plot_step_series(
-    ax,
-    x,
-    y,
-    *,
-    color: str,
-    label: str,
-    marker: str,
-    linestyle: str = "-",
-    hollow: bool = False,
-):
-    ax.step(
-        x,
-        y,
-        where="mid",
-        color=color,
-        linestyle=linestyle,
-        linewidth=1.6,
-        label=label,
-    )
-    ax.plot(
-        x,
-        y,
-        linestyle="None",
-        marker=marker,
-        markersize=4.8,
-        markerfacecolor="white" if hollow else color,
-        markeredgecolor=color,
-        markeredgewidth=1.0,
-        color=color,
-    )
-
-
-def empirical_cdf(values: list[float]) -> tuple[np.ndarray, np.ndarray]:
-    sample = np.sort(np.asarray(values, dtype=float))
-    y = np.arange(1, sample.size + 1, dtype=float) / sample.size
-    return sample, y
-
-
-def plot_scenario_utility(feasible: dict) -> None:
-    scenario_labels = ["场景A\n真实系统占优", "场景B\n蜜罐系统占优"]
-    baseline_values = [
-        feasible["scenario_a_high_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
-        feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"],
-    ]
-    pbne_values = [
-        feasible["scenario_a_high_prior_theta1"]["results"]["pbne_production_camouflage"]["defender_expected_utility"],
-        feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["defender_expected_utility"],
-    ]
-
-    x = np.arange(len(scenario_labels))
-    width = 0.32
-    plt.figure(figsize=(7.2, 4.6))
-    ax = plt.gca()
-    ax.grid(axis="y")
-    bars1 = ax.bar(
-        x - width / 2,
-        baseline_values,
-        width=width,
-        color="white",
-        edgecolor="#9CB6D8",
-        linewidth=1.2,
-        hatch="//",
-        label="静态披露策略",
-    )
-    bars2 = ax.bar(
-        x + width / 2,
-        pbne_values,
-        width=width,
-        color="#FFF4EC",
-        alpha=1.0,
-        edgecolor="#D99063",
-        linewidth=1.0,
-        hatch="\\\\",
-        label="PBNE伪装策略",
-    )
-
-    for bar in bars1:
-        y = bar.get_height()
-        ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            y + 0.08,
-            f"{y:.2f}",
-            ha="center",
-            va="bottom",
-            fontproperties=FONT_EN,
-            fontsize=10.0,
-        )
-    for bar in bars2:
-        y = bar.get_height()
-        ax.text(
-            bar.get_x() + bar.get_width() / 2,
-            y + 0.08,
-            f"{y:.2f}",
-            ha="center",
-            va="bottom",
-            fontproperties=FONT_EN,
-            fontsize=10.0,
-        )
-
-    plt.xticks(x, scenario_labels)
+def apply_axes_style(ax, *, x_font=None, y_font=None) -> None:
+    ax.spines["top"].set_visible(True)
+    ax.spines["right"].set_visible(True)
+    ax.tick_params(direction="out", length=4.0, width=0.85, colors=COLOR_TEXT)
+    x_font = x_font or FONT_EN
+    y_font = y_font or FONT_EN
     for label in ax.get_xticklabels():
-        label.set_fontproperties(FONT_MIXED)
+        label.set_fontproperties(x_font)
         label.set_fontsize(10.5)
-    plt.ylabel("防御者期望效用", fontproperties=FONT_MIXED, fontsize=10.5)
-    plt.xlabel("实验场景", fontproperties=FONT_MIXED, fontsize=10.5)
-    plt.title("图3-1  不同场景下防御者期望效用对比", fontproperties=FONT_MIXED, fontsize=10.5, pad=10)
-    plt.legend(loc="upper left", bbox_to_anchor=(0.02, 0.98), prop=FONT_MIXED, fontsize=10.0)
-    apply_academic_axes_style(ax, x_font=FONT_MIXED, y_font=FONT_EN)
-    save_figure("fig3_1_defender_utility_comparison.png")
+    for label in ax.get_yticklabels():
+        label.set_fontproperties(y_font)
+        label.set_fontsize(10.5)
 
 
-def plot_belief_trajectories(feasible: dict) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.4), sharey=True)
+def plot_experiment_one(experiment_result: dict) -> None:
+    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.6), sharey=True)
+    scenario_order = ["scenario_a", "scenario_b"]
+    for axis, scenario_key in zip(axes, scenario_order):
+        scenario = experiment_result["scenarios"][scenario_key]
+        pbne_rows = scenario["horizon_sweep"]["recursive_pbne"]
+        baseline_rows = scenario["horizon_sweep"]["truthful_baseline"]
+        stages = np.array([row["horizon"] for row in pbne_rows], dtype=float)
+        pbne_values = np.array([row["discounted_cumulative_defender_utility"] for row in pbne_rows], dtype=float)
+        baseline_values = np.array([row["discounted_cumulative_defender_utility"] for row in baseline_rows], dtype=float)
+        advantage_values = pbne_values - baseline_values
 
-    scenario_map = [
-        (
-            axes[0],
-            feasible["scenario_a_high_prior_theta1"],
-            "场景A：真实系统占优",
-            "pbne_production_camouflage",
-        ),
-        (
-            axes[1],
-            feasible["scenario_b_low_prior_theta1"],
-            "场景B：蜜罐系统占优",
-            "pbne_honeypot_camouflage",
-        ),
-    ]
-
-    for ax, scenario, subtitle, pbne_key in scenario_map:
-        baseline_quantiles = scenario["results"]["truthful_baseline"]["belief_rollout_quantiles"]
-        pbne_quantiles = scenario["results"][pbne_key]["belief_rollout_quantiles"]
-        stages = np.arange(1, max(len(baseline_quantiles["q50"]), len(pbne_quantiles["q50"])) + 1)
-        baseline_q25 = baseline_quantiles["q25"] + [baseline_quantiles["q25"][-1]] * (len(stages) - len(baseline_quantiles["q25"]))
-        baseline_q50 = baseline_quantiles["q50"] + [baseline_quantiles["q50"][-1]] * (len(stages) - len(baseline_quantiles["q50"]))
-        baseline_q75 = baseline_quantiles["q75"] + [baseline_quantiles["q75"][-1]] * (len(stages) - len(baseline_quantiles["q75"]))
-        pbne_q25 = pbne_quantiles["q25"] + [pbne_quantiles["q25"][-1]] * (len(stages) - len(pbne_quantiles["q25"]))
-        pbne_q50 = pbne_quantiles["q50"] + [pbne_quantiles["q50"][-1]] * (len(stages) - len(pbne_quantiles["q50"]))
-        pbne_q75 = pbne_quantiles["q75"] + [pbne_quantiles["q75"][-1]] * (len(stages) - len(pbne_quantiles["q75"]))
-
-        baseline_lower = np.array(baseline_q50) - np.array(baseline_q25)
-        baseline_upper = np.array(baseline_q75) - np.array(baseline_q50)
-        pbne_lower = np.array(pbne_q50) - np.array(pbne_q25)
-        pbne_upper = np.array(pbne_q75) - np.array(pbne_q50)
-
-        ax.fill_between(
+        axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
+        axis.plot(
             stages,
-            baseline_q25,
-            baseline_q75,
-            step="mid",
+            baseline_values,
             color=COLOR_BASELINE,
-            alpha=0.10,
-            linewidth=0,
-        )
-        ax.fill_between(
-            stages,
-            pbne_q25,
-            pbne_q75,
-            step="mid",
-            color=COLOR_PBNE,
-            alpha=0.10,
-            linewidth=0,
-        )
-        plot_step_series(
-            ax,
-            stages,
-            baseline_q50,
-            color=COLOR_BASELINE,
-            label="静态披露策略中位数",
+            linewidth=1.6,
             marker="o",
-            hollow=True,
+            markersize=4.4,
+            markerfacecolor="white",
+            markeredgecolor=COLOR_BASELINE,
+            label="真实披露基线",
         )
-        plot_step_series(
-            ax,
+        axis.plot(
             stages,
-            pbne_q50,
+            pbne_values,
             color=COLOR_PBNE,
-            label="PBNE伪装策略中位数",
+            linewidth=1.8,
+            linestyle="-",
             marker="s",
-            linestyle="--",
+            markersize=4.6,
+            markerfacecolor=COLOR_PBNE,
+            markeredgecolor="white",
+            label="递归 PBNE 策略",
         )
-        ax.set_title(subtitle, fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
-        ax.set_xlabel("博弈阶段", fontproperties=FONT_MIXED, fontsize=10.5)
-        ax.set_xticks(stages)
-        ax.grid(True, axis="both")
-        apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
+        axis.fill_between(stages, baseline_values, pbne_values, color="#F4D7C3", alpha=0.28)
+        axis.text(
+            0.97,
+            0.92,
+            f"终局增益: {advantage_values[-1]:.2f}",
+            transform=axis.transAxes,
+            ha="right",
+            va="top",
+            fontproperties=FONT_MIXED,
+            fontsize=10.0,
+            color=COLOR_TEXT,
+            bbox={
+                "boxstyle": "round,pad=0.22",
+                "facecolor": "white",
+                "edgecolor": "#D9D9D9",
+                "linewidth": 0.8,
+                "alpha": 0.94,
+            },
+        )
+        axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
+        axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.set_xticks(stages)
+        axis.grid(True, axis="y")
+        apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
 
-    axes[0].set_ylabel("攻击者对真实系统的后验信念", fontproperties=FONT_MIXED, fontsize=10.5)
-    axes[0].set_ylim(-0.03, 1.03)
-    for label in axes[0].get_yticklabels():
-        label.set_fontproperties(FONT_EN)
-    axes[1].legend(loc="upper right", prop=FONT_MIXED, fontsize=9.8)
-    fig.suptitle("图3-2  攻击者后验信念中位数及四分位区间", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
-    save_figure("fig3_2_belief_trajectories.png")
-
-
-def plot_final_belief_distribution(feasible: dict) -> None:
-    fig, ax = plt.subplots(figsize=(7.2, 4.8))
-    baseline = feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["final_beliefs"]
-    pbne = feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["final_beliefs"]
-    positions = [1, 2]
-    box = ax.boxplot(
-        [baseline, pbne],
-        positions=positions,
-        widths=0.48,
-        patch_artist=True,
-        showfliers=False,
-        medianprops={"color": COLOR_TEXT, "linewidth": 1.2},
-        whiskerprops={"color": COLOR_TEXT, "linewidth": 1.0},
-        capprops={"color": COLOR_TEXT, "linewidth": 1.0},
-        boxprops={"linewidth": 1.2},
-    )
-    box["boxes"][0].set(facecolor="white", edgecolor=COLOR_BASELINE)
-    box["boxes"][1].set(facecolor=COLOR_PBNE_ALT, edgecolor=COLOR_PBNE_ALT, alpha=0.85)
-
-    baseline_offsets = np.linspace(-0.08, 0.08, len(baseline))
-    pbne_offsets = np.linspace(-0.08, 0.08, len(pbne))
-    ax.scatter(
-        np.full(len(baseline), positions[0]) + baseline_offsets,
-        baseline,
-        s=18,
-        facecolors="white",
-        edgecolors=COLOR_BASELINE,
-        linewidths=0.8,
-        alpha=0.9,
-        label="静态披露策略",
-    )
-    ax.scatter(
-        np.full(len(pbne), positions[1]) + pbne_offsets,
-        pbne,
-        s=18,
-        c=COLOR_PBNE_ALT,
-        edgecolors=COLOR_PBNE_ALT,
-        linewidths=0.6,
-        alpha=0.75,
-        label="PBNE-2",
-    )
-
-    ax.set_xticks(positions)
-    ax.set_xticklabels(["静态披露策略", "PBNE-2"])
-    plt.xlabel("策略类型", fontproperties=FONT_MIXED, fontsize=10.5)
-    plt.ylabel("终局时刻对真实系统的后验信念", fontproperties=FONT_MIXED, fontsize=10.5)
-    plt.title("图3-3  场景B下终局信念分布对比", fontproperties=FONT_MIXED, fontsize=10.5, pad=10)
-    ax.set_xlim(0.5, 2.5)
-    ax.set_ylim(-0.03, 1.03)
-    ax.legend(loc="upper right", prop=FONT_MIXED, fontsize=10.0)
-    plt.grid(axis="y")
-    apply_academic_axes_style(ax, x_font=FONT_MIXED, y_font=FONT_EN)
-    save_figure("fig3_3_final_belief_distribution.png")
+    axes[0].set_ylabel("防御方折扣累计期望收益", fontproperties=FONT_MIXED, fontsize=10.5)
+    axes[1].legend(loc="best", prop=FONT_MIXED, fontsize=9.8)
+    fig.suptitle("不同场景下防御方折扣累计期望收益对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
+    save_figure("fig3_2_cumulative_defender_utility_comparison.png")
 
 
-def plot_sensitivity_curves(sensitivity: dict) -> None:
-    fig, axes = plt.subplots(2, 2, figsize=(11, 7.4))
-    plot_map = [
-        ("prior_theta1", "先验概率 p", axes[0, 0]),
-        ("beta", "时间折扣因子 β", axes[0, 1]),
-        ("c_theta1", "真实系统伪装成本", axes[1, 0]),
-        ("c_theta2", "蜜罐伪装成本", axes[1, 1]),
+def plot_stage_average_payoff_convergence(experiment_result: dict) -> None:
+    fig, axes = plt.subplots(2, 2, figsize=(10.8, 7.4), sharex=True)
+    scenario_order = ["scenario_a", "scenario_b"]
+    row_specs = [
+        ("discounted_cumulative_defender_utility", "防御方折扣累计期望收益"),
+        ("discounted_cumulative_attacker_utility", "攻击方折扣累计期望收益"),
     ]
 
-    for key, xlabel, ax in plot_map:
-        rows = sensitivity[key]
-        x = [row["value"] for row in rows]
-        y1 = [row["defender_expected_utility"] for row in rows]
-        if key == "beta":
-            y2 = [row["belief_span_mean"] for row in rows]
-            secondary_label = "信念波动幅度"
-        else:
-            y2 = [row["mixing_probability_mean"] for row in rows]
-            secondary_label = "均衡概率"
+    for col_index, scenario_key in enumerate(scenario_order):
+        scenario = experiment_result["scenarios"][scenario_key]
+        pbne_rows = scenario["horizon_sweep"]["recursive_pbne"]
+        baseline_rows = scenario["horizon_sweep"]["truthful_baseline"]
+        stages = np.array([row["horizon"] for row in pbne_rows], dtype=float)
 
-        plot_academic_line(
-            ax,
-            x,
-            y1,
-            color=COLOR_BASELINE,
-            label="防御方期望效用",
-            marker="o",
-            hollow=True,
-        )
-        ax.scatter(
-            x,
-            y1,
-            s=26,
-            facecolors="white",
-            edgecolors=COLOR_BASELINE,
-            linewidths=1.0,
-            zorder=4,
-        )
-        ax.set_xlabel(xlabel, fontproperties=FONT_MIXED, fontsize=10.5)
-        ax.set_ylabel("防御者期望效用", fontproperties=FONT_MIXED, fontsize=10.5)
-        ax.set_xticks(x)
-        ax.grid(True, axis="both")
-        apply_academic_axes_style(ax, x_font=FONT_EN, y_font=FONT_EN)
+        for row_index, (metric_key, ylabel) in enumerate(row_specs):
+            axis = axes[row_index, col_index]
+            pbne_values = np.array([row[metric_key] for row in pbne_rows], dtype=float)
+            baseline_values = np.array([row[metric_key] for row in baseline_rows], dtype=float)
+            axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
+            axis.plot(
+                stages,
+                baseline_values,
+                color=COLOR_BASELINE,
+                linewidth=1.5,
+                linestyle="--",
+                marker="o",
+                markersize=4.0,
+                markerfacecolor="white",
+                markeredgecolor=COLOR_BASELINE,
+                label="真实披露基线",
+            )
+            axis.plot(
+                stages,
+                pbne_values,
+                color=COLOR_PBNE,
+                linewidth=1.8,
+                marker="s",
+                markersize=4.2,
+                markerfacecolor=COLOR_PBNE,
+                markeredgecolor="white",
+                label="递归 PBNE 策略",
+            )
+            axis.set_xticks(stages)
+            axis.grid(True, axis="y")
+            if row_index == 0:
+                axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
+                axis.text(
+                    0.97,
+                    0.90,
+                    f"末期均值: {pbne_values[-1]:.2f}",
+                    transform=axis.transAxes,
+                    ha="right",
+                    va="top",
+                    fontproperties=FONT_MIXED,
+                    fontsize=9.8,
+                    color=COLOR_TEXT,
+                    bbox={
+                        "boxstyle": "round,pad=0.20",
+                        "facecolor": "white",
+                        "edgecolor": "#D9D9D9",
+                        "linewidth": 0.8,
+                        "alpha": 0.94,
+                    },
+                )
+            if col_index == 0:
+                axis.set_ylabel(ylabel, fontproperties=FONT_MIXED, fontsize=10.5)
+            if row_index == 1:
+                axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
+            apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
 
-        ax2 = ax.twinx()
-        plot_academic_line(
-            ax2,
-            x,
-            y2,
-            color=COLOR_PBNE,
-            label=secondary_label,
-            marker="s",
-            linestyle="--",
-        )
-        ax2.scatter(
-            x,
-            y2,
-            s=24,
-            c=COLOR_PBNE,
-            marker="s",
-            edgecolors="white",
-            linewidths=0.7,
-            zorder=5,
-        )
-        ax2.set_ylabel(secondary_label, fontproperties=FONT_MIXED, fontsize=10.5)
-        for label in ax2.get_yticklabels():
-            label.set_fontproperties(FONT_EN)
-            label.set_fontsize(10.5)
-
-        lines = ax.get_lines() + ax2.get_lines()
-        labels = [line.get_label() for line in lines]
-        ax.legend(lines, labels, loc="best", prop=FONT_MIXED, fontsize=9.5)
-
-    fig.suptitle("图3-4  参数敏感性分析结果", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
-    save_figure("fig3_4_sensitivity_analysis.png")
+    axes[0, 1].legend(loc="best", prop=FONT_MIXED, fontsize=9.8)
+    fig.suptitle("攻防双方递归期望收益随终止时域变化", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
+    save_figure("fig3_2b_stage_average_payoff_convergence.png")
 
 
-def build_analysis_text(feasible: dict, sensitivity: dict) -> str:
-    a_base = feasible["scenario_a_high_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"]
-    a_pbne = feasible["scenario_a_high_prior_theta1"]["results"]["pbne_production_camouflage"]["defender_expected_utility"]
-    b_base = feasible["scenario_b_low_prior_theta1"]["results"]["truthful_baseline"]["defender_expected_utility"]
-    b_pbne = feasible["scenario_b_low_prior_theta1"]["results"]["pbne_honeypot_camouflage"]["defender_expected_utility"]
-
-    lines = [
-        "# 第三章实验分析说明",
-        "",
-        "## 1. 策略对比实验分析",
-        "",
-        f"在场景A（真实系统占优场景，p=0.65）下，PBNE-1 的防御者期望效用为 {a_pbne:.4f}，优于静态披露策略的 {a_base:.4f}。这说明当真实系统在目标集合中占据较高比例时，真实系统以一定概率伪装为蜜罐信号，能够有效抑制攻击者的攻击收益预期，并改善防御方总体收益。",
-        "",
-        f"在场景B（蜜罐占优场景，p=0.35）下，PBNE-2 的防御者期望效用为 {b_pbne:.4f}，同样优于静态披露策略的 {b_base:.4f}。这说明当环境中蜜罐比例较高时，蜜罐通过伪装成正常系统可以更有效地吸引攻击者进入陷阱，并为防御方带来更高的情报收益。",
-        "",
-        "从信念演化结果看，静态披露策略下攻击者的后验信念变化较为单调，其判断主要由单次观测迅速锁定；而在 PBNE 伪装策略下，攻击者对目标是否为真实系统的判断呈现更明显的阶段性波动。这表明防御方通过混合伪装策略改变了攻击者的推断路径，验证了多阶段信号博弈中“策略随机化影响信念更新”的核心机理。",
-        "",
-        "## 2. 参数敏感性分析",
-        "",
-        "先验概率 p 对 PBNE-1 的影响最为明显。随着 p 增大，防御方的期望效用总体下降，生产系统选择伪装信号的均衡概率也随之减小，说明在真实资产占比过高时，攻击者更容易形成针对高价值目标的稳定预期，欺骗防御的边际收益会减弱。",
-        "",
-        "时间折扣因子 β 对防御者期望效用的影响相对有限，但会明显影响攻击者信念波动的幅度。这表明在当前参数区间内，β 的主要作用体现在调节攻击者对近期观测的敏感性，而不是直接改变均衡收益水平。",
-        "",
-        "生产系统伪装成本 c_theta1 上升时，PBNE-1 的防御者期望效用下降，而攻击方在信号 sigma2 下的均衡攻击概率同步下降，说明更高的伪装成本会削弱防御方实施生产系统伪装的激励，从而改变均衡中的攻防混合概率。",
-        "",
-        "蜜罐伪装成本 c_theta2 上升时，PBNE-2 的防御者期望效用同样下降，而攻击方在正常信号下的撤退概率上升，说明蜜罐伪装成本过高会削弱蜜罐的拟态吸引能力，并降低其诱导攻击者进入欺骗环境的效果。",
-        "",
-        "## 3. 可直接写入论文的结论",
-        "",
-        "实验结果表明，在与目标类型先验分布相匹配的适用场景中，基于 PBNE 的伪装策略均优于静态披露策略，能够通过影响攻击者的后验信念与攻击决策提升防御者的总体收益。此外，模型对先验概率和伪装成本较为敏感，这说明部署伪装防御策略时需要结合实际网络环境中的资产构成和欺骗开销进行参数配置。",
-        "",
+def plot_terminal_belief_distribution(experiment_result: dict) -> None:
+    fig, axes = plt.subplots(1, 2, figsize=(10.6, 4.6), sharex=True, sharey=True)
+    scenario_order = ["scenario_a", "scenario_b"]
+    category_specs = [
+        ("certain_honeypot", "确信蜜罐", COLOR_CERTAIN_HONEYPOT),
+        ("critical_uncertainty", "保持不确定", COLOR_CRITICAL_UNCERTAINTY),
+        ("certain_real", "确信真实", COLOR_CERTAIN_REAL),
     ]
-    return "\n".join(lines)
+
+    for axis, scenario_key in zip(axes, scenario_order):
+        scenario = experiment_result["scenarios"][scenario_key]
+        baseline_mass = scenario["results"]["truthful_baseline"]["terminal_probability_mass"]
+        pbne_mass = scenario["results"]["recursive_pbne"]["terminal_probability_mass"]
+        threshold_key = next(
+            key for key in pbne_mass.keys() if key not in {"0.000000", "1.000000"}
+        ) if any(key not in {"0.000000", "1.000000"} for key in pbne_mass.keys()) else None
+        distributions = {
+            "真实披露基线": {
+                "certain_honeypot": baseline_mass.get("0.000000", 0.0),
+                "critical_uncertainty": baseline_mass.get(threshold_key, 0.0) if threshold_key else 0.0,
+                "certain_real": baseline_mass.get("1.000000", 0.0),
+            },
+            "递归 PBNE 策略": {
+                "certain_honeypot": pbne_mass.get("0.000000", 0.0),
+                "critical_uncertainty": pbne_mass.get(threshold_key, 0.0) if threshold_key else 0.0,
+                "certain_real": pbne_mass.get("1.000000", 0.0),
+            },
+        }
+
+        y_positions = np.arange(len(distributions))
+        axis.grid(axis="x")
+        for index, (label, values) in enumerate(distributions.items()):
+            left = 0.0
+            for category_key, category_label, color in category_specs:
+                width = values[category_key]
+                axis.barh(index, width, left=left, height=0.46, color=color, edgecolor="white", linewidth=0.8)
+                if width >= 0.08:
+                    axis.text(
+                        left + width / 2.0,
+                        index,
+                        f"{width:.1%}",
+                        ha="center",
+                        va="center",
+                        fontproperties=FONT_EN,
+                        fontsize=9.8,
+                        color="white" if category_key != "critical_uncertainty" else COLOR_TEXT,
+                    )
+                left += width
+
+        axis.set_xlim(0.0, 1.0)
+        axis.set_yticks(y_positions)
+        axis.set_yticklabels(list(distributions.keys()), fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.set_xticks(np.linspace(0.0, 1.0, 6))
+        axis.set_xticklabels([f"{int(tick * 100)}%" for tick in np.linspace(0.0, 1.0, 6)], fontproperties=FONT_EN, fontsize=10.5)
+        axis.invert_yaxis()
+        axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
+        apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_MIXED)
+
+    axes[0].set_ylabel("策略", fontproperties=FONT_MIXED, fontsize=10.5)
+    axes[0].set_xlabel("终局识别状态占比", fontproperties=FONT_MIXED, fontsize=10.5)
+    axes[1].set_xlabel("终局识别状态占比", fontproperties=FONT_MIXED, fontsize=10.5)
+    legend_handles = [Patch(facecolor=color, edgecolor="none") for _, _, color in category_specs]
+    legend_labels = [label for _, label, _ in category_specs]
+    axes[1].legend(legend_handles, legend_labels, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=3, prop=FONT_MIXED, fontsize=9.8)
+    fig.suptitle("终局公共信念分布对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
+    save_figure("fig3_4_terminal_public_belief_distribution.png")
+
+
+def plot_experiment_three(experiment_result: dict) -> None:
+    fig, axes = plt.subplots(2, 2, figsize=(10.8, 7.6))
+    palette = ["#4C78A8", "#F58518", "#54A24B", "#B279A2"]
+    markers = ["o", "s", "^", "D"]
+    title_labels = {
+        ("prior_theta1", "scenario_a"): "初始公共信念变化（场景 A）",
+        ("defender_loss", "scenario_a"): "真实系统受攻击损失变化（场景 A）",
+        ("c_theta1", "scenario_a"): "真实系统伪装成本变化（场景 A）",
+        ("c_theta2", "scenario_b"): "蜜罐系统伪装成本变化（场景 B）",
+    }
+    legend_labels = {
+        "prior_theta1": r"$p_1$",
+        "defender_loss": r"$l_d$",
+        "c_theta1": r"$c_{\theta_1}$",
+        "c_theta2": r"$c_{\theta_2}$",
+    }
+
+    def format_parameter_value(value: float) -> str:
+        if float(value).is_integer():
+            return str(int(value))
+        return f"{value:.2f}".rstrip("0").rstrip(".")
+
+    for axis, panel in zip(axes.flat, experiment_result["plot_panels"]):
+        handles = []
+        labels = []
+        for index, series in enumerate(panel["series"]):
+            color = palette[index % len(palette)]
+            marker = markers[index % len(markers)]
+            horizon_rows = series["horizon_rows"]
+            stages = np.array([row["horizon"] for row in horizon_rows], dtype=float)
+            cumulative_values = np.array([row["discounted_cumulative_defender_utility"] for row in horizon_rows], dtype=float)
+            line, = axis.plot(
+                stages,
+                cumulative_values,
+                color=color,
+                linewidth=1.8,
+                marker=marker,
+                markersize=4.2,
+                markerfacecolor="white",
+                markeredgecolor=color,
+            )
+            handles.append(line)
+            value_text = format_parameter_value(float(series["parameter_value"]))
+            labels.append(f"{legend_labels[panel['parameter_name']]}={value_text}")
+
+        axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
+        axis.set_title(
+            title_labels[(panel["parameter_name"], panel["scenario_key"])],
+            fontproperties=FONT_MIXED,
+            fontsize=10.5,
+            pad=8,
+        )
+        axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.set_ylabel("防御方折扣累计期望收益", fontproperties=FONT_MIXED, fontsize=10.5)
+        axis.grid(True, axis="y")
+        if panel["series"]:
+            base_stages = np.array([row["horizon"] for row in panel["series"][0]["horizon_rows"]], dtype=float)
+            axis.set_xticks(base_stages)
+        apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
+        axis.legend(handles, labels, loc="best", prop=FONT_MIXED, fontsize=9.4)
+
+    fig.suptitle("关键参数变化下递归 PBNE 防御方折扣累计期望收益对比", fontproperties=FONT_MIXED, fontsize=10.5, y=0.99)
+    save_figure("fig3_5_parameter_sensitivity_analysis.png")
 
 
 def main() -> None:
     configure_matplotlib()
-    feasible = load_json(RESULTS_DIR / "feasible_scenarios.json")
-    sensitivity = load_json(RESULTS_DIR / "sensitivity_analysis.json")
-
-    plot_scenario_utility(feasible)
-    plot_belief_trajectories(feasible)
-    plot_final_belief_distribution(feasible)
-    plot_sensitivity_curves(sensitivity)
-
-    analysis_text = build_analysis_text(feasible, sensitivity)
-    (RESULTS_DIR / "analysis_notes.md").write_text(analysis_text, encoding="utf-8")
-    print("Figures written to", FIGURES_DIR)
-    print("Analysis notes written to", RESULTS_DIR / "analysis_notes.md")
+    experiment_one = load_json(RESULTS_DIR / "experiment1_payoff_comparison.json")
+    experiment_two = load_json(RESULTS_DIR / "experiment2_belief_dynamics.json")
+    experiment_three = load_json(RESULTS_DIR / "experiment3_sensitivity_analysis.json")
+    plot_experiment_one(experiment_one)
+    plot_stage_average_payoff_convergence(experiment_one)
+    plot_terminal_belief_distribution(experiment_two)
+    plot_experiment_three(experiment_three)
+    print("Figure written to", FIGURES_DIR / "fig3_2_cumulative_defender_utility_comparison.png")
+    print("Figure written to", FIGURES_DIR / "fig3_2b_stage_average_payoff_convergence.png")
+    print("Figure written to", FIGURES_DIR / "fig3_4_terminal_public_belief_distribution.png")
+    print("Figure written to", FIGURES_DIR / "fig3_5_parameter_sensitivity_analysis.png")
 
 
 if __name__ == "__main__":

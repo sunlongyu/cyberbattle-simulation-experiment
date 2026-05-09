@@ -13,5 +13,6 @@ This directory holds Chapter 3 validation and scenario-mapping experiments that 
 ## Maintenance Notes
 
 - Keep validation results compact enough for Git review.
-- Local Chinese writing drafts are ignored by `.gitignore`; promote a draft deliberately before committing it.
-- Use `sg_deception_simulation/` for the formal Chapter 3 signaling-game implementation, not this directory.
+- Keep only experiment scripts, mappings, scenarios, and generated validation results here.
+- Do not keep thesis rewrite drafts, polished prose, or chapter-writing notes in this directory.
+- Use `sg_deception_simulation2/` for formal Chapter 3 signaling-game outputs, not this directory.

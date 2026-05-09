@@ -1,0 +1,5 @@
+scenario,scenario_label,initial_belief,strategy,strategy_label,terminal_uncertainty_probability,terminal_belief_mean
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略（以真乱假）,0.7659999999999434,0.6518181818181573
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,0.0,0.64675
+scenario_b,场景 B,0.35,recursive_pbne,递归 PBNE 策略（以假乱真）,0.6404999999999572,0.3493636363636207
+scenario_b,场景 B,0.35,truthful_baseline,真实披露基线,0.0,0.3415

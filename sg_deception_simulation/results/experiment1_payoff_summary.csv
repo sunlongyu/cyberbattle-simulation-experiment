@@ -1,0 +1,5 @@
+scenario,scenario_label,initial_belief,gamma,c_theta1,c_theta2,strategy,strategy_label,cumulative_defender_utility,cumulative_attacker_utility,discounted_cumulative_defender_utility,discounted_cumulative_attacker_utility
+scenario_a,场景 A,0.65,0.85,2.5,1.5,recursive_pbne,递归 PBNE 策略（以真乱假）,-47.86111111111112,23.000000000000004,-29.120160749787836,13.993901973780808
+scenario_a,场景 A,0.65,0.85,2.5,1.5,truthful_baseline,真实披露基线,-77.99999999999999,65.0,-47.457580606734915,39.547983838945754
+scenario_b,场景 B,0.35,0.85,2.5,1.35,recursive_pbne,递归 PBNE 策略（以假乱真）,12.494999999999996,0.0,7.60233935488657,0.0
+scenario_b,场景 B,0.35,0.85,2.5,1.35,truthful_baseline,真实披露基线,-42.0,35.0,-25.554081865164946,21.29506822097079

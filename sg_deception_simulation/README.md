@@ -1,6 +1,6 @@
 # Chapter 3 Signaling-Game Simulation
 
-This is the active Chapter 3 implementation for the multi-stage signaling-game experiments.
+This directory keeps an independent earlier/alternate Chapter 3 signaling-game implementation. The formal thesis-facing Chapter 3 result directory is `sg_deception_simulation2/`.
 
 ## Contents
 
@@ -21,6 +21,5 @@ python sg_deception_simulation/plot_results.py
 
 ## Maintenance Notes
 
-- Keep this directory as the only active Chapter 3 signaling-game path.
-- Do not add new `sg_deception_simulation*` sibling directories.
-- If a new implementation branch is experimental, put it under `archive/` with a README explaining why.
+- Keep this directory separate from `sg_deception_simulation2/`.
+- Do not copy result files between the two directories unless the target directory is explicitly being refreshed.

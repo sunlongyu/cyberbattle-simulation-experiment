@@ -11,3 +11,4 @@ __pycache__/
 cyborg_validation/*.md
 !cyborg_validation/README.md
 sg_marl_simulation/**/logs/
+tmp_ch4_drafts/

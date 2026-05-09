@@ -1,0 +1,792 @@
+{
+  "experiment_name": "实验二：信念演化与终局分布实验",
+  "trajectory_figure_title": "公共信念随阶段变化曲线",
+  "terminal_figure_title": "终局公共信念分布对比",
+  "threshold_belief": 0.5454545454545454,
+  "monte_carlo_runs": 4000,
+  "base_seed": 20260414,
+  "scenarios": {
+    "scenario_a": {
+      "label": "场景 A",
+      "description": "高初始信念 p_1，偏向第一类半分离结构“以真乱假”。",
+      "initial_belief": 0.65,
+      "config": {
+        "horizon": 10,
+        "gamma": 0.85,
+        "c_theta1": 2.5,
+        "c_theta2": 1.5
+      },
+      "pbne_label": "递归 PBNE 策略（以真乱假）",
+      "truthful_label": "真实披露基线",
+      "results": {
+        "recursive_pbne": {
+          "strategy_name": "recursive_pbne_production",
+          "strategy_label": "递归 PBNE 策略（以真乱假）",
+          "seed": 20260425,
+          "selected_trajectory": [
+            0.65,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454,
+            0.5454545454545454
+          ],
+          "average_trajectory": [
+            0.6500000000000488,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573,
+            0.6518181818181573
+          ],
+          "selected_stage_records": [
+            {
+              "stage": 1,
+              "belief_theta1": 0.65,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 2,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 3,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 4,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 5,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 6,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 7,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 8,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 9,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 10,
+              "belief_theta1": 0.5454545454545454,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.5454545454545454,
+              "defender_type": "theta1"
+            }
+          ],
+          "state_probability_evolution": [
+            {
+              "stage": 1,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.0,
+              "other": 1.0
+            },
+            {
+              "stage": 2,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 3,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 4,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 5,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 6,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 7,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 8,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 9,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 10,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            },
+            {
+              "stage": 11,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.77,
+              "certain_real": 0.23000000000000007,
+              "other": 0.0
+            }
+          ],
+          "terminal_probability_mass": {
+            "0.545455": 0.7659999999999434,
+            "1.000000": 0.23400000000000018
+          },
+          "terminal_belief_mean": 0.6518181818181573,
+          "terminal_uncertainty_probability": 0.7659999999999434
+        },
+        "truthful_baseline": {
+          "strategy_name": "truthful_baseline",
+          "strategy_label": "真实披露基线",
+          "seed": 20260426,
+          "selected_trajectory": [
+            0.65,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "average_trajectory": [
+            0.6500000000000488,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675,
+            0.64675
+          ],
+          "selected_stage_records": [
+            {
+              "stage": 1,
+              "belief_theta1": 0.65,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 2,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 3,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 4,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 5,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 6,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 7,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 8,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 9,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            },
+            {
+              "stage": 10,
+              "belief_theta1": 1.0,
+              "signal": "sigma1",
+              "next_belief_theta1": 1.0,
+              "defender_type": "theta1"
+            }
+          ],
+          "state_probability_evolution": [
+            {
+              "stage": 1,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.0,
+              "other": 1.0
+            },
+            {
+              "stage": 2,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 3,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 4,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 5,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 6,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 7,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 8,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 9,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 10,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            },
+            {
+              "stage": 11,
+              "certain_honeypot": 0.35,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.65,
+              "other": 0.0
+            }
+          ],
+          "terminal_probability_mass": {
+            "0.000000": 0.3532499999999888,
+            "1.000000": 0.6467499999999565
+          },
+          "terminal_belief_mean": 0.64675,
+          "terminal_uncertainty_probability": 0.0
+        }
+      }
+    },
+    "scenario_b": {
+      "label": "场景 B",
+      "description": "低初始信念 p_1，偏向第二类半分离结构“以假乱真”；为满足第二类半分离 PBNE 的不偏离约束，场景内使用较低的蜜罐伪装成本。",
+      "initial_belief": 0.35,
+      "config": {
+        "horizon": 10,
+        "gamma": 0.85,
+        "c_theta1": 2.5,
+        "c_theta2": 1.35
+      },
+      "pbne_label": "递归 PBNE 策略（以假乱真）",
+      "truthful_label": "真实披露基线",
+      "results": {
+        "recursive_pbne": {
+          "strategy_name": "recursive_pbne_honeypot",
+          "strategy_label": "递归 PBNE 策略（以假乱真）",
+          "seed": 20260435,
+          "selected_trajectory": [
+            0.35,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "average_trajectory": [
+            0.3499999999999873,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207,
+            0.3493636363636207
+          ],
+          "selected_stage_records": [
+            {
+              "stage": 1,
+              "belief_theta1": 0.35,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 2,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 3,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 4,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 5,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 6,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 7,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 8,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 9,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 10,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            }
+          ],
+          "state_probability_evolution": [
+            {
+              "stage": 1,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.0,
+              "other": 1.0
+            },
+            {
+              "stage": 2,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 3,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 4,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 5,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 6,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 7,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 8,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 9,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 10,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            },
+            {
+              "stage": 11,
+              "certain_honeypot": 0.3583333333333334,
+              "critical_uncertainty": 0.6416666666666666,
+              "certain_real": 0.0,
+              "other": 0.0
+            }
+          ],
+          "terminal_probability_mass": {
+            "0.000000": 0.3594999999999881,
+            "0.545455": 0.6404999999999572
+          },
+          "terminal_belief_mean": 0.3493636363636207,
+          "terminal_uncertainty_probability": 0.6404999999999572
+        },
+        "truthful_baseline": {
+          "strategy_name": "truthful_baseline",
+          "strategy_label": "真实披露基线",
+          "seed": 20260436,
+          "selected_trajectory": [
+            0.35,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "average_trajectory": [
+            0.3499999999999873,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415,
+            0.3415
+          ],
+          "selected_stage_records": [
+            {
+              "stage": 1,
+              "belief_theta1": 0.35,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 2,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 3,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 4,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 5,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 6,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 7,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 8,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 9,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            },
+            {
+              "stage": 10,
+              "belief_theta1": 0.0,
+              "signal": "sigma2",
+              "next_belief_theta1": 0.0,
+              "defender_type": "theta2"
+            }
+          ],
+          "state_probability_evolution": [
+            {
+              "stage": 1,
+              "certain_honeypot": 0.0,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.0,
+              "other": 1.0
+            },
+            {
+              "stage": 2,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 3,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 4,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 5,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 6,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 7,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 8,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 9,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 10,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            },
+            {
+              "stage": 11,
+              "certain_honeypot": 0.65,
+              "critical_uncertainty": 0.0,
+              "certain_real": 0.35,
+              "other": 0.0
+            }
+          ],
+          "terminal_probability_mass": {
+            "0.000000": 0.6584999999999552,
+            "1.000000": 0.3414999999999901
+          },
+          "terminal_belief_mean": 0.3415,
+          "terminal_uncertainty_probability": 0.0
+        }
+      }
+    }
+  }
+}

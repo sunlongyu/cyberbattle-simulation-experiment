@@ -1,9 +1,7 @@
 from __future__ import annotations
 
-import math
-from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Tuple
+from typing import Dict, Tuple
 
 from .config import GameConfig
 
@@ -23,20 +21,8 @@ class AttackerAction(str, Enum):
     RETREAT = "retreat"
 
 
-@dataclass
-class StageOutcome:
-    stage: int
-    belief_theta1: float
-    signal: Signal
-    attack_probability: float
-    action: AttackerAction
-    defender_utility: float
-    attacker_utility: float
-    regime_metrics: Dict[str, float]
-
-
-def clip_mixed_probability(value: float, epsilon: float) -> float:
-    return min(max(value, epsilon), 1.0 - epsilon)
+DEFENDER_TYPES = (DefenderType.THETA1, DefenderType.THETA2)
+SIGNALS = (Signal.SIGMA1, Signal.SIGMA2)
 
 
 def camouflage_cost(defender_type: DefenderType, signal: Signal, config: GameConfig) -> float:
@@ -54,6 +40,7 @@ def utility(
     config: GameConfig,
 ) -> Tuple[float, float]:
     disguise_cost = camouflage_cost(defender_type, signal, config)
+
     if action == AttackerAction.RETREAT:
         if defender_type == DefenderType.THETA1:
             return config.defender_protection_gain - disguise_cost, 0.0
@@ -71,25 +58,42 @@ def utility(
     )
 
 
-def discounted_belief(
-    prior_theta1: float,
-    signal_history: List[Signal],
-    type_signal_probs: Dict[DefenderType, Dict[Signal, float]],
-    beta: float,
+def defender_expected_utility(
+    defender_type: DefenderType,
+    signal: Signal,
+    attack_probability: float,
+    config: GameConfig,
 ) -> float:
-    prior_theta1 = min(max(prior_theta1, 1e-9), 1.0 - 1e-9)
-    prior_theta2 = 1.0 - prior_theta1
+    attack_value, _ = utility(defender_type, signal, AttackerAction.ATTACK, config)
+    retreat_value, _ = utility(defender_type, signal, AttackerAction.RETREAT, config)
+    return attack_probability * attack_value + (1.0 - attack_probability) * retreat_value
 
-    score_theta1 = math.log(prior_theta1)
-    score_theta2 = math.log(prior_theta2)
-    horizon = len(signal_history)
 
-    for index, signal in enumerate(signal_history, start=1):
-        weight = math.exp(-beta * (horizon - index))
-        score_theta1 += weight * math.log(max(type_signal_probs[DefenderType.THETA1][signal], 1e-9))
-        score_theta2 += weight * math.log(max(type_signal_probs[DefenderType.THETA2][signal], 1e-9))
+def attacker_expected_utility(
+    defender_type: DefenderType,
+    signal: Signal,
+    attack_probability: float,
+    config: GameConfig,
+) -> float:
+    _, attack_value = utility(defender_type, signal, AttackerAction.ATTACK, config)
+    _, retreat_value = utility(defender_type, signal, AttackerAction.RETREAT, config)
+    return attack_probability * attack_value + (1.0 - attack_probability) * retreat_value
 
-    max_score = max(score_theta1, score_theta2)
-    exp_theta1 = math.exp(score_theta1 - max_score)
-    exp_theta2 = math.exp(score_theta2 - max_score)
-    return exp_theta1 / (exp_theta1 + exp_theta2)
+
+def attacker_indifference_threshold(config: GameConfig) -> float:
+    delta_r = config.attack_gain - config.attack_cost
+    delta_h = config.attack_cost + config.intel_loss + config.attacker_deception_penalty
+    return delta_h / (delta_r + delta_h)
+
+
+def bayes_update(
+    prior_theta1: float,
+    signal: Signal,
+    type_signal_probs: Dict[DefenderType, Dict[Signal, float]],
+) -> float:
+    lambda_theta1 = type_signal_probs[DefenderType.THETA1][signal]
+    lambda_theta2 = type_signal_probs[DefenderType.THETA2][signal]
+    denominator = prior_theta1 * lambda_theta1 + (1.0 - prior_theta1) * lambda_theta2
+    if denominator <= 0.0:
+        raise ValueError(f"Bayesian update is undefined for prior={prior_theta1:.6f}, signal={signal.value}.")
+    return (prior_theta1 * lambda_theta1) / denominator

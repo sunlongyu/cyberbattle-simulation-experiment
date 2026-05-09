@@ -1,0 +1,9 @@
+scenario,scenario_label,initial_belief,strategy,strategy_label,certain_honeypot_probability,critical_uncertainty_probability,other_uncertainty_probability,certain_real_probability
+scenario_a,场景 A,0.65,truthful_baseline,真实披露基线,0.3532499999999888,0.0,0.0,0.6467499999999565
+scenario_a,场景 A,0.65,full_pooling_baseline,完全混同基线,0.0,0.0,0.9999999999999176,0.0
+scenario_a,场景 A,0.65,static_random_baseline,随机伪装基线,0.35999999999998805,0.0,0.0,0.6399999999999573
+scenario_a,场景 A,0.65,recursive_pbne,递归 PBNE 策略,0.0,0.7659999999999434,0.0,0.23400000000000018
+scenario_b,场景 B,0.25,truthful_baseline,真实披露基线,0.7494999999999452,0.0,0.0,0.2505000000000001
+scenario_b,场景 B,0.25,full_pooling_baseline,完全混同基线,0.0,0.0,0.9999999999999176,0.0
+scenario_b,场景 B,0.25,static_random_baseline,随机伪装基线,0.751499999999945,0.0,0.0,0.2485000000000002
+scenario_b,场景 B,0.25,recursive_pbne,递归 PBNE 策略,0.5414999999999681,0.4584999999999772,0.0,0.0
