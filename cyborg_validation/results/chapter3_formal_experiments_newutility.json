@@ -1,8 +1,8 @@
 {
   "episodes": 12,
   "max_steps": 30,
-  "scenario_path": "/Users/SL/Documents/expproject/cyberbattle-simulation-experiment/cyborg_validation/scenarios/thesis_scenario.yaml",
-  "mapping_path": "/Users/SL/Documents/expproject/cyberbattle-simulation-experiment/cyborg_validation/thesis_scenario_mapping.json",
+  "scenario_path": "cyborg_validation/scenarios/thesis_scenario.yaml",
+  "mapping_path": "cyborg_validation/thesis_scenario_mapping.json",
   "base_config": {
     "horizon": 30,
     "prior_theta1": 0.5,
@@ -22,7 +22,7 @@
   },
   "primary_comparisons": {
     "raw": {
-      "scenario_path": "/Users/SL/Documents/expproject/cyberbattle-simulation-experiment/cyborg_validation/scenarios/thesis_scenario.yaml",
+      "scenario_path": "cyborg_validation/scenarios/thesis_scenario.yaml",
       "episodes": 12,
       "max_steps": 30,
       "base_config": {

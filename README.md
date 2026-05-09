@@ -9,6 +9,10 @@ This repository organizes the thesis experiments for cyber deception defense and
 - `cyborg_validation/`: Chapter 3 validation and scenario-mapping experiments against the CyberBattle/CybORG-style environment. Keep scripts, mappings, scenarios, and compact result JSON files here; do not keep thesis rewrite drafts here.
 - `sg_marl_simulation/`: Chapter 4 signaling-game-guided MARL experiments. This directory contains the chapter-organized code snapshot and final module outputs.
 
+The formal Chapter 3 result set in `sg_deception_simulation2/` is limited to three experiments: defender cumulative utility comparison, terminal belief comparison, and parameter sensitivity analysis including discount factor sensitivity.
+
+The formal Chapter 4 result set in `sg_marl_simulation/` is limited to three experiments: convergence/stability, strategy distribution probability, and baseline/ablation effectiveness comparison.
+
 ## Version-Control Rules
 
 - Commit source code, experiment configs, thesis-ready JSON/CSV summaries, and final figures/tables.

@@ -11,13 +11,13 @@ from marl_core.io import write_csv
 from marl_core.metrics import compute_convergence_step, compute_reward_volatility
 
 
-ROOT = Path("/Users/SL/Documents/expproject/MARL/results/ch4/module1_convergence")
+ROOT = Path(__file__).resolve().parents[2] / "module1_convergence"
 CSV_ROOT = ROOT / "csv"
 FIG_ROOT = ROOT / "figures"
 TABLE_ROOT = ROOT / "tables"
 
-LR_PREFIX = "episode_log_module1_tuned_lr200_seed0_lr_sweep_"
-SEED_PREFIX = "episode_log_module1_tuned_seed200_seed"
+LR_PREFIX = "episode_log_server_module1_formal_1000_seed0_lr_sweep_"
+SEED_PREFIX = "episode_log_server_module1_formal_1000_seed"
 
 CONVERGENCE_RULE = {
     "threshold_ratio": 0.95,

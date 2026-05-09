@@ -53,7 +53,7 @@
     "evaluation_episodes": 24
   },
   "output": {
-    "root_dir": "results/ch4",
+    "root_dir": ".",
     "save_yaml": false,
     "write_readme": true,
     "image_dpi": 300

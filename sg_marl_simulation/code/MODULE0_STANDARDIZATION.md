@@ -15,9 +15,9 @@ Module 0 does not change the thesis claims by itself. It standardizes:
 
 ## Shared Output Root
 
-All Chapter 4 outputs live under:
+All Chapter 4 formal outputs live under:
 
-`/Users/SL/Documents/expproject/MARL/results/ch4`
+`sg_marl_simulation/`
 
 Module folders:
 
@@ -56,12 +56,12 @@ The common volatility rule is:
 
 New shared infrastructure lives in:
 
-- `/Users/SL/Documents/expproject/MARL/marl_core/config.py`
-- `/Users/SL/Documents/expproject/MARL/marl_core/defaults.py`
-- `/Users/SL/Documents/expproject/MARL/marl_core/io.py`
-- `/Users/SL/Documents/expproject/MARL/marl_core/metrics.py`
-- `/Users/SL/Documents/expproject/MARL/marl_core/naming.py`
-- `/Users/SL/Documents/expproject/MARL/marl_core/paths.py`
+- `sg_marl_simulation/code/marl_core/config.py`
+- `sg_marl_simulation/code/marl_core/defaults.py`
+- `sg_marl_simulation/code/marl_core/io.py`
+- `sg_marl_simulation/code/marl_core/metrics.py`
+- `sg_marl_simulation/code/marl_core/naming.py`
+- `sg_marl_simulation/code/marl_core/paths.py`
 
 The thesis-aligned baseline environment and training defaults are centralized in
 `marl_core/defaults.py` so later modules no longer maintain separate copies of

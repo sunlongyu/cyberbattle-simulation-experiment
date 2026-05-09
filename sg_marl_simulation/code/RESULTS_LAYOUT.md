@@ -1,6 +1,7 @@
 # Chapter 4 Results Layout
 
-All Chapter 4 experiment outputs are stored under `results/ch4/`.
+All Chapter 4 formal experiment outputs are stored directly under
+`sg_marl_simulation/`.
 
 ## Modules
 

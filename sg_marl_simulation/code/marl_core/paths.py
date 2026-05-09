@@ -4,14 +4,14 @@ from pathlib import Path
 from typing import Dict
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-def module_root(module_id: str, root_dir: str = "results/ch4") -> Path:
+def module_root(module_id: str, root_dir: str = ".") -> Path:
     return PROJECT_ROOT / root_dir / module_id
 
 
-def ensure_module_layout(module_id: str, root_dir: str = "results/ch4") -> Dict[str, Path]:
+def ensure_module_layout(module_id: str, root_dir: str = ".") -> Dict[str, Path]:
     root = module_root(module_id, root_dir=root_dir)
     layout = {
         "root": root,

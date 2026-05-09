@@ -8,7 +8,28 @@
 - `run_experiments.py`: 生成实验结果 JSON 和 CSV
 - `plot_results.py`: 根据结果文件生成 PNG 图片
 - `results/`: 已生成的实验结果与图片
-- `results/figures/drafts/`: 从临时目录迁移过来的草稿图版本，用于追溯图形调整过程，不替代正式图
+
+## 正式实验
+
+1. 四类策略的防御者累积效用对比。
+2. 四类策略的终局信念对比。
+3. 参数敏感性分析，包含初始信念、收益/成本参数与折扣因子。
+
+## 正式结果文件
+
+- `experiment1_payoff_comparison.json`
+- `experiment1_payoff_summary.csv`
+- `experiment1_stage_paths.csv`
+- `experiment2_terminal_belief_comparison.json`
+- `experiment2_terminal_beliefs.csv`
+- `experiment2_terminal_state_composition.csv`
+- `experiment2_terminal_uncertainty_summary.csv`
+- `experiment3_sensitivity_analysis.json`
+- `experiment3_sensitivity_analysis.csv`
+- `experiment3_sensitivity_trajectories.csv`
+- `experiment3_discount_factor_sensitivity.json`
+- `experiment3_discount_factor_mechanism.csv`
+- `experiment3_discount_factor_horizon_paths.csv`
 
 ## 运行方式
 

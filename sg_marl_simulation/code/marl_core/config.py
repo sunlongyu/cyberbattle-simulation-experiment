@@ -10,7 +10,7 @@ import json
 class OutputConfig:
     """Common output settings for all Chapter 4 experiment modules."""
 
-    root_dir: str = "results/ch4"
+    root_dir: str = "."
     save_yaml: bool = False
     write_readme: bool = True
     image_dpi: int = 300

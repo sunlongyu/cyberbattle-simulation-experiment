@@ -132,76 +132,6 @@ def plot_experiment_one(experiment_result: dict) -> None:
     save_figure("fig3_2_cumulative_defender_utility_comparison.png")
 
 
-def plot_stage_average_payoff_convergence(experiment_result: dict) -> None:
-    fig, axes = plt.subplots(2, 2, figsize=(10.8, 7.4), sharex=True)
-    scenario_order = ["scenario_a", "scenario_b"]
-    row_specs = [
-        ("discounted_cumulative_defender_utility", "防御方折扣累计期望收益"),
-        ("discounted_cumulative_attacker_utility", "攻击方折扣累计期望收益"),
-    ]
-
-    for col_index, scenario_key in enumerate(scenario_order):
-        scenario = experiment_result["scenarios"][scenario_key]
-        stages = np.array(
-            [row["horizon"] for row in scenario["horizon_sweep"]["recursive_pbne"]],
-            dtype=float,
-        )
-
-        for row_index, (metric_key, ylabel) in enumerate(row_specs):
-            axis = axes[row_index, col_index]
-            axis.axhline(0.0, color="#BFBFBF", linewidth=0.8, linestyle=":")
-            pbne_values = None
-            for strategy_key in STRATEGY_ORDER:
-                rows = scenario["horizon_sweep"][strategy_key]
-                values = np.array([row[metric_key] for row in rows], dtype=float)
-                if strategy_key == "recursive_pbne":
-                    pbne_values = values
-                style = STRATEGY_STYLES[strategy_key]
-                axis.plot(
-                    stages,
-                    values,
-                    color=style["color"],
-                    linewidth=style["linewidth"],
-                    linestyle=style["linestyle"],
-                    marker=style["marker"],
-                    markersize=3.8,
-                    markerfacecolor="white" if strategy_key != "recursive_pbne" else style["color"],
-                    markeredgecolor=style["color"] if strategy_key != "recursive_pbne" else "white",
-                    label=scenario["strategy_labels"][strategy_key],
-                )
-            axis.set_xticks(stages)
-            axis.grid(True, axis="y")
-            if row_index == 0 and pbne_values is not None:
-                axis.set_title(scenario["label"], fontproperties=FONT_MIXED, fontsize=10.5, pad=8)
-                axis.text(
-                    0.97,
-                    0.90,
-                    f"PBNE 末期: {pbne_values[-1]:.2f}",
-                    transform=axis.transAxes,
-                    ha="right",
-                    va="top",
-                    fontproperties=FONT_MIXED,
-                    fontsize=9.8,
-                    color=COLOR_TEXT,
-                    bbox={
-                        "boxstyle": "round,pad=0.20",
-                        "facecolor": "white",
-                        "edgecolor": "#D9D9D9",
-                        "linewidth": 0.8,
-                        "alpha": 0.94,
-                    },
-                )
-            if col_index == 0:
-                axis.set_ylabel(ylabel, fontproperties=FONT_MIXED, fontsize=10.5)
-            if row_index == 1:
-                axis.set_xlabel("终止时域 T", fontproperties=FONT_MIXED, fontsize=10.5)
-            apply_axes_style(axis, x_font=FONT_EN, y_font=FONT_EN)
-
-    axes[0, 1].legend(loc="best", prop=FONT_MIXED, fontsize=8.6)
-    fig.suptitle("攻防双方递归期望收益随终止时域变化", fontproperties=FONT_MIXED, fontsize=10.5, y=0.98)
-    save_figure("fig3_2b_stage_average_payoff_convergence.png")
-
-
 def plot_terminal_belief_distribution(experiment_result: dict) -> None:
     fig, axes = plt.subplots(1, 2, figsize=(10.8, 5.2), sharex=True, sharey=True)
     scenario_order = ["scenario_a", "scenario_b"]
@@ -395,15 +325,13 @@ def plot_experiment_three(experiment_result: dict, gamma_result: dict) -> None:
 def main() -> None:
     configure_matplotlib()
     experiment_one = load_json(RESULTS_DIR / "experiment1_payoff_comparison.json")
-    experiment_two = load_json(RESULTS_DIR / "experiment2_belief_dynamics.json")
+    experiment_two = load_json(RESULTS_DIR / "experiment2_terminal_belief_comparison.json")
     experiment_three = load_json(RESULTS_DIR / "experiment3_sensitivity_analysis.json")
-    gamma_sensitivity = load_json(RESULTS_DIR / "experiment4_gamma_sensitivity.json")
+    gamma_sensitivity = load_json(RESULTS_DIR / "experiment3_discount_factor_sensitivity.json")
     plot_experiment_one(experiment_one)
-    plot_stage_average_payoff_convergence(experiment_one)
     plot_terminal_belief_distribution(experiment_two)
     plot_experiment_three(experiment_three, gamma_sensitivity)
     print("Figure written to", FIGURES_DIR / "fig3_2_cumulative_defender_utility_comparison.png")
-    print("Figure written to", FIGURES_DIR / "fig3_2b_stage_average_payoff_convergence.png")
     print("Figure written to", FIGURES_DIR / "fig3_4_terminal_public_belief_distribution.png")
     print("Figure written to", FIGURES_DIR / "fig3_5_parameter_sensitivity_analysis.png")
 

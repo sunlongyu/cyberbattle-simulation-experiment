@@ -1,5 +1,5 @@
 {
-  "scenario_path": "/Users/SL/Documents/expproject/cyberbattle-simulation-experiment/cyborg_validation/scenarios/thesis_scenario.yaml",
+  "scenario_path": "cyborg_validation/scenarios/thesis_scenario.yaml",
   "episodes": 10,
   "max_steps": 30,
   "host_type_mapping": {

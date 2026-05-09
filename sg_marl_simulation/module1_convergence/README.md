@@ -1,7 +1,7 @@
 # module1_convergence: server_module1_formal_1000
 
 ## Description
-Chapter 4 module 1: learning-rate sensitivity and 5-seed stability.
+Chapter 4 module 1: convergence and 5-seed stability.
 
 ## Seeds
 0, 1, 2, 3, 4
@@ -11,7 +11,15 @@ Chapter 4 module 1: learning-rate sensitivity and 5-seed stability.
 - `tables/`: paper-ready tables in CSV
 - `csv/`: raw run logs and aggregated metrics
 - `configs/`: json/yaml experiment configs
-- `logs/`: text logs or auxiliary diagnostics
+
+## Kept Result Set
+
+- `configs/server_module1_formal_1000.json`
+- `csv/episode_log_server_module1_formal_1000_*`
+- `figures/fig_4_3_learning_rate.*`
+- `figures/fig_4_4_seed_stability.*`
+- `tables/tab_4_2_convergence_stats.csv`
+- `results_summary.csv`
 
 ## Reproduction
 - Record dependency versions before running module-specific experiments.

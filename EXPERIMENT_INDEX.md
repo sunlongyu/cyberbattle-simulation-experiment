@@ -9,7 +9,12 @@ Formal thesis-facing directory: `sg_deception_simulation2/`
 - `plot_results.py`: regenerates Chapter 3 figures from saved outputs.
 - `results/`: thesis-traceable generated outputs.
 - `results/figures/`: final Chapter 3 figure files.
-- `results/figures/drafts/`: matched draft figure variants moved out of the temporary workspace.
+
+Formal experiments:
+
+1. Four-strategy defender cumulative utility comparison.
+2. Four-strategy terminal belief comparison.
+3. Parameter sensitivity analysis, including discount factor sensitivity.
 
 Independent earlier/alternate directory: `sg_deception_simulation/`
 
@@ -27,17 +32,18 @@ Active directory: `sg_marl_simulation/`
 
 - `code/`: code snapshot and runnable scripts for the Chapter 4 workflow.
 - `module1_convergence/`: convergence and seed-stability results.
-- `module2_policy/`: policy and signaling-mechanism results.
+- `module2_policy/`: strategy distribution probability results.
 - `module3_effectiveness/`: baseline comparison and ablation results.
-- `preview_figures/`: preview exports used for checking figure formatting.
-- `module*/figures/drafts/`: matched draft figure variants moved out of the temporary workspace.
-- `chapter4_text_replacements.md`: local text-replacement notes for Chapter 4 writing.
+
+Formal experiments:
+
+1. Convergence and stability.
+2. Strategy distribution probability.
+3. Baseline key-metric point estimates and ablation.
 
 ## Local-Only Or Ignored Content
 
-- `sg_marl_simulation/**/logs/`: runtime logs and diagnostics.
 - `.venv/`, `.mplconfig/`, `__pycache__/`, `.DS_Store`: machine-local artifacts.
-- `tmp_ch4_drafts/`: temporary figure staging area; move matched files into the relevant result directory before committing.
 - `cyborg_validation/*.md`: local thesis-writing drafts unless explicitly promoted. `README.md` is the only Markdown file expected in `cyborg_validation/`.
 
 ## When Adding New Results

@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 INPUT_PATH = RESULTS_DIR / "cyber_simulation_formal_experiments.json"
 FIGURES_DIR = RESULTS_DIR / "figures"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
 def load_results() -> dict:
@@ -137,7 +138,7 @@ def plot_compromise_breakdown(data: dict) -> None:
 
 
 def plot_theory_environment_alignment(data: dict) -> None:
-    theory_path = Path("/Users/SL/Documents/expproject/sg_deception_simulation/results/feasible_scenarios.json")
+    theory_path = PROJECT_ROOT / "sg_deception_simulation" / "results" / "feasible_scenarios.json"
     theory = json.loads(theory_path.read_text(encoding="utf-8"))
     env_primary = data["primary_comparisons"]
 
